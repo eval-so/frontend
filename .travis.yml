@@ -2,8 +2,10 @@ language: scala
 scala:
   - 2.9.1
 before_script:
-  - psql -c 'create database breakpoint;' -Upostgres
-  - cp conf/application.conf.dist conf/application.conf
+  - "psql -c 'create database breakpoint;' -Upostgres"
+  - "cp conf/application.conf.dist conf/application.conf"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 notifications:
   irc: "irc.freenode.net#breakpoint-eval"
 

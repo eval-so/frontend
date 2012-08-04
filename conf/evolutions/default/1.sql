@@ -5,7 +5,8 @@ create table users(
   password varchar(64) not null,
   salt varchar(36) not null,
   name varchar(255) not null,
-  email varchar(255) not null
+  email varchar(255) not null,
+  registered_at timestamp not null default current_timestamp
 );
 
 create index on users (username, password, salt);
@@ -13,7 +14,8 @@ create index on users (username, password, salt);
 create table applications(
   id bigserial not null primary key,
   name varchar(255) not null,
-  api_secret varchar(36) not null
+  api_secret varchar(36) not null,
+  created_at timestamp not null default current_timestamp
 );
 
 create index on applications (api_secret);
@@ -23,7 +25,8 @@ create table application_users(
   user_id bigint not null references users (id),
   application_id bigint not null references applications (id),
   secret_key varchar(36) not null,
-  owner boolean not null default false
+  owner boolean not null default false,
+  granted_at timestamp not null default current_timestamp
 );
 
 create index on application_users (user_id);

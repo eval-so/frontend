@@ -14,7 +14,7 @@ create index on users (username, password, salt);
 create table applications(
   id bigserial not null primary key,
   name varchar(255) not null,
-  api_secret varchar(36) not null,
+  api_id varchar(36) not null,
   created_at timestamp not null default current_timestamp
 );
 

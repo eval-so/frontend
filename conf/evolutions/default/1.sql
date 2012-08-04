@@ -18,7 +18,7 @@ create table applications(
   created_at timestamp not null default current_timestamp
 );
 
-create index on applications (api_secret);
+create index on applications (api_id);
 
 create table application_users(
   id bigserial not null primary key,

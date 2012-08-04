@@ -3,13 +3,35 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>@title</title>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
-    </head>
-    <body>
-        @content
-    </body>
+  <head>
+    <title>@title - Breakpoint</title>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.min.css")">
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/commentform.min.js")" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="header" class="constraint">
+      <div class="navbar">
+        <h1 class="name"><a href="/">Breakpoint.</a></h1>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </div>
+      <div class="headercontent">
+        <h1>@title</h1>
+      </div>
+    </div>
+
+    @content
+
+    <div id="footer" class="constraint">
+      <p class="left">
+        <span title="@java.net.InetAddress.getLocalHost.getHostName">&copy; 2012</span>
+        Ricky Elrod
+      </p>
+      <p class="right"><a href="https://github.com/breakpoint-eval/">Open Source</a></p>
+    </div>
+  </body>
 </html>

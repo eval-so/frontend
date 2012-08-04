@@ -1,0 +1,11 @@
+language: scala
+scala:
+  - 2.9.2
+before_script:
+  - psql -c 'create database breakpoint;' -Upostgres
+  - cp conf/application.conf.dist conf/application.conf
+notifications:
+  irc: "irc.freenode.net#breakpoint-eval"
+
+  webhooks:
+    - "http://rcmp.tenthbit.net/irc.tenthbit.net/programming"

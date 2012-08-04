@@ -1,6 +1,6 @@
 language: scala
 scala:
-  - 2.9.2
+  - 2.9.1
 before_script:
   - psql -c 'create database breakpoint;' -Upostgres
   - cp conf/application.conf.dist conf/application.conf

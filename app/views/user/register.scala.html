@@ -1,0 +1,16 @@
+@(registerForm: Form[User])
+@main("Register for Breakpoint.") {
+<div class="content constraint topmargin blue">
+  <div class="header"><b>Register</b>.</div>
+  <div class="pad">
+    @helper.form(action = routes.UserController.register) {
+      @helper.inputText(registerForm("username"))
+      @helper.inputText(registerForm("email"))
+      @helper.inputText(registerForm("password.main"))
+      @helper.inputText(registerForm("password.confirm"))
+      @helper.checkbox(registerForm("accept"))
+      <button type="submit">Register</button>
+    }
+  </div>
+</div>
+}

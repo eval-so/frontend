@@ -18,12 +18,13 @@ import org.joda.time.format.{DateTimeFormat, PeriodFormat}
   * @param name the user's real name
   * @param email the user's email address
   */
-case class User(id: Long,
+case class User(id: Option[Long],
                 username: String,
                 password: String,
                 salt: String,
                 name: String,
-                email: String) {
+                email: String
+              ) {
 
   /** The Breakpoint Applications that the User has access to.
     *
@@ -51,7 +52,7 @@ object User {
     get[String]("name") ~
     get[String]("email") map {
       case id~username~password~hash~name~email =>
-        User(id, username, password, hash, name, email)
+        User(Some(id), username, password, hash, name, email)
      }
   }
 

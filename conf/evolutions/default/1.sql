@@ -9,7 +9,7 @@ create table users(
   registered_at timestamp not null default current_timestamp
 );
 
-create index on users (username, password, salt);
+create index users_idx on users (username, password, salt);
 
 create table applications(
   id bigserial not null primary key,
@@ -18,7 +18,7 @@ create table applications(
   created_at timestamp not null default current_timestamp
 );
 
-create index on applications (api_id);
+create index applications_idx on applications (api_id);
 
 create table application_users(
   id bigserial not null primary key,
@@ -29,8 +29,8 @@ create table application_users(
   granted_at timestamp not null default current_timestamp
 );
 
-create index on application_users (user_id);
-create index on application_users (user_id, secret_key);
+create index application_users_user_id_idx on application_users (user_id);
+create index application_users_idx on application_users (user_id, secret_key);
 
 # ---!Downs
 drop table if exists users cascade;

@@ -11,16 +11,20 @@
     <script src="@routes.Assets.at("javascripts/commentform.min.js")" type="text/javascript"></script>
   </head>
   <body>
-    <div id="header" class="constraint">
+    <div id="header">
       <div class="navbar">
-        <h1 class="name"><a href="/">Breakpoint.</a></h1>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-        </ul>
+        <div class="constraint">
+          <h1 class="name nomargin exo"><a href="/">Breakpoint.</a></h1>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="@routes.Application.product">Product</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="headercontent">
-        <h1>@title</h1>
+      <div class="headercontent padbottom padtop">
+        <div class="constraint">
+          <h1 class="nomargin exo">@title</h1>
+        </div>
       </div>
     </div>
 

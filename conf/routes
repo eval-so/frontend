@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index
+GET     /product                    controllers.Application.product
 GET     /user/register              controllers.UserController.register
 
 # Map static resources from the /public folder to the /assets URL path

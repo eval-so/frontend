@@ -1,0 +1,86 @@
+@main("The First Open-Source Code Evaluation Platform") {
+<div class="lightbg padtop padbottom shadow" style="z-index: 10;">
+  <div class="constraint">
+    <h1 class="nomargin">Welcome!</h1>
+    <p>
+      Breakpoint is a new, open source <i>code evaluation</i> platform.
+      This means that you can run code against our infrastructure in
+      various ways in order to demonstrate how code works in a large number of
+      languages.
+    </p>
+
+    <p>
+      We provide a simple-to-use JSON interface, which allows you to throw code
+      at our servers and get a result almost instantly. Our platform is
+      distributed, meaning that we can easily add servers to always keep
+      Breakpoint as fast as possible.
+    </p>
+  </div>
+</div>
+
+<div class="darkbg padtop padbottom shadow" style="z-index: 9;">
+  <div class="constraint">
+    <h1 class="nomargin">How it works</h1>
+    <p>
+      <!-- BUZZWORDS! -->
+      We use a unique set of technologies to provide a stable, scalable platform
+      that is always ready when you are.
+    </p>
+    <p>
+      At the top of our platform is our officially supported API clients. We
+      offer officially supported clients in Clojure, Scala, Ruby, Python,
+      JavaScript and PHP. But don't fear, making clients for other languages is
+      easy!
+    </p>
+    <p>
+      The next level of the platform is what the API client connects to: Our
+      web tier. The web stack is a simple <a href="http://playframework.org/">
+      Play! 2.0</a> application, written in Scala. When a JSON request hits the
+      web application, it does some validity checking to ensure that you're a
+      valid user and that the request is sane. Afterwards, it transforms the
+      request into a Scala object, and sends it off to our
+      <a href="http://akka.io/">Akka</a> environment.
+    </p>
+    <p>
+      After the request hits Akka, it gets forwarded to the
+      <a href="https://github.com/breakpoint-eval/bcs">Breakpoint Compilation
+      System</a>, or "BCS." BCS creates an <a href="http://selinuxproject.org/">
+      SELinux</a> Sandbox, which is unique to the evaluation being done. BCS
+      tells the sandbox how to process the request, and waits for its response.
+      If it receives a response within the preset time limit, it sends another
+      Scala object, (an <code>EvaluationResponse()</code> object), as a message
+      back up to Akka, which forwards it to the web tier, and finally back to
+      the client. If, however, no response is received, we kill the sandbox and
+      send a <code>EvaluationTimeout()</code> message back to Akka. The web tier
+      handles this as an error condition and informs the user of the timeout.
+    </p>
+  </div>
+</div>
+
+<div class="verydarkbg padtop padbottom shadow" style="z-index: 8;">
+  <div class="constraint">
+    <h1 class="nomargin">How we're different</h1>
+    <p>Well, for one, we exist. ;)</p>
+    <p>
+      There's not a whole lot of code evaluation platforms out there, and
+      certainly no open source ones. But the technology exists to make a really
+      nice platform, and we've decided to harness the power of it to create
+      something we're proud of.
+    </p>
+    <p>
+      Breakpoint sets out to be a very community-centric, fast-paced project.
+      With this comes challenges. We need to work out the best technology to
+      use, get volunteers to help with upkeep, and be able to trust said
+      volunteers.
+    </p>
+    <p>
+      We provide a fast, unique service for free. We allow anyone to contribute
+      to it, fork it for themselves, and in general, make it better. We allow
+      you to choose which architecture your code runs on, while providing unique
+      ways to access the result (see the list of official API clients above).
+    </p>
+      
+      
+  </div>
+</div>
+}

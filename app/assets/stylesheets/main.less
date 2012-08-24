@@ -1,6 +1,9 @@
 @import url('http://fonts.googleapis.com/css?family=Open+Sans');
+@import url('http://fonts.googleapis.com/css?family=Exo');
 
 @width: 940px;
+@padding: 10px;
+@paddedwidth: @width - @padding;
 
 body, html {
     margin: 0;
@@ -8,14 +11,21 @@ body, html {
 }
 
 body {
-    background-image: url("/assets/images/background.png");
-    background-color: #eeeeee;
-    background-repeat: repeat-x;
+    background-color: #05283A;
     font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, sans-serif;
+    color: #333333;
 }
+
+a { color: #555555; }
+a:hover { color: #333333; }
 
 .constraint {
     width: @width;
+    margin: 0 auto;
+}
+
+.paddedconstraint {
+    width: @paddedwidth;
     margin: 0 auto;
 }
 
@@ -25,8 +35,14 @@ body {
     margin: 0 auto;
     text-align: center;
 }
+
 .pad { padding: 10px; }
+.padtop { padding-top: 10px; }
+.padbottom { padding-bottom: 10px; }
 .topmargin { margin-top: 10px; }
+.nomargin { margin: 0; }
+.nopadding { padding: 0; }
+.exo { font-family: 'Exo', sans-serif; }
 
 .clearfix:before, .clearfix:after {
     content: "";
@@ -35,16 +51,23 @@ body {
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
 
-.biginput {
-    font-size: 1.5em;
+.biginput { font-size: 1.5em; }
+
+.shadow {
+    -moz-box-shadow: 0 2px 2px #888888;
+    -webkit-box-shadow: 0 2px 2px #888888;
+    box-shadow: 0 2px 2px #888888;
+    position: relative;
 }
 
 #header {
     color: #f7f7f7;
-    
+
     .navbar {
-        height: 38px;
-        line-height: 38px;
+        height: 40px;
+        line-height: 40px;
+        background-color: #15283A;
+        border-bottom: 1px solid #666677;
         text-align: right;
 
         ul {
@@ -67,14 +90,11 @@ body {
                     color: #f7f7f7;
                 }
             }
-
         }
 
         h1.name {
             text-align: left;
             float: left;
-            margin: 0;
-            padding: 0;
             font-size: 1.3em;
 
             a {
@@ -85,18 +105,22 @@ body {
     }
 
     .headercontent {
-        height: 78px;
         text-shadow: 0 2px 4px #000000;
+        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#223f5a), to(#334a5f));
+        background: -webkit-linear-gradient(top, #223f5a, #334a5f);
+        background: -moz-linear-gradient(top, #223f5a, #334a5f);
+        background: -ms-linear-gradient(top, #223f5a, #334a5f);
+        background: -o-linear-gradient(top, #223f5a, #334a5f);
     }
 }
+
+.lightbg { background-color: #dfdfd9; }
+.darkbg { background-color: #bfbfb9; }
+.verydarkbg { background-color: #9f9f99; }
 
 .content {
     background-color: #ffffff;
     border: 1px solid #cccccc;
-    width: @width - 20px; /* .constraint - 20 for padding */
-
-    .start { color: green; }
-    .end { color: red; }
 
     .header {
         background-color: #f3f3f3;
@@ -108,30 +132,28 @@ body {
 
 .blue {
     border-left: 8px solid #24405a;
-    width: @width - 28px !important;
+    width: @paddedwidth;
 }
 
 .maroon {
     border-left: 8px solid #5a2424;
-    width: @width - 28px !important;
-
-    textarea { width: 99%; }
+    width: @paddedwidth;
 }
 
 .green {
     border-left: 8px solid #295a24;
-    width: @width - 28px !important;
+    width: @paddedwidth;
 }
 
 .purple {
     border-left: 8px solid #52245a;
-    width: @width - 28px !important;
+    width: @paddedwidth;
 }
 
 #footer {
-    color: #555555;
+    color: #cccccc;
     font-size: 0.7em;
-    width: @width - 20px;
+    width: @paddedwidth;
 
-    a { color: inherit; }
+    a { color: #cccccc; }
 }

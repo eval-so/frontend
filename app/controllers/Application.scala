@@ -29,5 +29,14 @@ object Application extends Controller {
   def index = Action {
     Ok(views.html.index())
   }
+
+  /** The product controller.
+    *
+    * Tell people about what we do, why we're awesome, and why they should use
+    * our product over our OH SO MANY competitors.
+    */
+  def product = Action {
+    Ok(views.html.product())
+  }
   
 }

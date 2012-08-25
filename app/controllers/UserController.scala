@@ -20,7 +20,7 @@ object UserController extends Controller {
     mapping(
       "name"    -> nonEmptyText,
       "username" -> nonEmptyText,
-      "email"    -> nonEmptyText,
+      "email"    -> email,
       "password" -> tuple(
         "main"    -> text(minLength = 8),
         "confirm" -> text
@@ -50,8 +50,20 @@ object UserController extends Controller {
     }
   )
 
-  /** Handle registration of new users. */
-  def register = Action {
-    Ok(views.html.user.register(registerForm))
+  /** Handle registration of new users.
+    *
+    * @todo fix `success`'s line length.
+    */
+  def register = Action { implicit request =>
+    registerForm.bindFromRequest.fold(
+      formWithErrors => {
+        BadRequest(views.html.index(formWithErrors))
+      },
+      valid => {
+        Redirect(routes.Application.index).flashing(
+          "success" -> "Welcome aboard. Please check your email for details on where to go from here."
+        )
+      }
+    )
   }
 }

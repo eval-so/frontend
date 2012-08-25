@@ -17,6 +17,10 @@ import org.joda.time.format.{DateTimeFormat, PeriodFormat}
   * @param salt a salt prepended to the password before it's hashed
   * @param name the user's real name
   * @param email the user's email address
+  * @param registeredAt the time that the user initially registered
+  * @param confirmedAt the time that the user confirmed their account
+  * @param confirmationToken a unique ID with which the user validates their
+  *                          intent to register
   */
 case class User(
   id: Option[Long],
@@ -24,7 +28,10 @@ case class User(
   password: String,
   salt: String,
   name: String,
-  email: String) {
+  email: String,
+  registeredAt: Option[DateTime],
+  confirmedAt: Option[DateTime],
+  confirmationToken: String) {
 
   /** The Breakpoint Applications that the User has access to.
     *
@@ -44,15 +51,37 @@ case class User(
 }
 
 object User {
+  /** Represent a single user.
+    *
+    * @todo fix line length of `case` below.
+    */
   val simple = {
-    get[Long]("id") ~
+    get[Option[Long]]("id") ~
     get[String]("username") ~
     get[String]("password") ~
-    get[String]("hash") ~
+    get[String]("salt") ~
     get[String]("name") ~
-    get[String]("email") map {
-      case id~username~password~hash~name~email =>
-        User(Some(id), username, password, hash, name, email)
+    get[String]("email") ~
+    get[Option[Date]]("registered_at") ~
+    get[Option[Date]]("confirmed_at") ~
+    get[String]("confirmation_token") map {
+      case id~username~password~salt~name~email~registeredAt~confirmedAt~confirmationToken =>
+        User(
+          id,
+          username,
+          password,
+          salt,
+          name,
+          email,
+          registeredAt match {
+            case Some(date) => Some(new DateTime(date))
+            case None => None
+          },
+          confirmedAt match {
+            case Some(date) => Some(new DateTime(date))
+            case None => None
+          },
+          confirmationToken)
      }
   }
 
@@ -76,11 +105,7 @@ object User {
     * @param name the user's real name
     * @return a Long which is the user's ID in the database.
     */
-  def add(
-    username: String,
-    password: String,
-    name: String,
-    email: String): Option[Long] =
+  def add(user: User): Option[Long] =
     DB.withConnection { implicit c =>
       val salt = java.util.UUID.randomUUID()
       SQL(
@@ -88,10 +113,10 @@ object User {
         INSERT INTO users(username, password, salt, name, email)
         VALUES({username}, {password}, {salt}, {name}, {email})
         """).on(
-          username -> username,
-          password -> password,
-          salt -> salt,
-          name -> name,
-          email -> email).executeInsert()
+          'username -> user.username,
+          'password -> user.password,
+          'salt -> user.salt,
+          'name -> user.name,
+          'email -> user.email).executeInsert()
     }
 }

@@ -4,8 +4,10 @@ import models._
 import play.api._
 import play.api.mvc._
 import play.api.data._
+import play.api.Play.current
 import play.api.data.Forms._
 import play.api.data.validation.Constraints._
+import com.typesafe.plugin._
 
 /** Controllers which deal with authentication. */
 object UserController extends Controller {
@@ -36,7 +38,10 @@ object UserController extends Controller {
         password._1,
         java.util.UUID.randomUUID().toString,
         name,
-        email
+        email,
+        None,
+        None,
+        java.util.UUID.randomUUID().toString
       )
     }
     {
@@ -60,6 +65,27 @@ object UserController extends Controller {
         BadRequest(views.html.index(formWithErrors))
       },
       valid => {
+        val mail = use[MailerPlugin].email
+        mail.setSubject("Welcome to Breakpoint!")
+        mail.addRecipient("%s <%s>".format(valid.name, valid.email))
+        mail.addFrom("Breakpoint Eval <noreply@breakpoint-eval.org>")
+        mail.send("""Welcome to Breakpoint!
+                  |
+                  |Before you can begin using your account, we need to confirm
+                  |that this is a valid email addresss, and that you meant to
+                  |sign up.
+                  |
+                  |If you didn't intend to sign up for Breakpoint, please
+                  |disregard this email.
+                  |
+                  |However, if you intended to sign up, you must activate your
+                  |account, by clicking visiting this link:
+                  |http://%s/confirm/%s
+                  |
+                  |We hope you enjoy using Breakpoint.""".stripMargin.format(
+                    request.host,
+                    valid.confirmationToken))
+        User.add(valid)
         Redirect(routes.Application.index).flashing(
           "success" -> "Welcome aboard. Please check your email for details on where to go from here."
         )

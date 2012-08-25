@@ -10,7 +10,7 @@ object ApplicationBuild extends Build {
     val appDependencies = Seq(
       "postgresql" % "postgresql" % "9.1-901.jdbc4",
       "joda-time" % "joda-time" % "2.1",
-      "javax.mail" % "mail" % "1.4.5"
+      "com.typesafe" %% "play-plugins-mailer" % "2.0.4"
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(

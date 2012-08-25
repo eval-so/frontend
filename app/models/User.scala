@@ -18,13 +18,13 @@ import org.joda.time.format.{DateTimeFormat, PeriodFormat}
   * @param name the user's real name
   * @param email the user's email address
   */
-case class User(id: Option[Long],
-                username: String,
-                password: String,
-                salt: String,
-                name: String,
-                email: String
-              ) {
+case class User(
+  id: Option[Long],
+  username: String,
+  password: String,
+  salt: String,
+  name: String,
+  email: String) {
 
   /** The Breakpoint Applications that the User has access to.
     *
@@ -67,4 +67,31 @@ object User {
       'id -> id
     ).as(User.simple.singleOpt)
   }
+
+  /** Add a user to the database.
+    *
+    * @param username the user's username
+    * @param email the user's email address
+    * @param password the user's password
+    * @param name the user's real name
+    * @return a Long which is the user's ID in the database.
+    */
+  def add(
+    username: String,
+    password: String,
+    name: String,
+    email: String): Option[Long] =
+    DB.withConnection { implicit c =>
+      val salt = java.util.UUID.randomUUID()
+      SQL(
+        """
+        INSERT INTO users(username, password, salt, name, email)
+        VALUES({username}, {password}, {salt}, {name}, {email})
+        """).on(
+          username -> username,
+          password -> password,
+          salt -> salt,
+          name -> name,
+          email -> email).executeInsert()
+    }
 }

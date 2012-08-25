@@ -1,3 +1,5 @@
+@(registerForm: Form[User])
+
 @main("Welcome to Breakpoint.") {
 <div class="lightbg padtop padbottom shadow" style="z-index: 10;">
   <div class="constraint">
@@ -40,4 +42,24 @@
     </p>
   </div>
 </div>
+
+<div class="darkbg padtop padbottom shadow" style="z-index: 9;">
+  <div class="constraint">
+    <h1 class="nomargin">Sign up</h1>
+    @helper.form(action = routes.UserController.register) {
+      @helper.inputText(registerForm("username"), '_label -> "Username")
+      @helper.inputText(registerForm("email"), '_label -> "Email")
+      @helper.inputText(registerForm("password.main"), '_label -> "Password")
+      @helper.inputText(
+        registerForm("password.confirm"),
+        '_label -> "Confirm password")
+      @helper.checkbox(
+        registerForm("accept"),
+        '_label -> "I accept the terms and conditions",
+        '_help -> "")
+      <button type="submit">Register</button>
+    }
+  </div>
+</div>
+
 }

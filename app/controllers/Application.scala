@@ -27,7 +27,7 @@ object Application extends Controller {
     * Renders / (the front page) of Frontend.
     */
   def index = Action {
-    Ok(views.html.index())
+    Ok(views.html.index(UserController.registerForm))
   }
 
   /** The product controller.

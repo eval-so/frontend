@@ -47,6 +47,7 @@
   <div class="constraint">
     <h1 class="nomargin">Sign up</h1>
     @helper.form(action = routes.UserController.register) {
+      @helper.inputText(registerForm("name"), '_label -> "Full Name")
       @helper.inputText(registerForm("username"), '_label -> "Username")
       @helper.inputText(registerForm("email"), '_label -> "Email")
       @helper.inputText(registerForm("password.main"), '_label -> "Password")

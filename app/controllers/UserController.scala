@@ -32,11 +32,12 @@ object UserController extends Controller {
       "accept"   -> checked("You must accept the terms and conditions.")
     )
     {
+      val salt = java.util.UUID.randomUUID().toString
       (name, username, email, password, _) => User(
         None,
         username,
-        password._1,
-        java.util.UUID.randomUUID().toString,
+        Application.sha256(salt + password._1),
+        salt,
         name,
         email,
         None,

@@ -48,6 +48,18 @@ case class User(
     */
 //  lazy val applications: Seq[BreakpointApplication] =
 //    BreakpointApplicationUser.getByUserID(id).applications
+
+  /** Confirm a user's registration, after they've gone to a URL containing
+    * their super sekrit UUID token.
+    */
+  def confirm() = DB.withConnection { implicit c =>
+    SQL("""
+        UPDATE users SET confirmed_at=CURRENT_TIMESTAMP
+        WHERE id={id} AND confirmed_at IS NULL
+        """).on(
+      'id -> id.get
+    ).execute()
+  }
 }
 
 object User {

@@ -93,4 +93,20 @@ object UserController extends Controller {
       }
     )
   }
+
+  /** Confirm a user's account based on their UUID token. */
+  def confirmRegistration(userID: Long, confirmationToken: String) = Action { implicit redirect =>
+    val user = User.getByID(userID)
+    user match {
+      case Some(user) => {
+        if (user.confirmationToken == confirmationToken) {
+          user.confirm()
+          Ok(views.html.user.confirm())
+        } else {
+          BadRequest
+        }
+      }
+      case None => BadRequest
+    }
+  }
 }

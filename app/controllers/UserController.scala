@@ -103,10 +103,16 @@ object UserController extends Controller {
           user.confirm()
           Ok(views.html.user.confirm())
         } else {
-          BadRequest
+          BadRequest(
+            views.html.error(
+              "Incorrect validation token.",
+              "That validation token was wrong, for the given user! :-("))
         }
       }
-      case None => BadRequest
+      case None => BadRequest(
+        views.html.error(
+          "Invalid user ID",
+          "Yikes! That user ID wasn't found in our database."))
     }
   }
 }

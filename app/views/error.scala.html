@@ -1,0 +1,22 @@
+@(header: String, content: String)
+@main("You broke it!") {
+<div class="lightbg padtop padbottom shadow" style="z-index: 10;">
+  <div class="constraint">
+    <h1 class="nomargin">@header</h1>
+    <p>
+      @content
+    </p>
+  </div>
+</div>
+
+<div class="darkbg padtop padbottom shadow" style="z-index: 10;">
+  <div class="constraint">
+    <h1 class="nomargin">Need help?</h1>
+    <p>
+      Contact us on IRC, on <a href="irc://irc.freenode.net/breakpoint-eval">
+      Freenode/#breakpoint-eval</a>, or email us at
+      <i>support@@breakpoint-eval.org</i>.
+    </p>
+  </div>
+</div>
+}

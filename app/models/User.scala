@@ -110,13 +110,14 @@ object User {
       val salt = java.util.UUID.randomUUID()
       SQL(
         """
-        INSERT INTO users(username, password, salt, name, email)
-        VALUES({username}, {password}, {salt}, {name}, {email})
+        INSERT INTO users(username, password, salt, name, email, confirmation_token)
+        VALUES({username}, {password}, {salt}, {name}, {email}, {confirmation_token})
         """).on(
           'username -> user.username,
           'password -> user.password,
           'salt -> user.salt,
           'name -> user.name,
-          'email -> user.email).executeInsert()
+          'email -> user.email,
+          'confirmation_token -> user.confirmationToken).executeInsert()
     }
 }

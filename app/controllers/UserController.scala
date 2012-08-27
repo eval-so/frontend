@@ -21,8 +21,12 @@ object UserController extends Controller {
   val registerForm: Form[User] = Form(
     mapping(
       "name"    -> nonEmptyText,
-      "username" -> nonEmptyText,
-      "email"    -> email,
+      "username" -> nonEmptyText.verifying(
+        "Sorry, that username is already registered to another account",
+        username => !User.usernameIsTaken(username)),
+      "email"    -> email.verifying(
+        "Sorry, that email is already registered to another account",
+        email => !User.emailIsTaken(email)),
       "password" -> tuple(
         "main"    -> text(minLength = 8),
         "confirm" -> text

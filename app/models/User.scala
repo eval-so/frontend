@@ -122,8 +122,20 @@ object User {
       val salt = java.util.UUID.randomUUID()
       SQL(
         """
-        INSERT INTO users(username, password, salt, name, email, confirmation_token)
-        VALUES({username}, {password}, {salt}, {name}, {email}, {confirmation_token})
+        INSERT INTO users(
+          username,
+          password,
+          salt,
+          name,
+          email,
+          confirmation_token)
+        VALUES(
+          {username},
+          {password},
+          {salt},
+          {name},
+          {email},
+          {confirmation_token})
         """).on(
           'username -> user.username,
           'password -> user.password,
@@ -132,4 +144,28 @@ object User {
           'email -> user.email,
           'confirmation_token -> user.confirmationToken).executeInsert()
     }
+
+  /** Check to see if a user exists, given an email address.
+    *
+    * @param email the email address to look up
+    * @return a Boolean, true if the email address is already used, false if not
+    */
+  def emailIsTaken(email: String) = DB.withConnection { implicit c =>
+    val count = SQL("SELECT COUNT(*) FROM users WHERE email={email}").on(
+      'email -> email
+    ).as(scalar[Long].single)
+    if (count == 0) false else true
+  }
+
+  /** Check to see if a user exists, given a username.
+    *
+    * @param username the username to look up
+    * @return a Boolean, true if the username is already used, false if not
+    */
+  def usernameIsTaken(username: String) = DB.withConnection { implicit c =>
+    val count = SQL("SELECT COUNT(*) FROM users WHERE username={username}").on(
+      'username -> username
+    ).as(scalar[Long].single)
+    if (count == 0) false else true
+  }
 }

@@ -4,16 +4,13 @@ import org.specs2.mutable._
 
 import play.api.test._
 import play.api.test.Helpers._
+import play.api.libs.ws.WS
 
 class IntegrationTest extends Specification {
   "Frontend" should {
-    "work from within a browser" in {
-      running(TestServer(3333), HTMLUNIT) { browser =>
-        browser.goTo("http://localhost:3333/")
-
-        // Be able to load the front page
-        browser.$("h1.name a").first.getText must equalTo("Breakpoint.")
-
+    "Show the front page" in {
+      running(TestServer(3333)) {
+        await(WS.url("http://localhost:3333/").get).status must equalTo(OK)
       }
     }
   }

@@ -15,8 +15,6 @@ object UserController extends Controller {
   /** A form to handle registration and profile changing.
     *
     * We handle validations, and password salt generation here as well.
-    *
-    * @todo handle username validation (e.g. does it exist already?)
     */
   val registerForm: Form[User] = Form(
     mapping(
@@ -60,10 +58,7 @@ object UserController extends Controller {
     }
   )
 
-  /** Handle registration of new users.
-    *
-    * @todo fix `success`'s line length.
-    */
+  /** Handle registration of new users. */
   def register = Action { implicit request =>
     registerForm.bindFromRequest.fold(
       formWithErrors => {

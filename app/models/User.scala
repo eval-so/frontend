@@ -63,10 +63,7 @@ case class User(
 }
 
 object User {
-  /** Represent a single user.
-    *
-    * @todo fix line length of `case` below.
-    */
+  /** Represent a single user. */
   val simple = {
     get[Option[Long]]("id") ~
     get[String]("username") ~
@@ -77,7 +74,15 @@ object User {
     get[Option[Date]]("registered_at") ~
     get[Option[Date]]("confirmed_at") ~
     get[String]("confirmation_token") map {
-      case id~username~password~salt~name~email~registeredAt~confirmedAt~confirmationToken =>
+      case id ~
+           username ~
+           password ~
+           salt ~
+           name ~
+           email ~
+           registeredAt ~
+           confirmedAt ~
+           confirmationToken =>
         User(
           id,
           username,

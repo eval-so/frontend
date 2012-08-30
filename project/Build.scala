@@ -10,11 +10,12 @@ object ApplicationBuild extends Build {
     val appDependencies = Seq(
       "postgresql" % "postgresql" % "9.1-901.jdbc4",
       "joda-time" % "joda-time" % "2.1",
-      "com.typesafe" %% "play-plugins-mailer" % "2.0.4"
+      "com.typesafe" %% "play-plugins-mailer" % "2.0.4",
+      "jp.t2v" %% "play20.auth" % "0.2"
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
-      // Add your own project settings here      
+      resolvers += "t2v.jp repo" at "http://www.t2v.jp/maven-repo/"
     )
 
 }

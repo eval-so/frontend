@@ -8,9 +8,21 @@ import play.api.Play.current
 import play.api.data.Forms._
 import play.api.data.validation.Constraints._
 import com.typesafe.plugin._
+import jp.t2v.lab.play20.auth._
 
 /** Controllers which deal with authentication. */
-object UserController extends Controller {
+object UserController extends Controller with LoginLogout with AuthConfigImpl {
+
+  /** A form which allows users to log in. */
+  val loginForm = Form(
+    mapping(
+      "username" -> nonEmptyText,
+      "password" -> nonEmptyText
+    )(User.authenticate)(_.map(u => (u.email, ""))).verifying(
+      "Invalid username/password combination",
+      result => result.isDefined
+    )
+  )
 
   /** A form to handle registration and profile changing.
     *
@@ -113,5 +125,10 @@ object UserController extends Controller {
           "Invalid user ID",
           "Yikes! That user ID wasn't found in our database."))
     }
+  }
+
+  /** Allow a user to attempt authentication. */
+  def login = Action { implicit request =>
+    Ok(views.html.user.login(loginForm))
   }
 }

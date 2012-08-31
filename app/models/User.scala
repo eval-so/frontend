@@ -116,10 +116,7 @@ object User {
 
   /** Add a user to the database.
     *
-    * @param username the user's username
-    * @param email the user's email address
-    * @param password the user's password
-    * @param name the user's real name
+    * @param user a [[User]] object containing the information to insert.
     * @return a Long which is the user's ID in the database.
     */
   def add(user: User): Option[Long] =
@@ -133,21 +130,23 @@ object User {
           salt,
           name,
           email,
-          confirmation_token)
-        VALUES(
+          confirmation_token
+        ) VALUES (
           {username},
           {password},
           {salt},
           {name},
           {email},
-          {confirmation_token})
-        """).on(
-          'username -> user.username,
-          'password -> user.password,
-          'salt -> user.salt,
-          'name -> user.name,
-          'email -> user.email,
-          'confirmation_token -> user.confirmationToken).executeInsert()
+          {confirmation_token}
+        )
+        """
+      ).on(
+        'username -> user.username,
+        'password -> user.password,
+        'salt -> user.salt,
+        'name -> user.name,
+        'email -> user.email,
+        'confirmation_token -> user.confirmationToken).executeInsert()
     }
 
   /** Check to see if a user exists, given an email address.
@@ -173,4 +172,25 @@ object User {
     ).as(scalar[Long].single)
     if (count == 0) false else true
   }
+
+  /** Attempt to authenticate as a user.
+    *
+    * @param username the username to authenticate with
+    * @param password the unencrypted password to authenticate with
+    * @return an Option[User] which is None if the authentication failed or
+    *         Some(User) otherwise.
+    */
+  def authenticate(username: String, password: String): Option[User] =
+    DB.withConnection { implicit c =>
+      SQL(
+        """
+        SELECT * FROM users WHERE
+          username={username} AND
+          password={password} LIMIT 1
+        """
+      ).on(
+        'username -> username,
+        'password -> controllers.Application.sha256(password)
+      ).as(User.simple.singleOpt)
+    }
 }

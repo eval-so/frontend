@@ -20,6 +20,18 @@ a { color: #555555; }
 a:hover { color: #333333; }
 a:focus, a:active { outline: none; }
 
+label {
+    display: block;
+    float: left;
+    width: 40%;
+}
+
+input[type=text], textarea {
+    border: 1px solid #334a5f;
+    background-color: #eeeeee;
+    &:focus, &:active { background-color: #ffffff; }
+}
+
 .constraint {
     width: @width;
     margin: 0 auto;
@@ -32,6 +44,7 @@ a:focus, a:active { outline: none; }
 
 .left { float: left; }
 .right { float: right; }
+.halfwidth { width: 49%; }
 .center {
     margin: 0 auto;
     text-align: center;
@@ -115,6 +128,7 @@ a:focus, a:active { outline: none; }
     }
 }
 
+.whitebg { background-color: #f8f8f8; }
 .lightbg { background-color: #dfdfd9; }
 .darkbg { background-color: #bfbfb9; }
 .verydarkbg { background-color: #9f9f99; }

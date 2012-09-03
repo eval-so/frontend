@@ -1,66 +1,109 @@
 @(registerForm: Form[User])
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
-@main("Welcome to Breakpoint.") {
-<div class="lightbg padtop padbottom shadow" style="z-index: 10;">
+@main("Evaluate Code via our Online API.", showSubHeader = false) {
+<div class="lightbg padtop padbottom shadow" style="z-index: 5;">
   <div class="constraint">
     <h1 class="nomargin">Hey there,</h1>
     <p>
       Breakpoint is a new and open source code evaluation platform. Learn more
       by reading our <a href="@routes.Application.product"> Product page</a>.
     </p>
+  </div>
+</div>
 
-    <h1 class="nomargin">Use the platform</h1>
-    <p>
-      Like what you see? Sign up and grab a client to begin using the platform.
-    </p>
-    <p>
-      We offer a command-line application to Breakpoint, as well as a large
-      number of officially supported API clients that developers can use in
-      their code.
-    </p>
-    <p>
-      In using the platform, you'll be joining these fine projects who have
-      also chosen Breakpoint to give their users a fast, safe tool with which
-      to evaluate code:
-    </p>
-    <p>
-      (insert list of projects here)
-    </p>
+<div class="whitebg padtop padbottom shadow clearfix" style="z-index: 10;">
+  <div class="constraint">
+    <div class="left halfwidth">
+      <h1 class="nomargin">Try It Out In Your Browser</h1>
+      <p>
+        Throw some code in the box below, pick a language, and experience the
+        uniqueness of Breakpoint.
+      </p>
+      <textarea name="tryit" style="width: 90%; height: 300px;"></textarea>
+      Language: <select>
+        <option value="Scala">Scala</option>
+        <option value="Scala">oiajdfoisajd oisdi</option>
+      </select>
+    </div>
 
-    <h1 class="nomargin">API access</h1>
-    <p>Here's what a typical request to the API looks like:</p>
-    <pre class="prettyprint">{
+    <div class="right halfwidth">
+      <h1 class="nomargin">Sign up</h1>
+      <p>
+        Once you're convinced, go on and create an account. Once you do, you'll
+        be able to use the Command-Line Interface (CLI) endpoint, as well as
+        register your own applications, which can then use the Breakpoint API.
+      </p>
+      @helper.form(action = routes.UserController.register) {
+        @helper.inputText(registerForm("name"), '_label -> "Full Name")
+        @helper.inputText(registerForm("username"), '_label -> "Username")
+        @helper.inputText(registerForm("email"), '_label -> "Email", '_help -> "")
+        @helper.inputText(registerForm("password.main"), '_label -> "Password", '_help -> "")
+        @helper.inputText(
+          registerForm("password.confirm"),
+          '_label -> "Confirm password")
+        @helper.checkbox(
+          registerForm("accept"),
+          '_label -> "I accept the terms and conditions",
+          '_help -> "")
+        <button type="submit">Register</button>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
+  <div class="constraint">
+    <div class="left halfwidth">
+      <h1 class="nomargin">API Access</h1>
+      <p>Here's what a typical request to the API looks like:</p>
+      <pre class="prettyprint">{
   "language": "php",
   "code": "&lt;?php
               echo \"This is a test\";
            ?&gt;"
 }</pre>
-    <p>
-      Pretty straightforward, eh? You can, of course, tweak some more options.
-      Check out our documentation for a full list of options, but for many
-      languages, the above is all you need to do.
-    </p>
+      <p>
+        Pretty straightforward, eh? You can, of course, tweak some more options.
+        Check out our documentation for a full list of options, but for many
+        languages, the above is all you need to do.
+      </p>
+    </div>
+
+    <div class="right halfwidth">
+      <h1 class="nomargin">Command-Line Interface</h1>
+      <p>
+        Use the Command-Line Interface (CLI) to evaluate code right from your
+        own computer.
+      </p>
+      <pre class="prettyprint lang-sh"># Infer language based on file extension
+$ breakpoint hello_world.rb
+Hello, world!
+
+# The exit code is that of the evaluation.
+$ echo $?
+0
+
+# STDIN is sent along with the evaluation request, too.
+$ echo '2' | breakpoint add_arg_plus_2.rb
+4
+
+# Get some more information about the request...
+$ breakpoint --verbose demo.rb
+[local]  Checking for STDIN... None given.
+[local]  Sending request to Breakpoint API.
+[remote] Welcome to Breakpoint!
+[remote] Authentication successful.
+[remote] The evaluation request looks sane.
+[remote] Passing it to the compilation system.
+[remote] Received a Future from the compilation system.
+[remote] Waiting for a result or timeout.
+[remote] We received a result.
+[local]  Result received from Breakpoint Frontend.
+Hello world! This is a demo of Breakpoint!
+</pre>
+    </div>
   </div>
 </div>
-
-<div class="darkbg padtop padbottom shadow" style="z-index: 9;">
-  <div class="constraint">
-    <h1 class="nomargin">Sign up</h1>
-    @helper.form(action = routes.UserController.register) {
-      @helper.inputText(registerForm("name"), '_label -> "Full Name")
-      @helper.inputText(registerForm("username"), '_label -> "Username")
-      @helper.inputText(registerForm("email"), '_label -> "Email")
-      @helper.inputText(registerForm("password.main"), '_label -> "Password")
-      @helper.inputText(
-        registerForm("password.confirm"),
-        '_label -> "Confirm password")
-      @helper.checkbox(
-        registerForm("accept"),
-        '_label -> "I accept the terms and conditions",
-        '_help -> "")
-      <button type="submit">Register</button>
-    }
-  </div>
-</div>
-
 }

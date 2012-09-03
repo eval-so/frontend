@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String, showSubHeader: Boolean = true)(content: Html)
 
 <!DOCTYPE html>
 
@@ -22,11 +22,13 @@
           </ul>
         </div>
       </div>
+      @if(showSubHeader) {
       <div class="headercontent padbottom padtop">
         <div class="constraint">
           <h1 class="nomargin exo">@title</h1>
         </div>
       </div>
+      }
     </div>
 
     @content

@@ -1,53 +1,57 @@
-@import url('http://fonts.googleapis.com/css?family=Inconsolata');
+/* Pretty printing styles. Used with prettify.js.
+ *
+ * Name:	Stanley Ng
+ * Email: 	stanleyhlng@googlegroups.com
+ * 
+ * Credits:
+ * https://github.com/chriskempson/tomorrow-theme
+ */
+.pln { color: #c5c8c6; }
 
-/* SPAN elements with the classes below are added by prettyprint. */
-.pln { color: #000 }  /* plain text */
+.str { color: #b5bd68; }
 
-@media screen {
-  .str { color: #080 }  /* string content */
-  .kwd { color: #008 }  /* a keyword */
-  .com { color: #800 }  /* a comment */
-  .typ { color: #606 }  /* a type name */
-  .lit { color: #066 }  /* a literal value */
-  /* punctuation, lisp open bracket, lisp close bracket */
-  .pun, .opn, .clo { color: #660 }
-  .tag { color: #008 }  /* a markup tag name */
-  .atn { color: #606 }  /* a markup attribute name */
-  .atv { color: #080 }  /* a markup attribute value */
-  .dec, .var { color: #606 }  /* a declaration; a variable name */
-  .fun { color: red }  /* a function name */
+.kwd { color: #b294bb; }
+
+.com {
+    color: #969896;
+    font-style: italic;
 }
 
-/* Use higher contrast and text-weight for printable form. */
-@media print, projection {
-  .str { color: #060 }
-  .kwd { color: #006; font-weight: bold }
-  .com { color: #600; font-style: italic }
-  .typ { color: #404; font-weight: bold }
-  .lit { color: #044 }
-  .pun, .opn, .clo { color: #440 }
-  .tag { color: #006; font-weight: bold }
-  .atn { color: #404 }
-  .atv { color: #060 }
+.typ { color: #de935f; }
+
+.lit { color: #f0c674; }
+
+.pun { color: #c5c8c6; }
+
+.opn { color: #c5c8c6; }
+
+.clo { color: #c5c8c6; }
+
+.tag { color: #cc6666; }
+
+.atn { color: #f0c674; }
+
+.atv { color: #8abeb7; }
+
+.dec { color: #c5c8c6; }
+
+.var { color: #c82829; }
+
+.fun { color: #cc6666; }
+
+/* Put a border around prettyprinted code snippets. */
+pre {
+  background-color: #1d1f21;
+  border: 1px solid #E1E1E8;
+  padding: 15px;
+  font-family: Menlo, Monaco, 'inconsolata', monospace;
+  font-size: 0.8em;
+  overflow: auto;
+  border-radius: 5px;
 }
 
-.prettyprint {
-    font-family: 'Inconsolata', monospace;
-}
+ol.linenums { color: #969896; }
 
-/* Specify class=linenums on a pre to get line numbering */
-ol.linenums { margin-top: 0; margin-bottom: 0 } /* IE indents via margin-left */
-li.L0,
-li.L1,
-li.L2,
-li.L3,
-li.L5,
-li.L6,
-li.L7,
-li.L8 { list-style-type: none }
-/* Alternate shading for lines */
-li.L1,
-li.L3,
-li.L5,
-li.L7,
-li.L9 { background: #eee }
+ol.linenums li {
+  line-height: 18px;
+}

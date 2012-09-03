@@ -1,8 +1,11 @@
 @(elements: helper.FieldElements)
-
-<div class="@if(elements.hasErrors) {error}">
+<div class="@if(elements.hasErrors) { error } else { padbottom }">
   <label for="@elements.id">@elements.label</label>
   @elements.input
-  <span class="errors">@elements.errors.mkString(", ")</span>
-  <span class="help">@elements.infos.mkString(", ")</span> 
+  @if(elements.hasErrors) {
+    <p class="errors">@elements.errors.mkString(", ")</p>
+  }
+  @if(elements.infos.isEmpty) {
+    <p class="help">@elements.infos.mkString(", ")</p>
+  }
 </div>

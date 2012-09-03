@@ -37,20 +37,14 @@ object UserController extends Controller with LoginLogout with AuthConfigImpl {
       "email"    -> email.verifying(
         "Sorry, that email is already registered to another account",
         email => !User.emailIsTaken(email)),
-      "password" -> tuple(
-        "main"    -> text(minLength = 8),
-        "confirm" -> text
-      ).verifying(
-        "Passwords must match", password => password._1 == password._2
-      ),
-      "accept"   -> checked("You must accept the terms and conditions.")
+      "password" -> text(minLength = 8)
     )
     {
       val salt = java.util.UUID.randomUUID().toString
-      (name, username, email, password, _) => User(
+      (name, username, email, password) => User(
         None,
         username,
-        Application.sha256(salt + password._1),
+        Application.sha256(salt + password),
         salt,
         name,
         email,
@@ -64,8 +58,7 @@ object UserController extends Controller with LoginLogout with AuthConfigImpl {
         user.name,
         user.username,
         user.email,
-        (user.password, ""),
-        false
+        user.password
       )
     }
   )

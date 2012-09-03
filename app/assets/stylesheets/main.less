@@ -26,6 +26,10 @@ label {
     width: 40%;
 }
 
+.disclaimer {
+    font-size: 0.7em;
+}
+
 input[type=text], textarea {
     border: 1px solid #334a5f;
     background-color: #eeeeee;
@@ -142,6 +146,30 @@ input[type=text], textarea {
         border-bottom: 1px solid #cccccc;
         padding: 0 10px 0 10px;
         font-size: 13px;
+    }
+}
+
+.error {
+    border: 1px solid red;
+    background-color: #ffeeee;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.submit_button {
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#75AE5C), to(#67A54B));
+    background: -webkit-linear-gradient(top, #75AE5C, #56943A);
+    background: -moz-linear-gradient(top, #75AE5C, #56943A);
+    background: -ms-linear-gradient(top, #75AE5C, #56943A);
+    background: -o-linear-gradient(top, #75AE5C, #56943A);
+    border-radius: 5px;
+    border: #67A54B;
+    font-weight: bold;
+    color: #f8f8f8;
+    width: 100%;
+
+    &:active {
+        box-shadow: inset 5px 5px 5px #56943A;
     }
 }
 

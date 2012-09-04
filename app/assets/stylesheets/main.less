@@ -2,7 +2,6 @@
 
 @width: 940px;
 @padding: 10px;
-@paddedwidth: @width - @padding;
 
 body, html {
     margin: 0;
@@ -37,11 +36,6 @@ input[type=text], textarea {
 
 .constraint {
     width: @width;
-    margin: 0 auto;
-}
-
-.paddedconstraint {
-    width: @paddedwidth;
     margin: 0 auto;
 }
 
@@ -187,7 +181,7 @@ h1 { font-family: 'Capriola', sans-serif; }
 #footer {
     color: #cccccc;
     font-size: 0.7em;
-    width: @paddedwidth;
+    width: @width;
 
     a { color: #cccccc; }
 }

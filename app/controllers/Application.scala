@@ -26,7 +26,7 @@ object Application extends Controller {
     *
     * Renders / (the front page) of Frontend.
     */
-  def index = Action {
+  def index = Action { implicit request =>
     Ok(views.html.index(UserController.registerForm))
   }
 

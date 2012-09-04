@@ -92,7 +92,7 @@ object UserController extends Controller with LoginLogout with AuthConfigImpl {
                     valid.confirmationToken))
         User.add(valid)
         Redirect(routes.Application.index).flashing(
-          "success" -> "Welcome aboard. Please check your email for details on where to go from here."
+          "signup.success" -> "Welcome aboard. Please check your email for details on where to go from here."
         )
       }
     )

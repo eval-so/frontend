@@ -1,4 +1,4 @@
-@(registerForm: Form[User])
+@(registerForm: Form[User])(implicit flash: Flash)
 @import helper._
 @implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
@@ -30,21 +30,27 @@
 
     <div class="right halfwidth">
       <h1 class="nomargin">Sign up</h1>
-      <p>
-        Once you're convinced, go on and create an account. Once you do, you'll
-        be able to use the Command-Line Interface (CLI) endpoint, as well as
-        register your own applications, which can then use the Breakpoint API.
-      </p>
-      @helper.form(action = routes.UserController.register) {
-        @helper.inputText(registerForm("name"), '_label -> "Full Name")
-        @helper.inputText(registerForm("username"), '_label -> "Username")
-        @helper.inputText(registerForm("email"), '_label -> "Email", '_help -> "")
-        @helper.inputText(registerForm("password"), '_label -> "Password", '_help -> "")
-        <p class="disclaimer">
-          By clicking the 'Sign Up' button below, you agree to our Terms of
-          Service.
+      @flash.get("signup.success").map { message =>
+        <p class="success">
+          @message
         </p>
-        <button type="submit" class="submit_button pad">Sign Up</button>
+      }.getOrElse {
+        <p>
+          Once you're convinced, go on and create an account. Once you do, you'll
+          be able to use the Command-Line Interface (CLI) endpoint, as well as
+          register your own applications, which can then use the Breakpoint API.
+        </p>
+        @helper.form(action = routes.UserController.register) {
+          @helper.inputText(registerForm("name"), '_label -> "Full Name")
+          @helper.inputText(registerForm("username"), '_label -> "Username")
+          @helper.inputText(registerForm("email"), '_label -> "Email", '_help -> "")
+          @helper.inputText(registerForm("password"), '_label -> "Password", '_help -> "")
+          <p class="disclaimer">
+            By clicking the 'Sign Up' button below, you agree to our Terms of
+            Service.
+          </p>
+          <button type="submit" class="submit_button pad">Sign Up</button>
+        }
       }
     </div>
   </div>

@@ -38,5 +38,16 @@ object Application extends Controller {
   def product = Action {
     Ok(views.html.product())
   }
+
+  /** The status controller.
+    *
+    * Give a quick overview about the status of our servers.
+    * Mostly, things like:
+    *   - Current load
+    *   - Number of enabled vs. disabled servers
+    */
+  def status = Action {
+    Ok(views.html.status())
+  }
   
 }

@@ -1,8 +1,21 @@
+@(servers: List[Server])
 @main("The API looks healthy!", subHeaderColor = "green") {
 <div class="whitebg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">
     <div class="left halfwidth">
-      
+      <h1 class="nomargin">Node Statuses</h1>
+      @servers.map { server =>
+        @if(server.enabled) {
+          @server.hostname
+        } else {
+          <s>@server.hostname</s>
+        }
+        <hr />
+      }
+    </div>
+    <div class="right halfwidth">
+      <h1 class="nomargin">Infrastructure at a Glance</h1>
+      Insert fancy graphs about API traffic and things here.
     </div>
   </div>
 </div>

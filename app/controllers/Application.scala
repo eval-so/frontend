@@ -2,6 +2,7 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import models.{Server}
 
 /** General purpose controllers and methods.
   *
@@ -47,7 +48,7 @@ object Application extends Controller {
     *   - Number of enabled vs. disabled servers
     */
   def status = Action {
-    Ok(views.html.status())
-  }
-  
+    val servers = Server.getAllServers()
+    Ok(views.html.status(servers))
+  }  
 }

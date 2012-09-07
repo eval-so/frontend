@@ -1,11 +1,9 @@
-# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
-
-# Home page
+# Information pages
 GET     /                           controllers.Application.index
 GET     /product                    controllers.Application.product
 GET     /status                     controllers.Application.status
+
+# Authentication and Registration
 POST    /                           controllers.UserController.register
 GET     /user/login                 controllers.UserController.login
 GET     /confirm/:userID/:confirmationToken controllers.UserController.confirmRegistration(userID: Long, confirmationToken: String)

@@ -1,14 +1,13 @@
-@(registerForm: Form[User])(implicit flash: Flash)
+@(registerForm: Form[User])(implicit flash: Flash, l: Lang)
 @import helper._
 @implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
-@main("Welcome", showSubHeader = false) {
+@main(Messages("index.title"), showSubHeader = false) {
 <div class="lightbg padtop padbottom shadow" style="z-index: 9;">
   <div class="constraint">
-    <h1 class="nomargin">Hey there,</h1>
+    <h1 class="nomargin">@Messages("index.greeting")</h1>
     <p>
-      Breakpoint is a new and open source code evaluation platform. Learn more
-      by reading our <a href="@routes.Application.product"> Product page</a>.
+      @Html(Messages("index.description", routes.Application.product))
     </p>
   </div>
 </div>
@@ -16,10 +15,9 @@
 <div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
   <div class="constraint">
     <div class="left halfwidth">
-      <h1 class="nomargin">Try It Out In Your Browser</h1>
+      <h1 class="nomargin">@Messages("index.try_heading")</h1>
       <p>
-        Throw some code in the box below, pick a language, and experience the
-        uniqueness of Breakpoint.
+        @Messages("index.try_content")
       </p>
       <textarea name="tryit" style="width: 90%; height: 300px;"></textarea>
       Language: <select>
@@ -29,27 +27,24 @@
     </div>
 
     <div class="right halfwidth">
-      <h1 class="nomargin">Sign up</h1>
+      <h1 class="nomargin">@Messages("index.signup")</h1>
       @flash.get("signup.success").map { message =>
         <p class="success">
           @message
         </p>
       }.getOrElse {
         <p>
-          Once you're convinced, go on and create an account. Once you do, you'll
-          be able to use the Command-Line Interface (CLI) endpoint, as well as
-          register your own applications, which can then use the Breakpoint API.
+          @Messages("index.convinced")
         </p>
         @helper.form(action = routes.UserController.register) {
-          @helper.inputText(registerForm("name"), '_label -> "Full Name")
-          @helper.inputText(registerForm("username"), '_label -> "Username")
-          @helper.inputText(registerForm("email"), '_label -> "Email", '_help -> "")
-          @helper.inputPassword(registerForm("password"), '_label -> "Password", '_help -> "")
+          @helper.inputText(registerForm("name"), '_label -> Messages("common.full_name"))
+          @helper.inputText(registerForm("username"), '_label -> Messages("common.username"))
+          @helper.inputText(registerForm("email"), '_label -> Messages("common.email"), '_help -> "")
+          @helper.inputPassword(registerForm("password"), '_label -> Messages("common.password"), '_help -> "")
           <p class="disclaimer">
-            By clicking the 'Sign Up' button below, you agree to our Terms of
-            Service.
+            @Messages("index.disclaimer", Messages("index.signup"))
           </p>
-          <button type="submit" class="submit_button pad">Sign Up</button>
+          <button type="submit" class="submit_button pad">@Messages("index.signup")</button>
         }
       }
     </div>
@@ -59,26 +54,23 @@
 <div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">
     <div class="left halfwidth">
-      <h1 class="nomargin">API Access</h1>
-      <p>Here's what a typical request to the API looks like:</p>
+      <h1 class="nomargin">@Messages("index.api_header")</h1>
+      <p>@Messages("index.api_explanation")</p>
       <pre class="prettyprint">{
-  "language": "php",
-  "code": "&lt;?php
-              echo \"This is a test\";
-           ?&gt;"
+  "language": "c++",
+  "code": "int main() {
+              cout &lt;&lt; \"This is a test\" &lt;&lt; endl;
+           }"
 }</pre>
       <p>
-        Pretty straightforward, eh? You can, of course, tweak some more options.
-        Check out our documentation for a full list of options, but for many
-        languages, the above is all you need to do.
+        @Messages("index.api_content")
       </p>
     </div>
 
     <div class="right halfwidth">
-      <h1 class="nomargin">Command-Line Interface</h1>
+      <h1 class="nomargin">@Messages("index.cli_heading")</h1>
       <p>
-        Use the Command-Line Interface (CLI) to evaluate code right from your
-        own computer.
+        @Messages("index.cli_content")
       </p>
       <pre class="prettyprint lang-sh"># Infer language based on file extension
 $ breakpoint hello_world.rb

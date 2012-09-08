@@ -48,9 +48,9 @@ object Server {
   /** Fetch all nodes in the database.
     *
     * @return a List[Server] which contains every server contained in the
-    *         database.
+    *         database, ordered by hostname.
     */
   def getAllServers(): List[Server] = DB.withConnection { implicit c =>
-    SQL("SELECT * FROM servers").as(Server.simple *)
+    SQL("SELECT * FROM servers ORDER BY hostname ASC").as(Server.simple *)
   }
 }

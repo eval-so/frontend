@@ -4,13 +4,18 @@
   <div class="constraint">
     <div class="left halfwidth">
       <h1 class="nomargin">Node Statuses</h1>
-      @servers.map { server =>
-        @if(server.enabled) {
-          @server.hostname
-        } else {
-          <s>@server.hostname</s>
+      @servers.groupBy(_.arch).map { arch =>
+        <h3 class="nomargin">@arch._1</h3>
+        <br />
+        @arch._2.map { server =>
+          @if(server.enabled) {
+            <span class="enabled">@server.hostname</span>
+          } else {
+            <span class="disabled">@server.hostname</span>
+          }
+          <span class="right">[/\__/--__/-\]</span>
+          <hr />
         }
-        <hr />
       }
     </div>
     <div class="right halfwidth">

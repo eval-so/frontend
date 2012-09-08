@@ -155,7 +155,7 @@ object User {
     * @return a Boolean, true if the email address is already used, false if not
     */
   def emailIsTaken(email: String) = DB.withConnection { implicit c =>
-    val count = SQL("SELECT COUNT(*) FROM users WHERE email={email}").on(
+    val count = SQL("SELECT COUNT(*) FROM users WHERE LOWER(email)=LOWER({email})").on(
       'email -> email
     ).as(scalar[Long].single)
     if (count == 0) false else true

@@ -3,9 +3,9 @@
   <label for="@elements.id">@elements.label</label>
   @elements.input
   @if(elements.hasErrors) {
-    <p class="errors">@elements.errors.mkString(", ")</p>
+    <div class="errors text-right">@elements.errors.mkString(", ")</div>
   }
   @if(elements.infos.isEmpty) {
-    <p class="help">@elements.infos.mkString(", ")</p>
+    <div class="help text-right">@elements.infos.mkString(", ")</div>
   }
 </div>

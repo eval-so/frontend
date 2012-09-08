@@ -1,4 +1,4 @@
-@(title: String, showSubHeader: Boolean = true)(content: Html)
+@(title: String, showSubHeader: Boolean = true, subHeaderColor: String = "blue")(content: Html)
 
 <!DOCTYPE html>
 
@@ -19,11 +19,12 @@
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="@routes.Application.product">Product</a></li>
+            <li><a href="@routes.Application.status">Status</a></li>
           </ul>
         </div>
       </div>
       @if(showSubHeader) {
-      <div class="headercontent padbottom padtop">
+      <div class="headercontent padbottom padtop sub-@subHeaderColor">
         <div class="constraint">
           <h1 class="nomargin exo">@title</h1>
         </div>

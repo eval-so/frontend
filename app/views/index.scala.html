@@ -40,7 +40,7 @@
           @helper.inputText(registerForm("name"), '_label -> Messages("common.full_name"))
           @helper.inputText(registerForm("username"), '_label -> Messages("common.username"))
           @helper.inputText(registerForm("email"), '_label -> Messages("common.email"), '_help -> "")
-          @helper.inputText(registerForm("password"), '_label -> Messages("common.password"), '_help -> "")
+          @helper.inputPassword(registerForm("password"), '_label -> Messages("common.password"), '_help -> "")
           <p class="disclaimer">
             @Messages("index.disclaimer", Messages("index.signup"))
           </p>

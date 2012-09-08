@@ -2,6 +2,7 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import models.{Server}
 
 /** General purpose controllers and methods.
   *
@@ -38,5 +39,16 @@ object Application extends Controller {
   def product = Action {
     Ok(views.html.product())
   }
-  
+
+  /** The status controller.
+    *
+    * Give a quick overview about the status of our servers.
+    * Mostly, things like:
+    *   - Current load
+    *   - Number of enabled vs. disabled servers
+    */
+  def status = Action {
+    val servers = Server.getAllServers()
+    Ok(views.html.status(servers))
+  }  
 }

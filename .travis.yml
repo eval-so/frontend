@@ -3,3 +3,7 @@ scala:
    - 2.9.2
 jdk:
   - openjdk7
+before_script:
+  - psql -c 'create database breakpoint;' -U postgres
+  - cp conf/application.conf.dist conf/application.conf
+  - sed -i 's/db.default.user=breakpoint/db.default.user=postgres/' conf/application.conf

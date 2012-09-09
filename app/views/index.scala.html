@@ -3,22 +3,12 @@
 @implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
 @main(Messages("index.title"), showSubHeader = false) {
-<div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
+<div class="lightbg padtop padbottom shadow" style="z-index: 9;">
   <div class="constraint">
-    <div class="left halfwidth">
-      <h1 class="nomargin">@Messages("index.greeting")</h1>
-      <p>
-        @Html(Messages("index.description", routes.Application.product))
-      </p>
-    </div>
-    <div class="right halfwidth">
-      <h1 class="nomargin padbottom">@Messages("index.signin")</h1>
-      @helper.form(action = routes.UserController.login) {
-        @helper.inputText(registerForm("username"), '_label -> Messages("common.username"))
-        @helper.inputPassword(registerForm("password"), '_label -> Messages("common.password"), '_help -> "")
-      <button type="submit">@Messages("index.signin")</button>
-    }      
-    </div>
+    <h1 class="nomargin">@Messages("index.greeting")</h1>
+    <p>
+      @Html(Messages("index.description", routes.Application.product))
+    </p>
   </div>
 </div>
 

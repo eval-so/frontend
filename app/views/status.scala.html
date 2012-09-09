@@ -1,19 +1,49 @@
 @(servers: List[Server])
 @main("The API looks healthy!", subHeaderColor = "green") {
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <div class="whitebg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">
     <div class="left halfwidth">
       <h1 class="nomargin">Node Statuses</h1>
+      <p>TODO: Make this ajaxy and nice.</p>
       @servers.groupBy(_.arch).map { arch =>
         <h3 class="nomargin">@arch._1</h3>
         <br />
         @arch._2.map { server =>
-          @if(server.enabled) {
-            <span class="enabled">@server.hostname</span>
-          } else {
-            <span class="disabled">@server.hostname</span>
-          }
-          <span class="right">[/\__/--__/-\]</span>
+          <script type="text/javascript">
+            google.load("visualization", "1", {packages:["corechart"]});
+            google.setOnLoadCallback(drawChart);
+            function drawChart() {
+              var data = google.visualization.arrayToDataTable([
+                ['Hours From Now', 'Evaluations'],
+                ['7', @scala.util.Random.nextInt(100)],
+                ['6', @scala.util.Random.nextInt(100)],
+                ['5', @scala.util.Random.nextInt(100)],
+                ['4', @scala.util.Random.nextInt(100)],
+                ['3', @scala.util.Random.nextInt(100)],
+                ['2', @scala.util.Random.nextInt(100)],
+                ['1', @scala.util.Random.nextInt(100)],
+                ['0', @scala.util.Random.nextInt(100)]
+              ]);
+
+              var options = {
+                'axisTitlesPosition': 'none',
+                'titlePosition': 'none',
+                'legend': 'none',
+                'axisFontSize': 0,
+                'vAxis': {
+                  'baselineColor': 'none',
+                  'textPosition': 'none'
+                },
+                'backgroundColor': 'transparent'
+              }
+
+              var chart = new google.visualization.LineChart(document.getElementById('evals_@server.hostname'));
+              chart.draw(data, options);
+            }
+          </script>
+          <span class="@if(server.enabled) { enabled}  else { disabled }">@server.hostname</span>
+          <span class="right"><div id="evals_@server.hostname" style="width: 90px; height: 27px;"></div></span>
           <hr />
         }
       }

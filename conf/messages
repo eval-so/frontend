@@ -1,7 +1,7 @@
 index.title = Welcome
 index.greeting = Hey there,
 index.description = Breakpoint is a new and open source code evaluation platform. Learn more by reading our <a href="{0}">Product page</a>.
-index.try_heading = Try It Out In Your Browser
+index.try_heading = Try It Right Here
 index.try_content = Throw some code in the box below, pick a language, and experience the uniqueness of Breakpoint.
 index.signup = Sign Up
 index.convinced = Once you're convinced, go on and create an account. Once you do, you'll be able to use the Command-Line Interface (CLI) endpoint, as well as register your own applications, which can then use the Breakpoint API.
@@ -9,7 +9,7 @@ index.disclaimer = By clicking the {0} button below, you agree to our Terms of S
 index.api_header = API Access
 index.api_explanation = Here's what a typical request to the API looks like:
 index.api_content = Pretty straightforward, eh? You can, of course, tweak some more options. Check out our documentation for a full list of options, but for many languages, the above is all you need to do.
-index.cli_heading = Command-Line Interface
+index.cli_heading = Command-Line App
 index.cli_content = Use the Command-Line Interface (CLI) to evaluate code right from your own computer.
 
 common.full_name = Full Name

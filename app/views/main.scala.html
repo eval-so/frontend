@@ -1,4 +1,9 @@
-@(title: String, showSubHeader: Boolean = true, subHeaderColor: String = "blue")(content: Html)
+@(
+  title: String,
+  showSubHeader: Boolean = true,
+  subHeaderColor: String = "blue",
+  user: Option[User] = None
+)(content: Html)
 
 <!DOCTYPE html>
 
@@ -20,7 +25,10 @@
             <li><a href="/">Home</a></li>
             <li><a href="@routes.Application.product">Product</a></li>
             <li><a href="@routes.Application.status">Status</a></li>
-            <li><a href="@routes.UserController.login">Log In</a></li>
+            @user match {
+              case Some(user) => { <li><a href="@routes.UserController.login">Log Out</a></li> }
+              case None => { <li><a href="@routes.UserController.login">Log In</a></li> }
+            }
           </ul>
         </div>
       </div>

@@ -10,8 +10,9 @@ import play.api.data.validation.Constraints._
 import com.typesafe.plugin._
 import jp.t2v.lab.play20.auth._
 
+
 /** Controllers which deal with authentication. */
-object UserController extends Controller with LoginLogout with AuthConfigImpl {
+object UserController extends Controller with Auth with LoginLogout with AuthConfigImpl {
 
   /** A form which allows users to log in. */
   val loginForm = Form(
@@ -121,7 +122,7 @@ object UserController extends Controller with LoginLogout with AuthConfigImpl {
   }
 
   /** Allow a user to attempt authentication. */
-  def login = Action { implicit request =>
+  def login = optionalUserAction { maybeUser => request =>
     Ok(views.html.user.login(loginForm))
   }
 }

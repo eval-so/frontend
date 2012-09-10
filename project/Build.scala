@@ -11,7 +11,7 @@ object ApplicationBuild extends Build {
       "postgresql" % "postgresql" % "9.1-901.jdbc4",
       "joda-time" % "joda-time" % "2.1",
       "com.typesafe" %% "play-plugins-mailer" % "2.0.4",
-      "jp.t2v" %% "play20.auth" % "0.2"
+      "jp.t2v" %% "play20.auth" % "0.3"
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(

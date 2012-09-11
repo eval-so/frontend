@@ -1,0 +1,20 @@
+index.title = fi'i
+index.greeting = coi
+index.description = .i la'oi Breakpoint cnino gi'e zifre mifra sazri ciste .i cilre sai fu tcidu mi <a href="{0}">nuzba papri</a>
+index.try_heading = .i troci cabna
+index.try_content = .i ciska mifra cnita tanxe gi'e cuxna bangu gi'e li'i la'oi Breakpoint. drata
+index.signup = Sign Up
+index.convinced = Once you're convinced, go on and create an account. Once you do, you'll be able to use the Command-Line Interface (CLI) endpoint, as well as register your own applications, which can then use the Breakpoint API.
+index.disclaimer = By clicking the {0} button below, you agree to our Terms of Service.
+index.api_header = .i farvi kalri
+index.api_explanation = .i lo'e farvi kalri cpedu
+index.api_content = .i frili baznu mo
+index.cli_heading = minde linji pruce
+index.cli_content = .i pilno le minda linji pruce sazri mifra do
+
+# Gah, these two suck.
+common.full_name = culno cmene
+common.username = cmene
+
+common.email = kibro mrilu
+common.password = mipri

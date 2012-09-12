@@ -36,7 +36,7 @@
         <p>
           @Messages("index.convinced")
         </p>
-        @helper.form(action = routes.UserController.register) {
+        @helper.form(action = routes.UserController.register, 'id -> "register_form") {
           @helper.inputText(registerForm("name"), '_label -> Messages("common.full_name"))
           @helper.inputText(registerForm("username"), '_label -> Messages("common.username"))
           @helper.inputText(registerForm("email"), '_label -> Messages("common.email"), '_help -> "")

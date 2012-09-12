@@ -127,4 +127,12 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
   def login = optionalUserAction { maybeUser => request =>
     Ok(views.html.user.login(loginForm))
   }
+
+  /** Actually attempt authentication. */
+  def authenticate = Action { implicit request =>
+    loginForm.bindFromRequest.fold(
+      formWithErrors => BadRequest(views.html.user.login(loginForm)),
+      user => Redirect("/")
+    )
+  }
 }

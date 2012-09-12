@@ -6,6 +6,7 @@ GET     /status                     controllers.Application.status
 # Authentication and Registration
 POST    /                           controllers.UserController.register
 GET     /user/login                 controllers.UserController.login
+POST    /user/login                 controllers.UserController.authenticate
 GET     /confirm/:userID/:confirmationToken controllers.UserController.confirmRegistration(userID: Long, confirmationToken: String)
 
 # Map static resources from the /public folder to the /assets URL path

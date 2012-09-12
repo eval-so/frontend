@@ -114,6 +114,20 @@ object User {
     ).as(User.simple.singleOpt)
   }
 
+  /** Fetch a Breakpoint user by their username.
+    *
+    * @param username the user's username
+    * @return an Option[User] depending on whether or not a valid user was
+    *         found
+    */
+  def getByUsername(username: String): Option[User] = DB.withConnection {
+    implicit c =>
+      SQL("SELECT * FROM users WHERE username={username}").on(
+        'username -> username
+      ).as(User.simple.singleOpt)
+  }
+
+
   /** Add a user to the database.
     *
     * @param user a [[User]] object containing the information to insert.
@@ -187,15 +201,21 @@ object User {
     */
   def authenticate(username: String, password: String): Option[User] =
     DB.withConnection { implicit c =>
-      SQL(
-        """
-        SELECT * FROM users WHERE
-          username={username} AND
-          password={password} LIMIT 1
-        """
-      ).on(
-        'username -> username,
-        'password -> controllers.Application.sha256(password)
-      ).as(User.simple.singleOpt)
+      val userOpt = getByUsername(username)
+      userOpt match {
+        case None => return None
+        case Some(user) => {
+          SQL(
+            """
+            SELECT * FROM users WHERE
+            username={username} AND
+            password={password} LIMIT 1
+            """
+          ).on(
+            'username -> username,
+            'password -> controllers.Application.sha256(user.salt + password)
+          ).as(User.simple.singleOpt)
+        }
+      }
     }
 }

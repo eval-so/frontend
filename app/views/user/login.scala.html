@@ -3,7 +3,7 @@
 <div class="lightbg padtop padbottom shadow" style="z-index: 10;">
   <div class="constraint">
     <h1 class="nomargin">Manage my account</h1>
-    @helper.form(action = routes.Application.index) {
+    @helper.form(action = routes.UserController.authenticate) {
       @helper.inputText(loginForm("username"))
       @helper.inputPassword(loginForm("password"))
       <button type="submit">Login</button>

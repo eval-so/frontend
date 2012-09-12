@@ -7,4 +7,4 @@ before_script:
   - psql -c 'create database breakpoint;' -U postgres
   - cp conf/application.conf.dist conf/application.conf
   - sed -i 's/db.default.user=breakpoint/db.default.user=postgres/' conf/application.conf
-  - echo 'applyEvolutions.default=true' | tee --append conf/application.conf
+  - echo -e '\napplyEvolutions.default=true' | tee --append conf/application.conf

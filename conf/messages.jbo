@@ -1,8 +1,8 @@
-index.title = fi'i
+index.title = fi''i
 index.greeting = coi
-index.description = .i la'oi Breakpoint cnino gi'e zifre mifra sazri ciste .i cilre sai fu tcidu mi <a href="{0}">nuzba papri</a>
+index.description = .i la'oi Breakpoint cnino gi''e zifre mifra sazri ciste .i cilre sai fu tcidu mi <a href="{0}">nuzba papri</a>
 index.try_heading = .i troci cabna
-index.try_content = .i ciska mifra cnita tanxe gi'e cuxna bangu gi'e li'i la'oi Breakpoint. drata
+index.try_content = .i ciska mifra cnita tanxe gi''e cuxna bangu gi''e li''i la''oi Breakpoint. drata
 index.signup = binxo cmima
 index.convinced = .i balvi do birti binxo cmima .i pilno le minde linji pruce ja zbasu cnino pruce pilno le farvi kalri
 
@@ -10,7 +10,7 @@ index.convinced = .i balvi do birti binxo cmima .i pilno le minde linji pruce ja
 # Something like "after tapping the binxo cmima box below, you agree to let conditions." or something. GAH.
 index.disclaimer = .i balvi stapa le {0} tanxe cnita, do tugni curmi fi
 index.api_header = .i farvi kalri
-index.api_explanation = .i lo'e farvi kalri cpedu
+index.api_explanation = .i lo''e farvi kalri cpedu
 index.api_content = .i frili baznu mo
 index.cli_heading = minde linji pruce
 index.cli_content = .i pilno le minde linji pruce sazri mifra do

@@ -36,7 +36,7 @@ object Application extends Controller {
     * Tell people about what we do, why we're awesome, and why they should use
     * our product over our OH SO MANY competitors.
     */
-  def product = Action {
+  def product = Action { implicit request =>
     Ok(views.html.product())
   }
 
@@ -47,7 +47,7 @@ object Application extends Controller {
     *   - Current load
     *   - Number of enabled vs. disabled servers
     */
-  def status = Action {
+  def status = Action { implicit request =>
     val servers = Server.getAllServers()
     Ok(views.html.status(servers))
   }  

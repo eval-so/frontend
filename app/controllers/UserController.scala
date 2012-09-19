@@ -72,28 +72,33 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
       },
       valid => {
         val Some(userID) = User.add(valid)
-        val mail = use[MailerPlugin].email
-        mail.setSubject("Welcome to Breakpoint!")
-        mail.addRecipient("%s <%s>".format(valid.name, valid.email))
-        mail.addFrom("Breakpoint Eval <noreply@breakpoint-eval.org>")
-        mail.send(
-          """Welcome to Breakpoint!
-          |
-          |Before you can begin using your account, we need to confirm
-          |that this is a valid email addresss, and that you meant to
-          |sign up.
-          |
-          |If you didn't intend to sign up for Breakpoint, please
-          |disregard this email.
-          |
-          |However, if you intended to sign up, you must activate your
-          |account, by clicking visiting this link:
-          |http://%s/confirm/%d/%s
-          |
-          |We hope you enjoy using Breakpoint.""".stripMargin.format(
-            request.host,
-            userID,
-            valid.confirmationToken))
+        val sendRegEmail = Play.application.configuration.getBoolean(
+          "breakpoint.frontend.authentication.send_welcome_email").getOrElse(
+            false)
+        if (sendRegEmail) {
+          val mail = use[MailerPlugin].email
+          mail.setSubject("Welcome to Breakpoint!")
+          mail.addRecipient("%s <%s>".format(valid.name, valid.email))
+          mail.addFrom("Breakpoint Eval <noreply@breakpoint-eval.org>")
+          mail.send(
+            """Welcome to Breakpoint!
+            |
+            |Before you can begin using your account, we need to confirm
+            |that this is a valid email addresss, and that you meant to
+            |sign up.
+            |
+            |If you didn't intend to sign up for Breakpoint, please
+            |disregard this email.
+            |
+            |However, if you intended to sign up, you must activate your
+            |account, by clicking visiting this link:
+            |http://%s/confirm/%d/%s
+            |
+            |We hope you enjoy using Breakpoint.""".stripMargin.format(
+              request.host,
+              userID,
+              valid.confirmationToken))
+        }
         Redirect(routes.Application.index).flashing(
           "signup.success" -> "Welcome aboard. Please check your email for details on where to go from here."
         )

@@ -46,3 +46,5 @@ logger.application=DEBUG
 # Mailer settings.
 # See https://github.com/typesafehub/play-plugins/tree/master/mailer
 smtp.host=localhost
+
+breakpoint.frontend.authentication.send_welcome_email=true

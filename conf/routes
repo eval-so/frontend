@@ -10,5 +10,8 @@ POST    /user/login                 controllers.UserController.authenticate
 GET     /user/logintest             controllers.UserController.isLoggedIn
 GET     /confirm/:userID/:confirmationToken controllers.UserController.confirmRegistration(userID: Long, confirmationToken: String)
 
+# Applications
+GET     /applications/new           controllers.BreakpointApplicationController.newApplication
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

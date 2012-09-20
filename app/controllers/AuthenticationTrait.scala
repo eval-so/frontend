@@ -19,7 +19,7 @@ trait AuthConfigImpl extends AuthConfig {
   def logoutSucceeded[A](request: Request[A]): PlainResult =
     Redirect(routes.Application.index)
   def authenticationFailed[A](request: Request[A]): PlainResult =
-    Redirect(routes.Application.index)
+    Redirect(routes.UserController.login)
   def authorizationFailed[A](request: Request[A]): PlainResult =
     Forbidden("Invalid Username/Password")
 

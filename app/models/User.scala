@@ -31,7 +31,8 @@ case class User(
   email: String,
   registeredAt: Option[DateTime],
   confirmedAt: Option[DateTime],
-  confirmationToken: String) {
+  confirmationToken: String,
+  secretKey: String) {
 
   /** The Breakpoint Applications that the User has access to.
     *
@@ -46,8 +47,8 @@ case class User(
     *
     * @return a sequence containing BreakpointApplication instances
     */
-//  lazy val applications: Seq[BreakpointApplication] =
-//    BreakpointApplicationUser.getByUserID(id).applications
+  lazy val applications: Seq[BreakpointApplication] =
+    BreakpointApplication.getAllByUserID(id.get)
 
   /** Confirm a user's registration, after they've gone to a URL containing
     * their super sekrit UUID token.
@@ -73,7 +74,8 @@ object User {
     get[String]("email") ~
     get[Option[Date]]("registered_at") ~
     get[Option[Date]]("confirmed_at") ~
-    get[String]("confirmation_token") map {
+    get[String]("confirmation_token") ~
+    get[String]("secret_key") map {
       case id ~
            username ~
            password ~
@@ -82,7 +84,8 @@ object User {
            email ~
            registeredAt ~
            confirmedAt ~
-           confirmationToken =>
+           confirmationToken ~
+           secretKey =>
         User(
           id,
           username,
@@ -98,7 +101,8 @@ object User {
             case Some(date) => Some(new DateTime(date))
             case None => None
           },
-          confirmationToken)
+          confirmationToken,
+          secretKey)
      }
   }
 
@@ -144,14 +148,16 @@ object User {
           salt,
           name,
           email,
-          confirmation_token
+          confirmation_token,
+          secret_key
         ) VALUES (
           {username},
           {password},
           {salt},
           {name},
           {email},
-          {confirmation_token}
+          {confirmation_token},
+          {secret_key}
         )
         """
       ).on(
@@ -160,7 +166,8 @@ object User {
         'salt -> user.salt,
         'name -> user.name,
         'email -> user.email,
-        'confirmation_token -> user.confirmationToken).executeInsert()
+        'confirmation_token -> user.confirmationToken,
+        'secret_key -> user.secretKey).executeInsert()
     }
 
   /** Check to see if a user exists, given an email address.

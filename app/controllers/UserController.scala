@@ -51,6 +51,7 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
         email,
         None,
         None,
+        java.util.UUID.randomUUID().toString,
         java.util.UUID.randomUUID().toString
       )
     }

@@ -9,3 +9,6 @@ before_script:
   - sed -i 's/db.default.user=breakpoint/db.default.user=postgres/' conf/application.conf
   - sed -i 's/breakpoint.frontend.authentication.send_welcome_email=true/breakpoint.frontend.authentication.send_welcome_email=false/' conf/application.conf
   - echo -e '\napplyEvolutions.default=true' | tee --append conf/application.conf
+notifications:
+  webhooks:
+    - http://rcmp.programble.co.cc/irc.tenthbit.net/programming

@@ -12,3 +12,4 @@ before_script:
 notifications:
   webhooks:
     - http://rcmp.programble.co.cc/irc.tenthbit.net/programming
+    - http://rcmp.programble.co.cc/irc.freenode.net/breakpoint-eval

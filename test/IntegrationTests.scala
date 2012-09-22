@@ -39,5 +39,25 @@ class IntegrationTest extends Specification {
         browser.url must equalTo("http://localhost:3333/")
       }
     }
+
+    "Allow a logged-in user to create apps" in {
+      running(TestServer(3333), HTMLUNIT) { browser =>
+        browser.goTo("http://localhost:3333/")
+        browser.click("Log In")
+        browser.fill("#username").`with`("jsmith")
+        browser.fill("#password").`with`("my1337Passw0rd!")
+        browser.submit("#login_form")
+        browser.goTo("http://localhost:3333/applications/new")
+        browser.title must equalTo("Create a New Application")
+      }
+    }
+
+    "Not allow a logged-out user to create apps" in {
+      running(TestServer(3333), HTMLUNIT) { browser =>
+        browser.goTo("http://localhost:3333/applications/new")
+        browser.url must equalTo("http://localhost:3333/user/login")
+      }
+    }
+
   }
 }

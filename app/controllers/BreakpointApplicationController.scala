@@ -16,21 +16,24 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
   val applicationForm: Form[BreakpointApplication] = Form(
     mapping(
       "name" -> nonEmptyText,
-      "allow_anonymous_auth" -> checked("Foo")
+      "allow_anonymous_auth" -> checked("allow_anonymous_auth"),
+      "description" -> nonEmptyText
     )
     {
-      (name, allow_anonymous_auth) => BreakpointApplication(
+      (name, allow_anonymous_auth, description) => BreakpointApplication(
         None,
         name,
         java.util.UUID.randomUUID().toString,
         None,
-        allow_anonymous_auth
+        allow_anonymous_auth,
+        description
       )
     }
     {
       breakpointApplication => Some(
         breakpointApplication.name,
-        breakpointApplication.allowAnonymousEvals
+        breakpointApplication.allowAnonymousEvals,
+        breakpointApplication.description
       )
     }
   )

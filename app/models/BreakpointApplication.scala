@@ -21,7 +21,8 @@ case class BreakpointApplication(
   name: String,
   apiID: String,
   createdAt: Option[DateTime],
-  allowAnonymousEvals: Boolean) {
+  allowAnonymousEvals: Boolean,
+  description: String) {
 
   /** The Breakpoint Users who have authorized (or own) the application.
     *
@@ -37,8 +38,9 @@ object BreakpointApplication {
     get[String]("name") ~
     get[String]("api_id") ~
     get[Option[Date]]("created_at") ~
-    get[Boolean]("allow_anonymous_evals") map {
-      case id~name~apiID~createdAt~allowAnonymousEvals =>
+    get[Boolean]("allow_anonymous_evals") ~
+    get[String]("description") map {
+      case id~name~apiID~createdAt~allowAnonymousEvals~description =>
         BreakpointApplication(
           id,
           name,
@@ -47,7 +49,8 @@ object BreakpointApplication {
             case Some(date) => Some(new DateTime(date))
             case None => None
           },
-          allowAnonymousEvals)
+          allowAnonymousEvals,
+          description)
      }
   }
 

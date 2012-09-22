@@ -22,6 +22,13 @@
           '_help -> "",
           'tabindex -> "1")
 
+        @helper.inputText(
+          applicationForm("description"),
+          '_label -> "Application Description",
+          'style -> "clear: both; width: 100%;",
+          'tabindex -> "2")
+          
+
         <h2>Rate Limiting</h2>
         @helper.inputRadioGroup(
           applicationForm("allow_anonymous_auth"),
@@ -32,7 +39,7 @@
           '_label -> "",
           'style -> "vertical-align: middle; margin-right: 10px; clear: both; float: left;"
         )
-      <button type="submit" class="submit_button pad topmargin left" style="width: 250px; clear: both;">@Messages("applications.newApplication.submit")</button>
+      <button type="submit" class="submit_button pad topmargin left" style="width: 250px; clear: both;" tabindex="5">@Messages("applications.newApplication.submit")</button>
       }
     </div>
   </div>

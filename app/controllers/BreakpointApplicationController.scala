@@ -16,4 +16,9 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
   def newApplication = authorizedAction("user") { user => implicit request =>
     Ok("Apps")
   }
+
+  def myApplications = authorizedAction("user") { user => implicit request =>
+    val applications = user.applications.toList
+    Ok(views.html.applications.myApplications(applications))
+  }
 }

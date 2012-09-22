@@ -11,6 +11,7 @@ GET     /user/logintest             controllers.UserController.isLoggedIn
 GET     /confirm/:userID/:confirmationToken controllers.UserController.confirmRegistration(userID: Long, confirmationToken: String)
 
 # Applications
+GET     /applications               controllers.BreakpointApplicationController.myApplications
 GET     /applications/new           controllers.BreakpointApplicationController.newApplication
 
 # Map static resources from the /public folder to the /assets URL path

@@ -1,0 +1,27 @@
+@(applications: List[BreakpointApplication])(implicit flash: Flash, l: Lang)
+
+@main(Messages("applications.myApplications.title"), showSubHeader = false) {
+<div class="lightbg padtop padbottom shadow" style="z-index: 9;">
+  <div class="constraint">
+    <h1 class="nomargin">@Messages("applications.myApplications.my_applications")</h1>
+  </div>
+</div>
+
+<div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
+  <div class="constraint">
+    <div class="left halfwidth">
+      <h1 class="nomargin">@Messages("applications.myApplications.applications_i_own")</h1>
+    </div>
+    <div class="right halfwidth">
+      <h1 class="nomargin">@Messages("applications.myApplications.applications_i_use")</h1>
+    </div>
+  </div>
+</div>
+
+<div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
+  <div class="constraint">
+    <h1 class="nomargin">@Messages("applications.myApplications.application_showcase")</h1>
+    <p>@Messages("applications.myApplications.application_showcase_description")</p>
+  </div>
+</div>
+}

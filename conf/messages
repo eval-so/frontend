@@ -16,3 +16,9 @@ common.full_name = Full Name
 common.username = Username
 common.email = Email
 common.password = Password
+
+applications.myApplications.my_applications = My Applications
+applications.myApplications.applications_i_own = Applications I Own
+applications.myApplications.applications_i_use = Applications I Use
+applications.myApplications.application_showcase = Application Showcase
+applications.myApplications.application_showcase_description = Here's a sample of public applications which use Breakpoint. Go on and give them a shot!

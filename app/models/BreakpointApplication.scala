@@ -17,7 +17,7 @@ import org.joda.time.format.{DateTimeFormat, PeriodFormat}
   * @param createdAt a [[joda.time.DateTime]] of when the app was created
   */
 case class BreakpointApplication(
-  id: Long,
+  id: Option[Long],
   name: String,
   apiID: String,
   createdAt: Option[DateTime],
@@ -33,7 +33,7 @@ case class BreakpointApplication(
 
 object BreakpointApplication {
   val simple = {
-    get[Long]("id") ~
+    get[Option[Long]]("id") ~
     get[String]("name") ~
     get[String]("api_id") ~
     get[Option[Date]]("created_at") ~

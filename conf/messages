@@ -22,3 +22,8 @@ applications.myApplications.applications_i_own = Applications I Own
 applications.myApplications.applications_i_use = Applications I Use
 applications.myApplications.application_showcase = Application Showcase
 applications.myApplications.application_showcase_description = Here's a sample of public applications which use Breakpoint. Go on and give them a shot!
+
+applications.newApplication.title = Create a New Application
+applications.newApplication.new_application = New Application
+applications.newApplication.description = Register a new application which can then be used to access the Breakpoint API.
+applications.newApplication.intro = Creating a new Breakpoint application is easy. Simply fill out the form below.

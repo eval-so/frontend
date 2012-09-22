@@ -1,0 +1,17 @@
+@(applicationForm: Form[BreakpointApplication])(implicit flash: Flash, l: Lang)
+
+@main(Messages("applications.newApplication.title"), showSubHeader = false) {
+<div class="lightbg padtop padbottom shadow" style="z-index: 9;">
+  <div class="constraint">
+    <h1 class="nomargin">@Messages("applications.newApplication.new_application")</h1>
+  </div>
+</div>
+
+<div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
+  <div class="constraint">
+    <div style="width: 75%; margin: 0 auto;">
+      <p>@Messages("applications.newApplication.intro")</h1>
+    </div>
+  </div>
+</div>
+}

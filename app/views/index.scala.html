@@ -1,8 +1,9 @@
-@(registerForm: Form[User])(implicit flash: Flash, l: Lang)
+@(user: Option[User], registerForm: Form[User])(implicit flash: Flash, l: Lang)
 @import helper._
 @implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
-@main(Messages("index.title"), showSubHeader = false) {
+@main(Messages("index.title"), user = user, showSubHeader = false) {
+
 <div class="lightbg padtop padbottom shadow" style="z-index: 9;">
   <div class="constraint">
     <h1 class="nomargin">@Messages("index.greeting")</h1>

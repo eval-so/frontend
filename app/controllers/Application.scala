@@ -2,6 +2,7 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import jp.t2v.lab.play20.auth._
 import models.{Server}
 
 /** General purpose controllers and methods.
@@ -9,7 +10,7 @@ import models.{Server}
   * Controllers such as index() (the controller which renders /)
   * live here.
   */
-object Application extends Controller {
+object Application extends Controller with Auth with AuthConfigImpl {
 
   /** Generate a sha256 hash from a given string
     *
@@ -27,8 +28,8 @@ object Application extends Controller {
     *
     * Renders / (the front page) of Frontend.
     */
-  def index = Action { implicit request =>
-    Ok(views.html.index(UserController.registerForm))
+  def index = optionalUserAction { user => implicit request =>
+    Ok(views.html.index(user, UserController.registerForm))
   }
 
   /** The product controller.

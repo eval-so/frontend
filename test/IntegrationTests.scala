@@ -40,6 +40,17 @@ class IntegrationTest extends Specification {
       }
     }
 
+    "Show a logged-in user the logged-in navbar" in {
+      running(TestServer(3333), HTMLUNIT) { browser =>
+        browser.goTo("http://localhost:3333/")
+        browser.click("Log In")
+        browser.fill("#username").`with`("jsmith")
+        browser.fill("#password").`with`("my1337Passw0rd!")
+        browser.submit("#login_form")
+        browser.pageSource must contain("Log Out")
+      }
+    }
+
     "Allow a logged-in user to create apps" in {
       running(TestServer(3333), HTMLUNIT) { browser =>
         browser.goTo("http://localhost:3333/")

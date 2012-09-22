@@ -29,14 +29,14 @@ class IntegrationTest extends Specification {
       }
     }
 
-    "Allow a user to log in" in {
+    "Allow a user to log in and be redirected to where they were going" in {
       running(TestServer(3333), HTMLUNIT) { browser =>
-        browser.goTo("http://localhost:3333/")
+        browser.goTo("http://localhost:3333/applications/new")
         browser.click("Log In")
         browser.fill("#username").`with`("jsmith")
         browser.fill("#password").`with`("my1337Passw0rd!")
         browser.submit("#login_form")
-        browser.url must equalTo("http://localhost:3333/")
+        browser.url must equalTo("http://localhost:3333/applications/new")
       }
     }
 

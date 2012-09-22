@@ -13,13 +13,23 @@ trait AuthConfigImpl extends AuthConfig {
   type Authority = String
   val idManifest: ClassManifest[Id] = classManifest[Id]
   val sessionTimeoutInSeconds: Int = 3600 * 2
+
   def resolveUser(id: Long): Option[User] = User.getByID(id)
-  def loginSucceeded[A](request: Request[A]): PlainResult =
-    Redirect(routes.Application.index)
+
+  def loginSucceeded[A](request: Request[A]): PlainResult = {
+    val uri = request.session.get("redirect_after_auth").getOrElse(
+      routes.Application.index.url.toString)
+    request.session - "redirect_after_auth"
+    Redirect(uri)
+  }
+
   def logoutSucceeded[A](request: Request[A]): PlainResult =
     Redirect(routes.Application.index)
+
   def authenticationFailed[A](request: Request[A]): PlainResult =
-    Redirect(routes.UserController.login)
+    Redirect(routes.UserController.login).withSession(
+      "redirect_after_auth" -> request.uri)
+
   def authorizationFailed[A](request: Request[A]): PlainResult =
     Forbidden("Invalid Username/Password")
 

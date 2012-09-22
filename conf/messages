@@ -17,6 +17,7 @@ common.username = Username
 common.email = Email
 common.password = Password
 
+applications.myApplications.title = My Applications
 applications.myApplications.my_applications = My Applications
 applications.myApplications.applications_i_own = Applications I Own
 applications.myApplications.applications_i_use = Applications I Use

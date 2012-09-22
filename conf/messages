@@ -27,4 +27,4 @@ applications.myApplications.application_showcase_description = Here's a sample o
 applications.newApplication.title = Create a New Application
 applications.newApplication.new_application = New Application
 applications.newApplication.description = Register a new application which can then be used to access the Breakpoint API.
-applications.newApplication.intro = Creating a new Breakpoint application is easy. Simply fill out the form below.
+applications.newApplication.submit = Create Application

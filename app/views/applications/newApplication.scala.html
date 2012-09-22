@@ -1,4 +1,6 @@
 @(user: User, applicationForm: Form[BreakpointApplication])(implicit flash: Flash, l: Lang)
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
 @main(Messages("applications.newApplication.title"), showSubHeader = false, user = Some(user)) {
 <div class="lightbg padtop padbottom shadow" style="z-index: 9;">
@@ -10,7 +12,28 @@
 <div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
   <div class="constraint">
     <div style="width: 75%; margin: 0 auto;">
-      <p>@Messages("applications.newApplication.intro")</h1>
+      @helper.form(
+        action = routes.BreakpointApplicationController.newApplication,
+        'id -> "new_application_form") {
+        <h2>Basic Information</h2>
+        @helper.inputText(
+          applicationForm("name"),
+          '_label -> "Application Name",
+          '_help -> "",
+          'tabindex -> "1")
+
+        <h2>Rate Limiting</h2>
+        @helper.inputRadioGroup(
+          applicationForm("allow_anonymous_auth"),
+          options = Seq(
+            "true" -> "Use global, application-based rate limiting",
+            "false" -> "Use the user's rate limiting"
+          ),
+          '_label -> "",
+          'style -> "vertical-align: middle; margin-right: 10px; clear: both; float: left;"
+        )
+      <button type="submit" class="submit_button pad topmargin left" style="width: 250px; clear: both;">@Messages("applications.newApplication.submit")</button>
+      }
     </div>
   </div>
 </div>

@@ -4,9 +4,9 @@
   <div class="constraint">
     <h1 class="nomargin">Manage my account</h1>
     @helper.form(action = routes.UserController.authenticate, 'id -> "login_form") {
-      @helper.inputText(loginForm("username"))
-      @helper.inputPassword(loginForm("password"))
-      <button type="submit">Login</button>
+      @helper.inputText(loginForm("username"), 'tabindex -> "1")
+      @helper.inputPassword(loginForm("password"), 'tabindex -> "2")
+      <button type="submit" tabindex="3">Login</button>
     }
   </div>
 </div>

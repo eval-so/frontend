@@ -36,11 +36,11 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
   )
 
   def newApplication = authorizedAction("user") { user => implicit request =>
-    Ok(views.html.applications.newApplication(applicationForm))
+    Ok(views.html.applications.newApplication(user, applicationForm))
   }
 
   def myApplications = authorizedAction("user") { user => implicit request =>
     val applications = user.applications.toList
-    Ok(views.html.applications.myApplications(applications))
+    Ok(views.html.applications.myApplications(user, applications))
   }
 }

@@ -1,6 +1,6 @@
-@(applications: List[BreakpointApplication])(implicit flash: Flash, l: Lang)
+@(user: User, applications: List[BreakpointApplication])(implicit flash: Flash, l: Lang)
 
-@main(Messages("applications.myApplications.title"), showSubHeader = false) {
+@main(Messages("applications.myApplications.title"), showSubHeader = false, user = Some(user)) {
 <div class="lightbg padtop padbottom shadow" style="z-index: 9;">
   <div class="constraint">
     <h1 class="nomargin">@Messages("applications.myApplications.my_applications")</h1>

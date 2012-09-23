@@ -7,8 +7,9 @@ index.signup = Sign Up
 index.convinced = Once you''re convinced, go on and create an account. Once you do, you''ll be able to use the Command-Line Interface (CLI) endpoint, as well as register your own applications, which can then use the Breakpoint API.
 index.disclaimer = By clicking the {0} button below, you agree to our Terms of Service.
 index.api_header = API Access
-index.api_explanation = Here''s what a typical request to the API looks like:
-index.api_content = Pretty straightforward, eh? You can, of course, tweak some more options. Check out our documentation for a full list of options, but for many languages, the above is all you need to do.
+index.api_send_explanation = Here''s what a typical request to the API looks like:
+index.api_send_content = Pretty straightforward, eh? You can, of course, tweak some more options. Check out our documentation for a full list of options, but for many languages, the above is all you need to do.
+index.api_receive_explanation = A typical response is as simple as this:
 index.cli_heading = Command-Line App
 index.cli_content = Use the Command-Line Interface (CLI) to evaluate code right from your own computer.
 

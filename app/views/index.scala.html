@@ -56,16 +56,26 @@
   <div class="constraint">
     <div class="left halfwidth">
       <h1 class="nomargin">@Messages("index.api_header")</h1>
-      <p>@Messages("index.api_explanation")</p>
+      <p>@Messages("index.api_send_explanation")</p>
       <pre class="prettyprint">{
   "language": "c++",
   "code": "int main() {
-              cout &lt;&lt; \"This is a test\" &lt;&lt; endl;
+             cout &lt;&lt; \"This is a test\";
+             return 123;
            }"
 }</pre>
-      <p>
-        @Messages("index.api_content")
-      </p>
+      <p>@Messages("index.api_send_content")</p>
+      <p>@Messages("index.api_receive_explanation")</p>
+      <pre class="prettyprint">{
+  "status": "success",
+  "output": {
+    "stdout": "This is a test",
+    "stderr": null,
+    "screenshot": null,
+    "exit": 123
+  },
+  "duration": 0.498
+}</pre>
     </div>
 
     <div class="right halfwidth">

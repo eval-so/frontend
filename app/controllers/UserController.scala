@@ -119,9 +119,17 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
     user match {
       case Some(user) => {
         if (user.confirmationToken == confirmationToken) {
-          user.confirm()
-          gotoLoginSucceeded(user.id.get).flashing(
-            "success" -> "You've confirmed your account. Thanks!")
+          user.confirmedAt match {
+            case None => {
+              user.confirm()
+              gotoLoginSucceeded(user.id.get).flashing(
+                "success" -> "You've confirmed your account. Thanks!")
+            }
+            case _ => BadRequest(
+              views.html.error(
+                "Account is already confirmed.",
+                "This account has already been confirmed."))
+          }
         } else {
           BadRequest(
             views.html.error(

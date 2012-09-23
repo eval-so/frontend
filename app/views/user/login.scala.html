@@ -1,12 +1,30 @@
 @(loginForm: Form[Option[User]])
-@main("Log in.") {
-<div class="lightbg padtop padbottom shadow" style="z-index: 10;">
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helpers.f) }
+
+@main("Sign In", showSubHeader = false) {
+<div class="lightbg padtop padbottom shadow" style="z-index: 9;">
   <div class="constraint">
-    <h1 class="nomargin">Manage my account</h1>
+    <h1 class="nomargin">Sign In</h1>
+  </div>
+</div>
+
+<div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
+  <div class="constraint" style="width: 400px">
     @helper.form(action = routes.UserController.authenticate, 'id -> "login_form") {
-      @helper.inputText(loginForm("username"), 'tabindex -> "1")
-      @helper.inputPassword(loginForm("password"), 'tabindex -> "2")
-      <button type="submit" tabindex="3">Login</button>
+      @helper.inputText(
+        loginForm("username"),
+        'tabindex -> "1",
+        '_label -> "Username",
+        '_help -> "")
+      @helper.inputPassword(
+        loginForm("password"),
+        'tabindex -> "2",
+        '_label -> "Password",
+        '_help -> "")
+      <div class="center">
+        <button type="submit" class="submit_button pad topmargin" style="width: 250px; clear: both;" tabindex="5">Sign In</button>
+      </div>
     }
   </div>
 </div>

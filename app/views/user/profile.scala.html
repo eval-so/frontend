@@ -33,7 +33,11 @@
       <code>@user.secretKey</code>
       <p style="font-size: small;">@Messages("user.profile.change_secret_key")</p>
       @helper.form(action = routes.UserController.changeSecretKey, 'id -> "change_secret_key_form") {
-        <button type="submit" class="danger_button pad">@Messages("user.profile.change_secret_key_link")</button>
+        <button type="submit"
+                class="danger_button pad"
+                onclick="return confirm('Are you sure you want to reset your secret key?');">
+          @Messages("user.profile.change_secret_key_link")
+        </button>
       }
     </div>
   </div>

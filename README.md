@@ -2,6 +2,10 @@
 
 [![Build Status](https://secure.travis-ci.org/breakpoint-eval/frontend.png?branch=master)](http://travis-ci.org/breakpoint-eval/frontend)
 
+<a target="_blank" style="text-decoration:none; color:black; font-size:66%" href="https://www.transifex.com/projects/p/breakpoint-frontend/resource/english/" 
+title="See more information on Transifex.com">Top translations: breakpoint-frontend » english</a><br/>
+<img border="0" src="https://www.transifex.com/projects/p/breakpoint-frontend/resource/english/chart/image_png"/><br/><a target="_blank" href="https://www.transifex.com/"><img border="0" src="https://ds0k0en9abmn1.cloudfront.net/static/charts/images/tx-logo-micro.646b0065fce6.png"/></a>
+
 This is the Frontend to the Breakpoint Eval system.
 
 This means:

@@ -157,6 +157,12 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
     )
   }
 
+  /** Allow a user to change their secret key. */
+  def changeSecretKey = authorizedAction("user") { user => implicit request =>
+    user.resetSecretKey()
+    Redirect(routes.Application.index)
+  }
+
   /** A quick test. */
   def isLoggedIn = optionalUserAction { maybeUser => request =>
     maybeUser match {

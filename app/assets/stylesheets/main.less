@@ -229,6 +229,27 @@ h1 { font-family: 'Capriola', sans-serif; }
     }
 }
 
+.danger_button {
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#AE5C5C), to(#A54B4B));
+    background: -webkit-linear-gradient(top, #AE5C5C, #A54B4B);
+    background: -moz-linear-gradient(top, #AE5C5C, #A54B4B);
+    background: -ms-linear-gradient(top, #AE5C5C, #A54B4B);
+    background: -o-linear-gradient(top, #AE5C5C, #A54B4B);
+    border-radius: 5px;
+    border: #A54B4B;
+    font-weight: bold;
+    color: #f8f8f8;
+    width: 100%;
+
+    &:active {
+        box-shadow: inset 5px 5px 5px #943a3a;
+    }
+
+    &::-moz-focus-inner {
+        border: none;
+    }
+}
+
 .enabled {
     background-image: url('/assets/images/status/working.png');
     background-repeat: no-repeat;

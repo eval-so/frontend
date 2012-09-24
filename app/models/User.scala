@@ -61,6 +61,15 @@ case class User(
       'id -> id.get
     ).execute()
   }
+
+  /** Change a user's secret key. */
+  def resetSecretKey() = DB.withConnection { implicit c =>
+    val newKey = java.util.UUID.randomUUID().toString
+    SQL("UPDATE users SET secret_key={secret_key} WHERE id={id}").on(
+      'secret_key -> newKey,
+      'id -> id.get
+    ).execute()
+  }
 }
 
 object User {

@@ -35,5 +35,5 @@ applications.newApplication.submit = Create Application
 
 user.profile.title = My Profile
 user.profile.change_secret_key = You can change your secret key at any time. Note that you'll need to update your secret key in any applications which use it.
-user.profile.change_secret_key_link = Change secret key.
+user.profile.change_secret_key_link = Change Secret Key
 user.profile.password_change_note = Leave the password field blank, unless you would like to change it.

@@ -1,4 +1,6 @@
-@(user: User)(implicit flash: Flash, l: Lang)
+@(user: User, userForm: Form[User])(implicit flash: Flash, l: Lang)
+@import helper._
+@implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
 @main(Messages("user.profile.title"), showSubHeader = false, user = Some(user)) {
 <div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
@@ -15,7 +17,16 @@
 <div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
   <div class="constraint">
     <div class="left halfwidth">
-      [Show a form here for the user to change their info.]
+      @helper.form(action = routes.UserController.register, 'id -> "user_form") {
+        @helper.inputText(userForm("name"), '_label -> Messages("common.full_name"))
+        @helper.inputText(userForm("username"), '_label -> Messages("common.username"))
+        @helper.inputText(userForm("email"), '_label -> Messages("common.email"), '_help -> "")
+        @helper.inputPassword(userForm("password"), '_label -> Messages("common.password"), '_help -> "")
+        <p class="disclaimer">
+          @Messages("user.profile.password_change_note")
+        </p>
+        <button type="submit" class="submit_button pad">@Messages("index.signup")</button>
+      }
     </div>
     <div class="right halfwidth">
       <h3 class="nomargin">@Messages("common.secret_key")</h3>

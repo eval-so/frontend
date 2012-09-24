@@ -18,6 +18,8 @@ common.username = Username
 common.email = Email
 common.password = Password
 common.secret_key = Secret Key
+common.save = Save Changes
+common.submit = Submit
 
 applications.myApplications.title = My Applications
 applications.myApplications.my_applications = My Applications
@@ -33,3 +35,4 @@ applications.newApplication.submit = Create Application
 
 user.profile.title = My Profile
 user.profile.change_secret_key = You can change your secret key at any time, by [doing something which is yet to be determined].
+user.profile.password_change_note = Leave the password field blank, unless you would like to change it.

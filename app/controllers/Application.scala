@@ -44,7 +44,10 @@ object Application extends Controller with Auth with AuthConfigImpl {
   def index = optionalUserAction { user => implicit request =>
     user match {
       case None => Ok(views.html.index(user, UserController.registerForm))
-      case Some(user) => Ok(views.html.user.profile(user))
+      case Some(user) => {
+        val userWithoutPassword = user.copy(password = "")
+        Ok(views.html.user.profile(user, UserController.registerForm.fill(userWithoutPassword)))
+      }
     }
   }
 

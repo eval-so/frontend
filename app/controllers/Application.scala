@@ -29,7 +29,10 @@ object Application extends Controller with Auth with AuthConfigImpl {
     * Renders / (the front page) of Frontend.
     */
   def index = optionalUserAction { user => implicit request =>
-    Ok(views.html.index(user, UserController.registerForm))
+    user match {
+      case None => Ok(views.html.index(user, UserController.registerForm))
+      case Some(user) => Redirect(routes.BreakpointApplicationController.myApplications)
+    }
   }
 
   /** The product controller.

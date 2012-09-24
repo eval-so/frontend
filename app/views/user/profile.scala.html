@@ -1,0 +1,27 @@
+@(user: User)(implicit flash: Flash, l: Lang)
+
+@main(Messages("user.profile.title"), showSubHeader = false, user = Some(user)) {
+<div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
+  <div class="constraint">
+    <h1 class="nomargin left">
+      @user.name (@user.username)
+    </h1>
+    <a href="@routes.BreakpointApplicationController.newApplication">
+      <button class="submit_button pad right" style="width: 250px;">@Messages("applications.newApplication.new_application")</button>
+    </a>
+  </div>
+</div>
+
+<div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
+  <div class="constraint">
+    <div class="left halfwidth">
+      [Show a form here for the user to change their info.]
+    </div>
+    <div class="right halfwidth">
+      <h3 class="nomargin">@Messages("common.secret_key")</h3>
+      <code>@user.secretKey</code>
+      <p style="font-size: small;">@Messages("user.profile.change_secret_key")</p>
+    </div>
+  </div>
+</div>
+}

@@ -17,6 +17,7 @@ common.full_name = Full Name
 common.username = Username
 common.email = Email
 common.password = Password
+common.secret_key = Secret Key
 
 applications.myApplications.title = My Applications
 applications.myApplications.my_applications = My Applications
@@ -29,3 +30,6 @@ applications.newApplication.title = Create a New Application
 applications.newApplication.new_application = New Application
 applications.newApplication.description = Register a new application which can then be used to access the Breakpoint API.
 applications.newApplication.submit = Create Application
+
+user.profile.title = My Profile
+user.profile.change_secret_key = You can change your secret key at any time, by [doing something which is yet to be determined].

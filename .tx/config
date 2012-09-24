@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.net
+
+[breakpoint.frontend]
+source_file = conf/messages
+source_lang = en
+trans.cy = conf/messages.cy
+#trans.jbo = conf/messages.jbo
+

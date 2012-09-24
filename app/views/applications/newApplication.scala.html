@@ -20,16 +20,18 @@
           applicationForm("name"),
           '_label -> "Application Name",
           '_help -> "",
+          'class -> "right",
           'tabindex -> "1")
 
         @helper.inputText(
           applicationForm("description"),
           '_label -> "Application Description",
           'style -> "clear: both; width: 100%;",
+          'class -> "large",
           'tabindex -> "2")
           
 
-        <h2>Rate Limiting</h2>
+        <h2 class="topmargin">Rate Limiting</h2>
         @helper.inputRadioGroup(
           applicationForm("allow_anonymous_auth"),
           options = Seq(

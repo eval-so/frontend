@@ -1,4 +1,4 @@
-@(user: User, userForm: Form[User])(implicit flash: Flash, l: Lang)
+@(user: User, profileForm: Form[(String, String, String, String)])(implicit flash: Flash, l: Lang)
 @import helper._
 @implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
@@ -17,11 +17,11 @@
 <div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
   <div class="constraint">
     <div class="left halfwidth">
-      @helper.form(action = routes.UserController.register, 'id -> "user_form") {
-        @helper.inputText(userForm("name"), '_label -> Messages("common.full_name"))
-        @helper.inputText(userForm("username"), '_label -> Messages("common.username"))
-        @helper.inputText(userForm("email"), '_label -> Messages("common.email"), '_help -> "")
-        @helper.inputPassword(userForm("password"), '_label -> Messages("common.password"), '_help -> "")
+      @helper.form(action = routes.UserController.updateProfile, 'id -> "user_form") {
+        @helper.inputText(profileForm("name"), '_label -> Messages("common.full_name"))
+        @helper.inputText(profileForm("email"), '_label -> Messages("common.email"), '_help -> "")
+        @helper.inputPassword(profileForm("new_password"), '_label -> Messages("user.profile.new_password"), '_help -> "")
+        @helper.inputPassword(profileForm("old_password"), '_label -> Messages("user.profile.old_password"), '_help -> "")
         <p class="disclaimer">
           @Messages("user.profile.password_change_note")
         </p>
@@ -35,7 +35,7 @@
       @helper.form(action = routes.UserController.changeSecretKey, 'id -> "change_secret_key_form") {
         <button type="submit"
                 class="danger_button pad"
-                onclick="return confirm('Are you sure you want to reset your secret key?');">
+                onclick="return confirm('@Messages("user.profile.confirm_reset_secret_key")');">
           @Messages("user.profile.change_secret_key_link")
         </button>
       }

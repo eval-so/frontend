@@ -10,6 +10,7 @@ POST    /user/login                 controllers.UserController.authenticate
 GET     /user/logintest             controllers.UserController.isLoggedIn
 GET     /confirm/:userID/:confirmationToken controllers.UserController.confirmRegistration(userID: Long, confirmationToken: String)
 POST    /user/reset_secret_key      controllers.UserController.changeSecretKey
+POST    /user/update_profile        controllers.UserController.updateProfile
 
 # Applications
 GET     /applications               controllers.BreakpointApplicationController.myApplications

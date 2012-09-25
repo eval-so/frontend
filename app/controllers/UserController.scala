@@ -65,6 +65,17 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
     }
   )
 
+  /** A form to handle profile updating. */
+  val profileForm = Form(
+    tuple(
+      "name" -> nonEmptyText,
+      "email" -> email,
+      "new_password" -> text,
+      "old_password" -> nonEmptyText
+    )
+  )
+
+
   /** Handle registration of new users. */
   def register = optionalUserAction { user => implicit request =>
     user match {
@@ -169,5 +180,16 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
       case Some(user) => Ok("logged in.")
       case None => Ok("not logged in.")
     }
+  }
+
+  /** Handle updating of profiles. */
+  def updateProfile = authorizedAction("user") { user => implicit request =>
+    profileForm.bindFromRequest.fold(
+      formWithErrors => BadRequest(views.html.user.profile(user, formWithErrors)),
+      profile => {
+        // Update the user.
+        Redirect(routes.Application.index)
+      }
+    )
   }
 }

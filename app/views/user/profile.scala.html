@@ -1,4 +1,4 @@
-@(user: User, profileForm: Form[(String, String, String, String)])(implicit flash: Flash, l: Lang)
+@(user: User, profileForm: Form[Map[String, String]])(implicit flash: Flash, l: Lang)
 @import helper._
 @implicitField = @{ FieldConstructor(views.html.helpers.f) }
 

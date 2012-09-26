@@ -67,12 +67,29 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
 
   /** A form to handle profile updating. */
   val profileForm = Form(
-    tuple(
+    mapping(
       "name" -> nonEmptyText,
       "email" -> email,
       "new_password" -> text,
       "old_password" -> nonEmptyText
     )
+    {
+      val salt = java.util.UUID.randomUUID().toString
+      (name, email, newPassword, oldPassword) => Map(
+        // DB column -> value
+        "name" -> name,
+        "email" -> email,
+        "salt" -> salt,
+        "password" -> Application.sha256(salt + newPassword)
+      )
+    }
+    {
+      data => Some(
+        data("name"),
+        data("email"),
+        data("new_password"),
+        data("old_password"))
+    }
   )
 
 
@@ -187,7 +204,7 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
     profileForm.bindFromRequest.fold(
       formWithErrors => BadRequest(views.html.user.profile(user, formWithErrors)),
       profile => {
-        // Update the user.
+
         Redirect(routes.Application.index)
       }
     )

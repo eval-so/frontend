@@ -83,36 +83,20 @@ case class User(
     salt: String,
     name: String,
     email: String): Int = DB.withConnection { implicit c =>
-      password match {
-        case "" =>
-          SQL(
-            """
-            UPDATE users SET
-            name={name},
-            email={email}
-            WHERE
-            id={id}
-            """
-          ).on(
-            'name -> name,
-            'email -> email,
-            'id -> id
-          ).executeUpdate()
-        case _ =>
-          SQL(
-            """
-            UPDATE users SET
-              password={password}, salt={salt}, name={name}, email={email}
-            WHERE id={id}
-            """
-          ).on(
-            'password -> password,
-            'salt -> salt,
-            'name -> name,
-            'email -> email,
-            'id -> id
-          ).executeUpdate()
-      }
+      SQL(
+        """
+        UPDATE users SET
+        %s name={name}, email={email}
+        WHERE id={id}
+        """.format(
+          if (password isEmpty) "" else "password={password}, salt={salt},")
+      ).on(
+        'password -> password,
+        'salt -> salt,
+        'name -> name,
+        'email -> email,
+        'id -> id
+      ).executeUpdate()
   }
 
   /** Associate a user with an application.

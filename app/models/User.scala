@@ -62,13 +62,57 @@ case class User(
     ).execute()
   }
 
-  /** Change a user's secret key. */
+  /** Change a user's secret key to something random. */
   def resetSecretKey() = DB.withConnection { implicit c =>
     val newKey = java.util.UUID.randomUUID().toString
     SQL("UPDATE users SET secret_key={secret_key} WHERE id={id}").on(
       'secret_key -> newKey,
       'id -> id.get
     ).execute()
+  }
+
+  /** Update a user's row in the database.
+   *
+   * @param password The new sha256'd salt + password
+   * @param salt The new salt
+   * @param name The user's name
+   * @param email The user's email
+   */
+  def update(
+    password: String,
+    salt: String,
+    name: String,
+    email: String): Int = DB.withConnection { implicit c =>
+      password match {
+        case "" =>
+          SQL(
+            """
+            UPDATE users SET
+            name={name},
+            email={email}
+            WHERE
+            id={id}
+            """
+          ).on(
+            'name -> name,
+            'email -> email,
+            'id -> id
+          ).executeUpdate()
+        case _ =>
+          SQL(
+            """
+            UPDATE users SET
+              password={password}, salt={salt}, name={name}, email={email}
+            WHERE id={id}
+            """
+          ).on(
+            'password -> password,
+            'salt -> salt,
+            'name -> name,
+            'email -> email,
+            'id -> id
+          ).executeUpdate()
+      }
   }
 }
 

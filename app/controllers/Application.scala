@@ -50,7 +50,7 @@ object Application extends Controller with Auth with AuthConfigImpl {
           "email" -> user.email,
           "new_password" -> "",
           "old_password" -> "")
-        Ok(views.html.user.profile(user, UserController.profileForm.fill(existingData)))
+        Ok(views.html.user.profile(user, UserController.profileForm(user).fill(existingData)))
       }
     }
   }

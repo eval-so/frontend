@@ -66,22 +66,41 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
   )
 
   /** A form to handle profile updating. */
-  val profileForm = Form(
+  def profileForm(implicit rUser: models.User) = Form(
     mapping(
       "name" -> nonEmptyText,
       "email" -> email,
       "new_password" -> text,
-      "old_password" -> nonEmptyText
+      "old_password" -> nonEmptyText.verifying(
+        "Must match current account password",
+        oldPassword => {
+          Application.sha256(rUser.salt + oldPassword) == rUser.password
+        }
+      )
     )
     {
-      val salt = java.util.UUID.randomUUID().toString
-      (name, email, newPassword, oldPassword) => Map(
-        // DB column -> value
-        "name" -> name,
-        "email" -> email,
-        "salt" -> salt,
-        "password" -> Application.sha256(salt + newPassword)
-      )
+      (name, email, newPassword, oldPassword) => {
+        val salt = if (!newPassword.isEmpty) {
+          java.util.UUID.randomUUID().toString
+        } else {
+          ""
+        }
+
+        val password = if (!newPassword.isEmpty) {
+          Application.sha256(salt + newPassword)
+        } else {
+          ""
+        }
+
+        Map(
+          // DB column -> value
+          "name" -> name,
+          "email" -> email,
+          "new_salt" -> salt,
+          "new_password" -> password,
+          "old_password" -> oldPassword
+        )
+      }
     }
     {
       data => Some(
@@ -201,10 +220,14 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
 
   /** Handle updating of profiles. */
   def updateProfile = authorizedAction("user") { user => implicit request =>
-    profileForm.bindFromRequest.fold(
+    profileForm(user).bindFromRequest.fold(
       formWithErrors => BadRequest(views.html.user.profile(user, formWithErrors)),
       profile => {
-
+        user.update(
+          profile("new_password"),
+          profile("new_salt"),
+          profile("name"),
+          profile("email"))
         Redirect(routes.Application.index)
       }
     )

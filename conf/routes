@@ -15,6 +15,7 @@ POST    /user/update_profile        controllers.UserController.updateProfile
 # Applications
 GET     /applications               controllers.BreakpointApplicationController.myApplications
 GET     /applications/new           controllers.BreakpointApplicationController.newApplication
+POST    /applications/new           controllers.BreakpointApplicationController.processNewApplication
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -42,6 +42,18 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
     Ok(views.html.applications.newApplication(user, applicationForm))
   }
 
+  def processNewApplication = authorizedAction("user") { user =>
+    implicit request =>
+      applicationForm.bindFromRequest.fold(
+        formWithErrors => BadRequest(views.html.applications.newApplication(user, formWithErrors)),
+        validApplication => {
+          BreakpointApplication.add(validApplication)
+          Redirect(routes.BreakpointApplicationController.myApplications).flashing(
+            "success" -> "Your new application has been created.")
+        }
+      )
+  }
+
   def myApplications = authorizedAction("user") { user => implicit request =>
     val applications = user.applications.toList
     Ok(views.html.applications.myApplications(user, applications))

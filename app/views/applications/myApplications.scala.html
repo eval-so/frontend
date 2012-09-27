@@ -1,6 +1,10 @@
 @(user: User, applications: List[BreakpointApplication])(implicit flash: Flash, l: Lang)
 
 @main(Messages("applications.myApplications.title"), showSubHeader = false, user = Some(user)) {
+@flash.get("success").map { message =>
+  <div class="flash success">@message</div>
+}
+
 <div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">
     <h1 class="nomargin left">@Messages("applications.myApplications.my_applications")</h1>

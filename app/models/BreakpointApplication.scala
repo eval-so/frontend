@@ -78,4 +78,32 @@ object BreakpointApplication {
         'id -> userID
       ).as(BreakpointApplication.simple *)
   }
+
+  /** Add an application to the database.
+    *
+    * @param application A [[models.BreakpointApplication]] to add to the db.
+    * @return a Long which is the application's ID in the database.
+    */
+  def add(application: BreakpointApplication): Option[Long] =
+    DB.withConnection { implicit c =>
+      SQL(
+        """
+        INSERT INTO applications(
+          name,
+          api_id,
+          allow_anonymous_evals,
+          description
+        ) VALUES (
+          {name},
+          {api_id},
+          {allow_anonymous_evals},
+          {description}
+        )
+        """
+      ).on(
+        'name -> application.name,
+        'api_id -> application.apiID,
+        'allow_anonymous_evals -> application.allowAnonymousEvals,
+        'description -> application.description).executeInsert()
+    }
 }

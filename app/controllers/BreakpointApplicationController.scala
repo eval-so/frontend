@@ -47,7 +47,10 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
       applicationForm.bindFromRequest.fold(
         formWithErrors => BadRequest(views.html.applications.newApplication(user, formWithErrors)),
         validApplication => {
-          BreakpointApplication.add(validApplication)
+          BreakpointApplication.add(validApplication) match {
+            case Some(appID) => user.addApplication(appID, true)
+            case _ =>
+          }
           Redirect(routes.BreakpointApplicationController.myApplications).flashing(
             "success" -> "Your new application has been created.")
         }

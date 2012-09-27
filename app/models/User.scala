@@ -114,6 +114,25 @@ case class User(
           ).executeUpdate()
       }
   }
+
+  /** Associate a user with an application.
+    *
+    * @param appID The application's ID.
+    * @param owner Whether or not the user owns the application.
+    */
+  def addApplication(appID: Long, owner: Boolean = false) =
+    DB.withConnection { implicit c =>
+      SQL(
+        """
+        INSERT INTO application_users(user_id, application_id, owner)
+        VALUES ({user_id}, {application_id}, {owner})
+        """
+      ).on(
+        'user_id -> id,
+        'application_id -> appID,
+        'owner -> owner
+      ).execute()
+  }
 }
 
 object User {

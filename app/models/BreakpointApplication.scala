@@ -74,8 +74,13 @@ object BreakpointApplication {
     */
   def getAllByUserID(userID: Long): Seq[BreakpointApplication] =
     DB.withConnection { implicit c =>
-      SQL("SELECT * FROM applications WHERE id={id}").on(
-        'id -> userID
+      SQL(
+        """
+        SELECT * FROM applications WHERE id IN (
+          SELECT application_id FROM application_users WHERE user_id={user_id})
+        """
+      ).on(
+        'user_id -> userID
       ).as(BreakpointApplication.simple *)
   }
 

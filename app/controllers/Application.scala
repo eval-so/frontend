@@ -45,7 +45,11 @@ object Application extends Controller with Auth with AuthConfigImpl {
     user match {
       case None => Ok(views.html.index(user, UserController.registerForm))
       case Some(user) => {
-        val existingData = (user.name, user.email, "", "")
+        val existingData = Map(
+          "name" -> user.name,
+          "email" -> user.email,
+          "new_password" -> "",
+          "old_password" -> "")
         Ok(views.html.user.profile(user, UserController.profileForm.fill(existingData)))
       }
     }

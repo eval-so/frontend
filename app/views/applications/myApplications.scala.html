@@ -16,11 +16,18 @@
 
 <div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
   <div class="constraint">
-    <div class="left halfwidth">
+<!-- Make this something else. -->
+<!--    <div class="left halfwidth">
       <h1 class="nomargin">@Messages("applications.myApplications.applications_i_own")</h1>
     </div>
+-->
     <div class="right halfwidth">
-      <h1 class="nomargin">@Messages("applications.myApplications.applications_i_use")</h1>
+      <h1 class="nomargin">@Messages("applications.myApplications.my_applications")</h1>
+      <ul>
+        @applications.map { application =>
+          <li>@application.name</li>
+        }
+      </ul>
     </div>
   </div>
 </div>

@@ -5,7 +5,9 @@
 @main("Sign In", showSubHeader = false) {
 <script>
   $(document).ready(function(){
-    $("#username").focus();
+    if (!$("#username").val() && !$("#password").val()) {
+      $("#username").focus();
+    }
   });
 </script>
 

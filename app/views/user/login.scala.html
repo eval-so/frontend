@@ -3,6 +3,12 @@
 @implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
 @main("Sign In", showSubHeader = false) {
+<script>
+  $(document).ready(function(){
+    $("#username").focus();
+  });
+</script>
+
 <div class="lightbg padtop padbottom shadow" style="z-index: 9;">
   <div class="constraint">
     <h1 class="nomargin">Sign In</h1>

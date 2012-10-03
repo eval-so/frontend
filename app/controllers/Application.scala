@@ -60,8 +60,8 @@ object Application extends Controller with Auth with AuthConfigImpl {
     * Tell people about what we do, why we're awesome, and why they should use
     * our product over our OH SO MANY competitors.
     */
-  def product = Action { implicit request =>
-    Ok(views.html.product())
+  def product = optionalUserAction { user => implicit request =>
+    Ok(views.html.product(user))
   }
 
   /** The status controller.

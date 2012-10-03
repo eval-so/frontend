@@ -71,8 +71,8 @@ object Application extends Controller with Auth with AuthConfigImpl {
     *   - Current load
     *   - Number of enabled vs. disabled servers
     */
-  def status = Action { implicit request =>
+  def status = optionalUserAction { user => implicit request =>
     val servers = Server.getAllServers()
-    Ok(views.html.status(servers))
+    Ok(views.html.status(user, servers))
   }  
 }

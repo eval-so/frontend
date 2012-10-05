@@ -1,6 +1,13 @@
-@(user: Option[User])
-@main("The First Open-Source Code Evaluation Platform", user = user) {
-<div class="lightbg padtop padbottom shadow" style="z-index: 9;">
+@(user: Option[User])(implicit flash: Flash, l: Lang)
+
+@main(Messages("product.title"), showSubHeader = false, user = user) {
+<div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
+  <div class="constraint">
+    <h1 class="nomargin left">@Messages("product.tagline")</h1>
+  </div>
+</div>
+
+<div class="whitebg padtop padbottom raiseshadow shadow" style="z-index: 9;">
   <div class="constraint">
     <h1 class="nomargin">Welcome!</h1>
     <p>
@@ -16,11 +23,7 @@
       distributed, meaning that we can easily add servers to always keep
       Breakpoint as fast as possible.
     </p>
-  </div>
-</div>
 
-<div class="whitebg padtop padbottom raiseshadow" style="z-index: 10;">
-  <div class="constraint">
     <h1 class="nomargin">How it works</h1>
     <p>
       <!-- BUZZWORDS! -->

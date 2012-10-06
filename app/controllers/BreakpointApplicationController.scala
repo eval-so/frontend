@@ -7,7 +7,7 @@ import play.api.data._
 import play.api.Play.current
 import play.api.data.Forms._
 import play.api.data.validation.Constraints._
-import com.typesafe.plugin._
+//import com.typesafe.plugin._
 import jp.t2v.lab.play20.auth._
 
 /** Controllers which deal with application management. */

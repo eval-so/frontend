@@ -16,21 +16,21 @@ trait AuthConfigImpl extends AuthConfig {
 
   def resolveUser(id: Long): Option[User] = User.getByID(id)
 
-  def loginSucceeded[A](request: Request[A]): PlainResult = {
+  def loginSucceeded(request: RequestHeader): PlainResult = {
     val uri = request.session.get("redirect_after_auth").getOrElse(
       routes.Application.index.url.toString)
     request.session - "redirect_after_auth"
     Redirect(uri)
   }
 
-  def logoutSucceeded[A](request: Request[A]): PlainResult =
+  def logoutSucceeded(request: RequestHeader): PlainResult =
     Redirect(routes.Application.index)
 
-  def authenticationFailed[A](request: Request[A]): PlainResult =
+  def authenticationFailed(request: RequestHeader): PlainResult =
     Redirect(routes.UserController.login).withSession(
       "redirect_after_auth" -> request.uri)
 
-  def authorizationFailed[A](request: Request[A]): PlainResult =
+  def authorizationFailed(request: RequestHeader): PlainResult =
     Forbidden("Invalid Username/Password")
 
   /** Handle authorization based on the kind of [[User]].

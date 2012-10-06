@@ -2,8 +2,9 @@
 logLevel := Level.Warn
 
 resolvers ++= Seq(
-  Resolver.file("Local Repository", file("/home/ricky/devel/scala/play-head/repository/local"))(Resolver.ivyStylePatterns),
-  "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
+  "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
+  "Typesafe Snapshots" at "http://repo.typesafe.com/typesafe/snapshots/",
+  Resolver.url("Typesafe Ivy Snapshots", url("http://repo.typesafe.com/typesafe/ivy-snapshots/"))(Resolver.ivyStylePatterns)
 )
 
 // Use the Play sbt plugin for Play projects

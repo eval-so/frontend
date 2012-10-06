@@ -7,7 +7,7 @@ import play.api.data._
 import play.api.Play.current
 import play.api.data.Forms._
 import play.api.data.validation.Constraints._
-import com.typesafe.plugin._
+//import com.typesafe.plugin._
 import jp.t2v.lab.play20.auth._
 
 
@@ -128,6 +128,7 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
               "breakpoint.frontend.authentication.send_welcome_email").getOrElse(
               false)
             if (sendRegEmail) {
+/*
               val mail = use[MailerPlugin].email
               mail.setSubject("Welcome to Breakpoint!")
               mail.addRecipient("%s <%s>".format(valid.name, valid.email))
@@ -150,6 +151,7 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
                   request.host,
                   userID,
                   valid.confirmationToken))
+*/
             }
             Redirect(routes.Application.index).flashing(
               "signup.success" -> "Welcome aboard. Please check your email for details on where to go from here."

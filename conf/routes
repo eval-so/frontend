@@ -18,7 +18,7 @@ GET     /applications/new           controllers.BreakpointApplicationController.
 POST    /applications/new           controllers.BreakpointApplicationController.processNewApplication
 
 # APIv1
-POST    /api/v1/evaluate            controllers.APIv1Controller.evaluate
+#POST    /api/v1/evaluate            controllers.APIv1Controller.evaluate
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

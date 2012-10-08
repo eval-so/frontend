@@ -24,6 +24,7 @@ import play.api.Play.current
 import play.api.data.Forms._
 import play.api.data.validation.Constraints._
 import jp.t2v.lab.play20.auth._
+import breakpoint.util.{BreakpointEmail}
 
 /** Controllers which deal with authentication. */
 object UserController extends Controller with Auth with LoginLogout with AuthConfigImpl {
@@ -142,12 +143,9 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
               "breakpoint.frontend.authentication.send_welcome_email").getOrElse(
               false)
             if (sendRegEmail) {
-/*
-              val mail = use[MailerPlugin].email
-              mail.setSubject("Welcome to Breakpoint!")
-              mail.addRecipient("%s <%s>".format(valid.name, valid.email))
-              mail.addFrom("Breakpoint Eval <noreply@breakpoint-eval.org>")
-              mail.send(
+              BreakpointEmail.send(
+                "%s <%s>".format(valid.name, valid.email),
+                "Welcome to Breakpoint!",
                 """Welcome to Breakpoint!
                 |
                 |Before you can begin using your account, we need to confirm
@@ -165,7 +163,6 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
                   request.host,
                   userID,
                   valid.confirmationToken))
-*/
             }
             Redirect(routes.Application.index).flashing(
               "signup.success" -> "Welcome aboard. Please check your email for details on where to go from here."

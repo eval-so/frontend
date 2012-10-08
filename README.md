@@ -29,4 +29,4 @@ To set up a development environment, you need a few things:
 
 # License
 
-Apache 2.0.
+Licensed under Apache 2. See the LICENSE file for details.

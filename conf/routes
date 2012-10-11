@@ -14,9 +14,9 @@ POST    /user/update_profile        controllers.UserController.updateProfile
 
 # Applications
 GET     /applications               controllers.BreakpointApplicationController.myApplications
-GET     /applications/:id           controllers.BreakpointApplicationController.application(id: Long)
 GET     /applications/new           controllers.BreakpointApplicationController.newApplication
 POST    /applications/new           controllers.BreakpointApplicationController.processNewApplication
+GET     /applications/:id           controllers.BreakpointApplicationController.application(id: Long)
 
 # APIv1
 #POST    /api/v1/evaluate            controllers.APIv1Controller.evaluate

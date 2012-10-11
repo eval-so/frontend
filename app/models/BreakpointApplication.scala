@@ -88,7 +88,7 @@ object BreakpointApplication {
     * @param userID the ID of the user
     * @return a Seq[BreakpointApplication] of all the user's applications.
     */
-  def getAllByUserID(userID: Long): Seq[BreakpointApplication] =
+  def getAllByUserID(userID: Long): List[BreakpointApplication] =
     DB.withConnection { implicit c =>
       SQL(
         """

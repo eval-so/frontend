@@ -63,7 +63,7 @@ case class User(
     *
     * @return a sequence containing BreakpointApplication instances
     */
-  lazy val applications: Seq[BreakpointApplication] =
+  lazy val applications: List[BreakpointApplication] =
     BreakpointApplication.getAllByUserID(id.get)
 
   /** Confirm a user's registration, after they've gone to a URL containing

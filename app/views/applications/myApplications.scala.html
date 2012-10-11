@@ -14,10 +14,9 @@
     </a>
   </div>
 </div>
-
-<div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
-  <div class="constraint">
-    @applications.map { application =>
+@applications.map { application =>
+  <div class="whitebg padtop padbottom raiseshadow clearfix topmargin" style="z-index: 10;">
+    <div class="constraint">
       <script type="text/javascript">
         google.load("visualization", "1", {packages:["corechart"]});
         google.setOnLoadCallback(drawChart);
@@ -67,9 +66,10 @@
           <div id="bpa_@application.id.get" style="width: 400px; height: 120px;"></div>
         </span>
       </div>
-    }
+    </div>
   </div>
-</div>
+}
+
 <!--
 <div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">

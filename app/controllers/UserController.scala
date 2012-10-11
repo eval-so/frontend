@@ -231,6 +231,16 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
     }
   }
 
+  /** Show profile updating form. */
+  def editProfile = authorizedAction("user") { user => implicit request =>
+    val existingData = Map(
+      "name" -> user.name,
+      "email" -> user.email,
+      "new_password" -> "",
+      "old_password" -> "")
+    Ok(views.html.user.profile(user, profileForm(user).fill(existingData)))
+  }
+
   /** Handle updating of profiles. */
   def updateProfile = authorizedAction("user") { user => implicit request =>
     profileForm(user).bindFromRequest.fold(

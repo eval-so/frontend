@@ -23,15 +23,18 @@
         <div class="constraint">
           <h1 class="name nomargin exo"><a href="/">Breakpoint.</a></h1>
           <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="@routes.Application.product">Product</a></li>
-            <li><a href="@routes.Application.status">Status</a></li>
             @user match {
               case Some(user) => {
+                <li><a href="@routes.Application.status">Status</a></li>
                 <li><a href="@routes.BreakpointApplicationController.myApplications">My Applications</a></li>
+                <li><a href="@routes.UserController.editProfile">Edit Profile</a></li>
                 <li><a href="@routes.UserController.login">Log Out</a></li>
               }
-              case None => { <li><a href="@routes.UserController.login">Log In</a></li> }
+              case None => {
+                <li><a href="@routes.Application.product">Product</a></li>
+                <li><a href="@routes.Application.status">Status</a></li>
+                <li><a href="@routes.UserController.login">Log In</a></li>
+              }
             }
           </ul>
         </div>

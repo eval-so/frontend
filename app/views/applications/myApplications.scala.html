@@ -53,7 +53,7 @@
 
       <div class="application clearfix">
         <span class="left">
-          <a class="application_name" href="#">@application.name</a>
+          <a class="application_name" href="@routes.BreakpointApplicationController.application(application.id.get)">@application.name</a>
           <p>@application.description</p>
           <p>
             @if(application.allowAnonymousEvals) {

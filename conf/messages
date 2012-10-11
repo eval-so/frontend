@@ -38,6 +38,9 @@ applications.newApplication.new_application = New Application
 applications.newApplication.description = Register a new application which can then be used to access the Breakpoint API.
 applications.newApplication.submit = Create Application
 
+applications.application.title = Viewing Application
+applications.application.edit_application = Edit Application
+
 user.profile.title = My Profile
 user.profile.change_secret_key = You can change your secret key at any time. Note that you'll need to update your secret key in any applications which use it.
 user.profile.change_secret_key_link = Change Secret Key

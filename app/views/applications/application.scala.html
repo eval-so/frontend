@@ -1,0 +1,23 @@
+@(user: User, application: BreakpointApplication)(implicit flash: Flash, l: Lang)
+
+@main(Messages("applications.application.title"), showSubHeader = false, user = Some(user)) {
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+@flash.get("success").map { message =>
+  <div class="flash success">@message</div>
+}
+
+<div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
+  <div class="constraint">
+    <h1 class="nomargin left">@application.name</h1>
+    <a href="@routes.BreakpointApplicationController.newApplication">
+      <button class="submit_button pad right" style="width: 250px;">@Messages("applications.application.edit_application")</button>
+    </a>
+  </div>
+</div>
+
+<div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
+  <div class="constraint">
+    
+  </div>
+</div>
+}

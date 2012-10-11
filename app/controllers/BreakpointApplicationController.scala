@@ -76,4 +76,17 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
     val applications = user.applications.toList
     Ok(views.html.applications.myApplications(user, applications))
   }
+
+  /** View a specific application's details. */
+  def application(id: Long) = authorizedAction("user") { user => implicit request =>
+    val application = BreakpointApplication.getByID(id)
+    application match {
+      case Some(application) => {
+        Ok(views.html.applications.application(user, application))
+      }
+      case None => NotFound(views.html.error(
+        "That application wasn't found.",
+        "The application you attempted to view couldn't be found. Please check the URL and try your call again."))
+    }
+  }
 }

@@ -30,6 +30,8 @@ applications.myApplications.applications_i_own = Applications I Own
 applications.myApplications.applications_i_use = Applications I Use
 applications.myApplications.application_showcase = Application Showcase
 applications.myApplications.application_showcase_description = Here's a sample of public applications which use Breakpoint. Go on and give them a shot!
+applications.myApplications.allow_anonymous_evals = This application allows anonymous evaluations.
+applications.myApplications.dont_allow_anonymous_evals = This application does not anonymous evaluations.
 
 applications.newApplication.title = Create a New Application
 applications.newApplication.new_application = New Application

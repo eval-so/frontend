@@ -1,6 +1,7 @@
 @(user: User, applications: List[BreakpointApplication])(implicit flash: Flash, l: Lang)
 
 @main(Messages("applications.myApplications.title"), showSubHeader = false, user = Some(user)) {
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 @flash.get("success").map { message =>
   <div class="flash success">@message</div>
 }
@@ -16,26 +17,65 @@
 
 <div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
   <div class="constraint">
-<!-- Make this something else. -->
-<!--    <div class="left halfwidth">
-      <h1 class="nomargin">@Messages("applications.myApplications.applications_i_own")</h1>
-    </div>
--->
-    <div class="right halfwidth">
-      <h1 class="nomargin">@Messages("applications.myApplications.my_applications")</h1>
-      <ul>
-        @applications.map { application =>
-          <li>@application.name</li>
-        }
-      </ul>
-    </div>
+    @applications.map { application =>
+      <script type="text/javascript">
+        google.load("visualization", "1", {packages:["corechart"]});
+        google.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Weeks Ago', 'Evaluations'],
+            ['7', @scala.util.Random.nextInt(100)],
+            ['6', @scala.util.Random.nextInt(100)],
+            ['5', @scala.util.Random.nextInt(100)],
+            ['4', @scala.util.Random.nextInt(100)],
+            ['3', @scala.util.Random.nextInt(100)],
+            ['2', @scala.util.Random.nextInt(100)],
+            ['1', @scala.util.Random.nextInt(100)],
+            ['0', @scala.util.Random.nextInt(100)]
+          ]);
+   
+          var options = {
+            'axisTitlesPosition': 'none',
+            'titlePosition': 'none',
+            'legend': 'none',
+            'axisFontSize': 0,
+            'vAxis': {
+              'baselineColor': 'none',
+              'textPosition': 'none'
+            },
+            'backgroundColor': 'transparent'
+          }
+   
+          var chart = new google.visualization.LineChart(document.getElementById('bpa_@application.id.get'));
+          chart.draw(data, options);
+          }
+      </script>
+
+      <div class="application clearfix">
+        <span class="left">
+          <a class="application_name" href="#">@application.name</a>
+          <p>@application.description</p>
+          <p>
+            @if(application.allowAnonymousEvals) {
+              @Messages("applications.myApplications.allow_anonymous_evals")
+            } else {
+              @Messages("applications.myApplications.dont_allow_anonymous_evals")
+            }
+          </p>
+        </span>
+        <span class="right">
+          <div id="bpa_@application.id.get" style="width: 400px; height: 120px;"></div>
+        </span>
+      </div>
+    }
   </div>
 </div>
-
+<!--
 <div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">
     <h1 class="nomargin">@Messages("applications.myApplications.application_showcase")</h1>
     <p>@Messages("applications.myApplications.application_showcase_description")</p>
   </div>
 </div>
+-->
 }

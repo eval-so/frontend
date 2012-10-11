@@ -143,7 +143,7 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
               "breakpoint.frontend.authentication.send_welcome_email").getOrElse(
               false)
             if (sendRegEmail) {
-              BreakpointEmail.send(
+              val registrationEmail = BreakpointEmail.send(
                 "%s <%s>".format(valid.name, valid.email),
                 "Welcome to Breakpoint!",
                 """Welcome to Breakpoint!
@@ -163,10 +163,25 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
                   request.host,
                   userID,
                   valid.confirmationToken))
+              registrationEmail.fold(
+                left => {
+                  // TODO: send site admins an email.
+                  // TODO: inform Play who site admins are.
+                  // TODO: inform site admins what Play is.
+                  // TODO: inform site playmins what ads are. Or something.
+                  Redirect(routes.Application.index).flashing(
+                    "signup.failure" -> "Oops, an error has occurred. We got your registration information, but couldn't send you the validation email. We'll manually validate your account, and email you when you can begin using Breakpoint. Sorry for the delay!"
+                  )
+                }
+                right => Redirect(routes.Application.index).flashing(
+                  "signup.success" -> "Welcome aboard. Please check your email for details on where to go from here."
+                )
+              )
+            } else {
+              Redirect(routes.Application.index).flashing(
+                "signup.success" -> "Welcome. You account will be looked over/approved, and we'll email you when that happens."
+              )
             }
-            Redirect(routes.Application.index).flashing(
-              "signup.success" -> "Welcome aboard. Please check your email for details on where to go from here."
-            )
           }
         )
       }

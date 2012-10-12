@@ -7,6 +7,7 @@ GET     /status                     controllers.Application.status
 POST    /                           controllers.UserController.register
 GET     /user/login                 controllers.UserController.login
 POST    /user/login                 controllers.UserController.authenticate
+GET     /user/logout                controllers.UserController.logout
 GET     /user/logintest             controllers.UserController.isLoggedIn
 GET     /confirm/:userID/:confirmationToken controllers.UserController.confirmRegistration(userID: Long, confirmationToken: String)
 POST    /user/reset_secret_key      controllers.UserController.changeSecretKey

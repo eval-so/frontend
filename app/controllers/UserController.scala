@@ -172,7 +172,7 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
                   Redirect(routes.Application.index).flashing(
                     "signup.failure" -> "Oops, an error has occurred. We got your registration information, but couldn't send you the validation email. We'll manually validate your account, and email you when you can begin using Breakpoint. Sorry for the delay!"
                   )
-                }
+                },
                 right => Redirect(routes.Application.index).flashing(
                   "signup.success" -> "Welcome aboard. Please check your email for details on where to go from here."
                 )

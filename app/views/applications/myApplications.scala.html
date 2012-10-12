@@ -14,61 +14,70 @@
     </a>
   </div>
 </div>
-@applications.map { application =>
+@if(applications.length > 0) {
+  @applications.map { application =>
+    <div class="whitebg padtop padbottom raiseshadow clearfix topmargin" style="z-index: 10;">
+      <div class="constraint">
+        <script type="text/javascript">
+          google.load("visualization", "1", {packages:["corechart"]});
+          google.setOnLoadCallback(drawChart);
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Weeks Ago', 'Evaluations'],
+              ['7', @scala.util.Random.nextInt(100)],
+              ['6', @scala.util.Random.nextInt(100)],
+              ['5', @scala.util.Random.nextInt(100)],
+              ['4', @scala.util.Random.nextInt(100)],
+              ['3', @scala.util.Random.nextInt(100)],
+              ['2', @scala.util.Random.nextInt(100)],
+              ['1', @scala.util.Random.nextInt(100)],
+              ['0', @scala.util.Random.nextInt(100)]
+            ]);
+     
+            var options = {
+              'axisTitlesPosition': 'none',
+              'titlePosition': 'none',
+              'legend': 'none',
+              'axisFontSize': 0,
+              'vAxis': {
+                'baselineColor': 'none',
+                'textPosition': 'none'
+              },
+              'backgroundColor': 'transparent'
+            }
+     
+            var chart = new google.visualization.LineChart(document.getElementById('bpa_@application.id.get'));
+            chart.draw(data, options);
+            }
+        </script>
+   
+        <div class="application clearfix">
+          <span class="left">
+            <a class="application_name" href="@routes.BreakpointApplicationController.application(application.id.get)">@application.name</a>
+            <p>@application.description</p>
+            <p>
+              @if(application.allowAnonymousEvals) {
+                @Messages("applications.myApplications.allow_anonymous_evals")
+              } else {
+                @Messages("applications.myApplications.dont_allow_anonymous_evals")
+              }
+            </p>
+          </span>
+          <span class="right">
+            <div id="bpa_@application.id.get" style="width: 400px; height: 120px;"></div>
+          </span>
+        </div>
+      </div>
+    </div>
+  }
+} else {
   <div class="whitebg padtop padbottom raiseshadow clearfix topmargin" style="z-index: 10;">
     <div class="constraint">
-      <script type="text/javascript">
-        google.load("visualization", "1", {packages:["corechart"]});
-        google.setOnLoadCallback(drawChart);
-        function drawChart() {
-          var data = google.visualization.arrayToDataTable([
-            ['Weeks Ago', 'Evaluations'],
-            ['7', @scala.util.Random.nextInt(100)],
-            ['6', @scala.util.Random.nextInt(100)],
-            ['5', @scala.util.Random.nextInt(100)],
-            ['4', @scala.util.Random.nextInt(100)],
-            ['3', @scala.util.Random.nextInt(100)],
-            ['2', @scala.util.Random.nextInt(100)],
-            ['1', @scala.util.Random.nextInt(100)],
-            ['0', @scala.util.Random.nextInt(100)]
-          ]);
-   
-          var options = {
-            'axisTitlesPosition': 'none',
-            'titlePosition': 'none',
-            'legend': 'none',
-            'axisFontSize': 0,
-            'vAxis': {
-              'baselineColor': 'none',
-              'textPosition': 'none'
-            },
-            'backgroundColor': 'transparent'
-          }
-   
-          var chart = new google.visualization.LineChart(document.getElementById('bpa_@application.id.get'));
-          chart.draw(data, options);
-          }
-      </script>
-
-      <div class="application clearfix">
-        <span class="left">
-          <a class="application_name" href="@routes.BreakpointApplicationController.application(application.id.get)">@application.name</a>
-          <p>@application.description</p>
-          <p>
-            @if(application.allowAnonymousEvals) {
-              @Messages("applications.myApplications.allow_anonymous_evals")
-            } else {
-              @Messages("applications.myApplications.dont_allow_anonymous_evals")
-            }
-          </p>
-        </span>
-        <span class="right">
-          <div id="bpa_@application.id.get" style="width: 400px; height: 120px;"></div>
-        </span>
-      </div>
+      <p>You don't seem to have access to any applications. Create one by clicking the big green button above. </p>
     </div>
   </div>
 }
+    
 
 <!--
 <div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">

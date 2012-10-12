@@ -219,7 +219,12 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
 
   /** Allow a user to attempt authentication. */
   def login = optionalUserAction { maybeUser => request =>
-    Ok(views.html.user.login(loginForm))
+    maybeUser match {
+      case None => Ok(views.html.user.login(loginForm))
+      case _ => Redirect(routes.Application.index).flashing(
+        "error" -> "Oops, you're already logged in!"
+      )
+    }
   }
 
   /** Allow a user to log out. */

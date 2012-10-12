@@ -29,23 +29,23 @@
 
     <div class="right halfwidth">
       <h1 class="nomargin">@Messages("index.signup")</h1>
-      @flash.get("signup.success").map { message =>
-        <p class="success">
-          @message
-        </p>
+      @flash.get("signup.success").map { success =>
+        <p class="success">@success</p>
       }.getOrElse {
-        <p>
-          @Messages("index.convinced")
-        </p>
-        @helper.form(action = routes.UserController.register, 'id -> "register_form") {
-          @helper.inputText(registerForm("name"), '_label -> Messages("common.full_name"))
-          @helper.inputText(registerForm("username"), '_label -> Messages("common.username"))
-          @helper.inputText(registerForm("email"), '_label -> Messages("common.email"), '_help -> "")
-          @helper.inputPassword(registerForm("password"), '_label -> Messages("common.password"), '_help -> "")
-          <p class="disclaimer">
-            @Messages("index.disclaimer", Messages("index.signup"))
-          </p>
-          <button type="submit" class="submit_button pad">@Messages("index.signup")</button>
+        @flash.get("signup.failure").map { failure =>
+          <p class="failure">@failure</p>
+        }.getOrElse {
+          <p>@Messages("index.convinced")</p>
+          @helper.form(action = routes.UserController.register, 'id -> "register_form") {
+            @helper.inputText(registerForm("name"), '_label -> Messages("common.full_name"))
+            @helper.inputText(registerForm("username"), '_label -> Messages("common.username"))
+            @helper.inputText(registerForm("email"), '_label -> Messages("common.email"), '_help -> "")
+            @helper.inputPassword(registerForm("password"), '_label -> Messages("common.password"), '_help -> "")
+            <p class="disclaimer">
+              @Messages("index.disclaimer", Messages("index.signup"))
+            </p>
+            <button type="submit" class="submit_button pad">@Messages("index.signup")</button>
+          }
         }
       }
     </div>

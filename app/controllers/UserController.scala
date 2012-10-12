@@ -170,7 +170,7 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
                   // TODO: inform site admins what Play is.
                   // TODO: inform site playmins what ads are. Or something.
                   Redirect(routes.Application.index).flashing(
-                    "signup.failure" -> "Oops, an error has occurred. We got your registration information, but couldn't send you the validation email. We'll manually validate your account, and email you when you can begin using Breakpoint. Sorry for the delay!"
+                    "signup.failure" -> "Oops, an error has occurred. We got your registration information, but couldn't send you the validation email for some reason. We'll manually validate your account, and email you when you can begin using Breakpoint. Sorry for the delay!"
                   )
                 },
                 right => Redirect(routes.Application.index).flashing(

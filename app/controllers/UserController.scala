@@ -46,7 +46,6 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
     */
   val registerForm: Form[User] = Form(
     mapping(
-      "name"    -> nonEmptyText,
       "username" -> nonEmptyText.verifying(
         "Sorry, that username is already registered to another account",
         username => !User.usernameIsTaken(username)),
@@ -57,12 +56,12 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
     )
     {
       val salt = java.util.UUID.randomUUID().toString
-      (name, username, email, password) => User(
+      (username, email, password) => User(
         None,
         username,
         Application.sha256(salt + password),
         salt,
-        name,
+        None,
         email,
         None,
         None,
@@ -72,7 +71,6 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
     }
     {
       user => Some(
-        user.name,
         user.username,
         user.email,
         user.password
@@ -83,7 +81,7 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
   /** A form to handle profile updating. */
   def profileForm(implicit rUser: models.User) = Form(
     mapping(
-      "name" -> nonEmptyText,
+      "name" -> text,
       "email" -> email,
       "new_password" -> text,
       "old_password" -> nonEmptyText.verifying(
@@ -249,7 +247,7 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
   /** Show profile updating form. */
   def editProfile = authorizedAction("user") { user => implicit request =>
     val existingData = Map(
-      "name" -> user.name,
+      "name" -> user.name.getOrElse(""),
       "email" -> user.email,
       "new_password" -> "",
       "old_password" -> "")
@@ -264,7 +262,7 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
         user.update(
           profile("new_password"),
           profile("new_salt"),
-          profile("name"),
+          if (!profile("name").isEmpty) Some(profile("name")) else None,
           profile("email"))
         Redirect(routes.Application.index)
       }

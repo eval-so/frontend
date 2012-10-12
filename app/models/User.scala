@@ -31,7 +31,7 @@ import org.joda.time.format.{DateTimeFormat, PeriodFormat}
   * @param username the user's username
   * @param password a sha256 of the user's password
   * @param salt a salt prepended to the password before it's hashed
-  * @param name the user's real name
+  * @param name the user's real name, which may or may not exist
   * @param email the user's email address
   * @param registeredAt the time that the user initially registered
   * @param confirmedAt the time that the user confirmed their account
@@ -43,7 +43,7 @@ case class User(
   username: String,
   password: String,
   salt: String,
-  name: String,
+  name: Option[String],
   email: String,
   registeredAt: Option[DateTime],
   confirmedAt: Option[DateTime],
@@ -97,7 +97,7 @@ case class User(
   def update(
     password: String,
     salt: String,
-    name: String,
+    name: Option[String],
     email: String): Int = DB.withConnection { implicit c =>
       SQL(
         """
@@ -142,7 +142,7 @@ object User {
     get[String]("username") ~
     get[String]("password") ~
     get[String]("salt") ~
-    get[String]("name") ~
+    get[Option[String]]("name") ~
     get[String]("email") ~
     get[Option[Date]]("registered_at") ~
     get[Option[Date]]("confirmed_at") ~

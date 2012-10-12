@@ -233,7 +233,9 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
   /** Allow a user to change their secret key. */
   def changeSecretKey = authorizedAction("user") { user => implicit request =>
     user.resetSecretKey()
-    Redirect(routes.Application.index)
+    Redirect(routes.UserController.editProfile).flashing(
+      "success" -> "Your secret key has been changed."
+    )
   }
 
   /** A quick test. */
@@ -264,7 +266,9 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
           profile("new_salt"),
           if (!profile("name").isEmpty) Some(profile("name")) else None,
           profile("email"))
-        Redirect(routes.Application.index)
+        Redirect(routes.UserController.editProfile).flashing(
+          "success" -> "Profile edited successfully."
+        )
       }
     )
   }

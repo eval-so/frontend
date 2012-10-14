@@ -177,7 +177,7 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
               )
             } else {
               Redirect(routes.Application.index).flashing(
-                "signup.success" -> "Welcome. You account will be looked over/approved, and we'll email you when that happens."
+                "signup.success" -> "Welcome aboard. You account will be looked over/approved, and we'll email you when that happens."
               )
             }
           }

@@ -31,7 +31,7 @@ class IntegrationTest extends Specification {
         browser.fill("#password").`with`("my1337Passw0rd!")
         browser.submit("#register_form")
         User.getByUsername("jsmith_integration_test").get.confirm()
-        browser.findFirst(".success").getText must contain("Welcome")
+        browser.findFirst(".success").getText must contain("Welcome aboard")
       }
     }
 

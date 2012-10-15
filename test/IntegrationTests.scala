@@ -98,11 +98,11 @@ class IntegrationTest extends Specification {
         browser.fill("#username").`with`("jsmith_integration_test")
         browser.fill("#password").`with`("my1337Passw0rd!")
         browser.submit("#login_form")
-        println(browser.pageSource)
         browser.title must equalTo("Edit Application - Breakpoint")
         browser.fill("#name").`with`("Test app edited")
         browser.fill("#description").`with`("Edited by the Frontend test suite.")
         browser.submit("#new_application_form")
+        browser.goTo("http://localhost:3333/applications/1")
         browser.findFirst("#name").getText must equalTo("Test app edited")
 
         browser.goTo("http://localhost:3333/applications/1337/edit")

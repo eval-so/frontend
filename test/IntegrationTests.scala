@@ -65,6 +65,22 @@ class IntegrationTest extends Specification {
       }
     }
 
+    "Allow a logged-in user to edit their profile" in {
+      running(TestServer(3333), HTMLUNIT) { browser =>
+        browser.goTo("http://localhost:3333/user/update_profile")
+        browser.fill("#username").`with`("jsmith_integration_test")
+        browser.fill("#password").`with`("my1337Passw0rd!")
+        browser.submit("#login_form")
+        browser.title must equalTo("My Profile - Breakpoint")
+        browser.fill("#name").`with`("John Smith")
+        browser.fill("#new_password").`with`("newPassw0rd13373R")
+        browser.fill("#old_password").`with`("my1337Passw0rd!")
+        browser.submit("#user_form")
+        browser.url must equalTo("http://localhost:3333/user/update_profile")
+        browser.findFirst("#name").getValue must equalTo("John Smith")
+      }
+    }
+
     "Not allow a logged-out user to create apps" in {
       running(TestServer(3333), HTMLUNIT) { browser =>
         browser.goTo("http://localhost:3333/applications/new")

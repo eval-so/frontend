@@ -53,6 +53,46 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
     }
   )
 
+  def editApplication(id: Long) = authorizedAction("user") { user => implicit request =>
+    val applications = user.applications
+    if (!applications.map(_.id.get).contains(id)) {
+      Forbidden(views.html.error(
+        "The application! You can't edit it!",
+        "You don't appear to be an owner of that application, sorry."
+      ))
+    } else {
+      // We can .get safely here because the app is guaranteed to exist due to
+      // the check above.
+      val application = BreakpointApplication.getByID(id).get
+      // TODO: Make this use the same template as newApplication.
+      Ok(views.html.applications.editApplication(user, id, applicationForm.fill(application)))
+    }
+  }
+
+  def processEditApplication(id: Long) = authorizedAction("user") { user => implicit request =>
+    val applications = user.applications
+    if (!applications.map(_.id.get).contains(id)) {
+      Forbidden(views.html.error(
+        "The application! You can't edit it!",
+        "You don't appear to be an owner of that application, sorry."
+      ))
+    } else {
+      applicationForm.bindFromRequest.fold(
+        formWithErrors => BadRequest(views.html.applications.editApplication(user, id, formWithErrors)),
+        validApplication => {
+          BreakpointApplication.update(id, validApplication) match {
+            case true => Redirect(routes.BreakpointApplicationController.application(id)).flashing(
+              "success" -> "Your changes have been saved."
+            )
+            case false => Redirect(routes.BreakpointApplicationController.application(id)).flashing(
+              "failure" -> "Oops, an internal error occurred which prevented your changes from being saved. Please try again."
+            )
+          }
+        }
+      )
+    }
+  }
+
   def newApplication = authorizedAction("user") { user => implicit request =>
     Ok(views.html.applications.newApplication(user, applicationForm))
   }

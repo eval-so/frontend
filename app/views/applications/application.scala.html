@@ -8,8 +8,8 @@
 
 <div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">
-    <h1 class="nomargin left">@application.name</h1>
-    <a href="@routes.BreakpointApplicationController.newApplication">
+    <h1 id="name" class="nomargin left">@application.name</h1>
+    <a href="@routes.BreakpointApplicationController.editApplication(application.id.get)">
       <button class="submit_button pad right" style="width: 250px;">@Messages("applications.application.edit_application")</button>
     </a>
   </div>

@@ -38,6 +38,10 @@ applications.newApplication.new_application = New Application
 applications.newApplication.description = Register a new application which can then be used to access the Breakpoint API.
 applications.newApplication.submit = Create Application
 
+applications.editApplication.title = Edit Application
+applications.editApplication.edit_application = Edit Application
+applications.editApplication.submit = Submit Changes
+
 applications.application.title = Viewing Application
 applications.application.edit_application = Edit Application
 

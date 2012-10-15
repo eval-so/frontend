@@ -21,6 +21,13 @@ class IntegrationTest extends Specification {
     "Allow a user to register" in {
       running(TestServer(3333), HTMLUNIT) { browser =>
         DB.withConnection { implicit c =>
+          SQL(
+            """delete from application_users where
+            user_id = (select id from users where username={username})"""
+          ).on(
+            'username -> "jsmith_integration_test"
+          ).execute()
+
           SQL("DELETE FROM users WHERE username={username}").on(
             'username -> "jsmith_integration_test"
           ).execute()
@@ -82,6 +89,24 @@ class IntegrationTest extends Specification {
         browser.submit("#new_application_form")
         browser.url must beMatching(""".*applications/\d+""")
         browser.title must contain("Viewing Application")
+      }
+    }
+
+    "Allow a logged-in user to edit apps that they own (only)" in {
+      running(TestServer(3333), HTMLUNIT) { browser =>
+        browser.goTo("http://localhost:3333/applications/1/edit")
+        browser.fill("#username").`with`("jsmith_integration_test")
+        browser.fill("#password").`with`("my1337Passw0rd!")
+        browser.submit("#login_form")
+        println(browser.pageSource)
+        browser.title must equalTo("Edit Application - Breakpoint")
+        browser.fill("#name").`with`("Test app edited")
+        browser.fill("#description").`with`("Edited by the Frontend test suite.")
+        browser.submit("#new_application_form")
+        browser.findFirst("#name").getText must equalTo("Test app edited")
+
+        browser.goTo("http://localhost:3333/applications/1337/edit")
+        browser.pageSource must contain("You don't appear to be an owner")
       }
     }
 

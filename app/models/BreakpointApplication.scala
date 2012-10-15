@@ -127,4 +127,28 @@ object BreakpointApplication {
         'allow_anonymous_evals -> application.allowAnonymousEvals,
         'description -> application.description).executeInsert()
     }
+
+  /** Edit an application in the database.
+    *
+    * @param id The ID of the application being updated.
+    * @param application A [[models.BreakpointApplication]] containing a
+    *        variant of the changed app.
+    */
+  def update(id: Long, application: BreakpointApplication) =
+    DB.withConnection { implicit c =>
+      SQL(
+        """
+        UPDATE applications SET
+          name={name},
+          allow_anonymous_evals={allow_anonymous_evals},
+          description={description}
+        WHERE
+          id={id}
+        """).on(
+        'name -> application.name,
+        'allow_anonymous_evals -> application.allowAnonymousEvals,
+        'description -> application.description,
+        'id -> id
+      ).executeUpdate == 1
+    }
 }

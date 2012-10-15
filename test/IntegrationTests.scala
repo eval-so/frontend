@@ -21,7 +21,7 @@ class IntegrationTest extends Specification {
     "Allow a user to register" in {
       running(TestServer(3333), HTMLUNIT) { browser =>
         DB.withConnection { implicit c =>
-          SQL("DELETE FROM USERS WHERE username={username}").on(
+          SQL("DELETE FROM users WHERE username={username}").on(
             'username -> "jsmith_integration_test"
           ).execute()
         }
@@ -57,11 +57,31 @@ class IntegrationTest extends Specification {
 
     "Allow a logged-in user to create apps" in {
       running(TestServer(3333), HTMLUNIT) { browser =>
+        DB.withConnection { implicit c =>
+          SQL(
+            """delete from application_users where
+            application_id = (select id from applications where name={name})"""
+          ).on(
+            'name -> "Test app 1"
+          ).execute()
+
+          SQL(
+            """delete from applications where name={name}"""
+          ).on(
+            'name -> "Test app 1"
+          ).execute()
+        }
         browser.goTo("http://localhost:3333/applications/new")
         browser.fill("#username").`with`("jsmith_integration_test")
         browser.fill("#password").`with`("my1337Passw0rd!")
         browser.submit("#login_form")
         browser.title must equalTo("Create a New Application - Breakpoint")
+        browser.fill("#name").`with`("Test app 1")
+        browser.fill("#description").`with`("Made by the Frontend test suite.")
+        browser.click("#allow_anonymous_auth_true")
+        browser.submit("#new_application_form")
+        browser.url must beMatching(""".*applications/\d+""")
+        browser.title must contain("Viewing Application")
       }
     }
 

@@ -63,11 +63,17 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
         formWithErrors => BadRequest(views.html.applications.newApplication(user, formWithErrors)),
         validApplication => {
           BreakpointApplication.add(validApplication) match {
-            case Some(appID) => user.addApplication(appID, true)
-            case _ =>
+            case Some(appID) => {
+              user.addApplication(appID, true)
+              Redirect(routes.BreakpointApplicationController.application(appID)).flashing(
+                "success" -> "Your new application has been created."
+              )
+            }
+            case _ => BadRequest(views.html.error(
+              "Oops, the application couldn't be saved.",
+              "An error occurred while trying to register the new application in our database. We've logged this error and will look into the issue. Please try again later. If you see this error again, please let us know, using the contact methods below."
+            ))
           }
-          Redirect(routes.BreakpointApplicationController.myApplications).flashing(
-            "success" -> "Your new application has been created.")
         }
       )
   }

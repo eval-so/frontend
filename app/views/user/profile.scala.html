@@ -30,7 +30,7 @@
     </div>
     <div class="right halfwidth">
       <h3 class="nomargin">@Messages("common.secret_key")</h3>
-      <code>@user.secretKey</code>
+      <code id="secret_key">@user.secretKey</code>
       <p style="font-size: small;">@Messages("user.profile.change_secret_key")</p>
       @helper.form(action = routes.UserController.changeSecretKey, 'id -> "change_secret_key_form") {
         <button type="submit"

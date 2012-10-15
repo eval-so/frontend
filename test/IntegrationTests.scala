@@ -65,6 +65,20 @@ class IntegrationTest extends Specification {
       }
     }
 
+    "Allow a logged-in user to update their secret key" in {
+      running(TestServer(3333), HTMLUNIT) { browser =>
+        browser.goTo("http://localhost:3333/user/update_profile")
+        browser.fill("#username").`with`("jsmith_integration_test")
+        browser.fill("#password").`with`("my1337Passw0rd!")
+        browser.submit("#login_form")
+        browser.title must equalTo("My Profile - Breakpoint")
+        val oldKey = browser.findFirst("#secret_key").getText
+        browser.submit("#change_secret_key_form")
+        browser.findFirst("#secret_key").getText must not equalTo(oldKey)
+        browser.url must equalTo("http://localhost:3333/user/update_profile")
+      }
+    }
+
     "Allow a logged-in user to edit their profile" in {
       running(TestServer(3333), HTMLUNIT) { browser =>
         browser.goTo("http://localhost:3333/user/update_profile")

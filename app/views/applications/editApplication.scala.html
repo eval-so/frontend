@@ -2,7 +2,7 @@
 @import helper._
 @implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
-@main(Messages("applications.editApplication.title"), user = Some(user)) {
+@main(Messages("applications.editApplication.title"), user = Some(user), flash = flash) {
 <div class="lightbg padtop padbottom shadow" style="z-index: 9;">
   <div class="constraint">
     <h1 class="nomargin">@Messages("applications.editApplication.edit_application")</h1>

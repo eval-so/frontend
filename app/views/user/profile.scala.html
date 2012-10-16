@@ -2,7 +2,7 @@
 @import helper._
 @implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
-@main(Messages("user.profile.title"), showSubHeader = false, user = Some(user)) {
+@main(Messages("user.profile.title"), user = Some(user), flash = flash) {
 <div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">
     <h1 class="nomargin left">

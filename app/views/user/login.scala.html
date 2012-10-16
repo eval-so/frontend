@@ -1,8 +1,8 @@
-@(loginForm: Form[Option[User]])
+@(loginForm: Form[Option[User]])(implicit flash: Flash, l: Lang)
 @import helper._
 @implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
-@main("Sign In") {
+@main("Sign In", flash = flash) {
 <script>
   $(document).ready(function(){
     if (!$("#username").val() && !$("#password").val()) {

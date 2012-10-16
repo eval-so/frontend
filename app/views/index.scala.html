@@ -2,7 +2,7 @@
 @import helper._
 @implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
-@main(Messages("index.title"), user = user) {
+@main(Messages("index.title"), user = user, flash = flash) {
 
 <div class="lightbg padtop padbottom shadow" style="z-index: 9;">
   <div class="constraint">

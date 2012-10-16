@@ -1,5 +1,5 @@
-@(user: Option[User], servers: List[Server])
-@main("The API looks healthy!", user = user, showSubHeader = true, subHeaderColor = "green") {
+@(user: Option[User], servers: List[Server])(implicit flash: Flash, l: Lang)
+@main("The API looks healthy!", user = user, showSubHeader = true, subHeaderColor = "green", flash = flash) {
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <div class="whitebg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">

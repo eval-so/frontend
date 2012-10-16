@@ -1,6 +1,6 @@
 @(user: Option[User])(implicit flash: Flash, l: Lang)
 
-@main(Messages("product.title"), user = user) {
+@main(Messages("product.title"), user = user, flash = flash) {
 <div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">
     <h1 class="nomargin left">@Messages("product.tagline")</h1>

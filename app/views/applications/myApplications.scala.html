@@ -1,6 +1,6 @@
 @(user: User, applications: List[BreakpointApplication])(implicit flash: Flash, l: Lang)
 
-@main(Messages("applications.myApplications.title"), user = Some(user)) {
+@main(Messages("applications.myApplications.title"), user = Some(user), flash = flash) {
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 @flash.get("success").map { message =>
   <div class="flash success">@message</div>

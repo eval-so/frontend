@@ -150,7 +150,7 @@ class IntegrationTest extends Specification {
         browser.fill("#password").`with`("my1337Passw0rd!")
         browser.submit("#login_form")
         browser.submit("#delete_application_form")
-        browser.findFirst(".flash").getText must contain("successfully deleted")
+        browser.pageSource must contain("successfully deleted")
 
         browser.goTo("http://localhost:3333/applications")
         browser.pageSource must not contain("Test app 2")

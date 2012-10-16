@@ -104,7 +104,7 @@ class IntegrationTest extends Specification {
         browser.title must equalTo("Edit Application - Breakpoint")
         browser.fill("#name").`with`("Test app edited")
         browser.fill("#description").`with`("Edited by the Frontend test suite.")
-        browser.submit("#new_application_form")
+        browser.submit("#edit_application_form")
         browser.goTo("http://localhost:3333/applications/1")
         browser.findFirst("#name").getText must equalTo("Test app edited")
 

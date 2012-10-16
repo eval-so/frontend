@@ -1,5 +1,5 @@
 @(elements: helper.FieldElements)
-<div class="@if(elements.hasErrors) { error } else { padbottom }">
+<div class="@if(elements.hasErrors) { fielderror } else { padbottom }">
   <label for="@elements.id">@elements.label</label>
   @elements.input
   @if(elements.hasErrors) {

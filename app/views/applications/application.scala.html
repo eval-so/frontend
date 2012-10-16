@@ -1,5 +1,6 @@
 @(user: User, application: BreakpointApplication)(implicit flash: Flash, l: Lang)
 
+
 @main(Messages("applications.application.title"), showSubHeader = false, user = Some(user)) {
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 @flash.get("success").map { message =>
@@ -17,7 +18,14 @@
 
 <div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
   <div class="constraint">
-    
+    @helper.form(
+      action = routes.BreakpointApplicationController.deleteApplication(application.id.get),
+      'id -> "delete_application_form"
+    ) {
+      <a class="right" href="@routes.BreakpointApplicationController.deleteApplication(application.id.get)" onClick="return confirm('Are you sure you want to delete the application called: @escapeEcmaScript(application.name)?')">
+        <button class="danger_button pad right" style="width: 250px;">@Messages("applications.application.delete_application")</button>
+      </a>
+    }
   </div>
 </div>
 }

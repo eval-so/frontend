@@ -14,6 +14,7 @@ object ApplicationBuild extends Build {
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
+      templatesImport += "org.apache.commons.lang3.StringEscapeUtils.escapeEcmaScript"
     ).dependsOn(
       uri("https://github.com/breakpoint-eval/scala-common.git")
     )

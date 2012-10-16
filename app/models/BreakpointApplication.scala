@@ -151,4 +151,21 @@ object BreakpointApplication {
         'id -> id
       ).executeUpdate == 1
     }
+
+  /** Delete an application from the database.
+    *
+    * This method deletes an application from the database *after* it deletes
+    * foreign keys from the closely related application_users table.
+    *
+    * @param id The ID of the application to delete.
+    */
+  def delete(id: Long) = DB.withConnection { implicit c =>
+    SQL("DELETE FROM application_users WHERE application_id={application_id}").on(
+      'application_id -> id
+    ).execute()
+
+    SQL("DELETE FROM applications WHERE id={id}").on(
+      'id -> id
+    ).execute()
+  }
 }

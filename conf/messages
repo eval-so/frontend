@@ -44,6 +44,7 @@ applications.editApplication.submit = Submit Changes
 
 applications.application.title = Viewing Application
 applications.application.edit_application = Edit Application
+applications.application.delete_application = Delete Application
 
 user.profile.title = My Profile
 user.profile.change_secret_key = You can change your secret key at any time. Note that you'll need to update your secret key in any applications which use it.

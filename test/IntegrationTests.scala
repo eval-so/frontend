@@ -67,16 +67,10 @@ class IntegrationTest extends Specification {
         DB.withConnection { implicit c =>
           SQL(
             """delete from application_users where
-            application_id = (select id from applications where name={name})"""
-          ).on(
-            'name -> "Test app 1"
+              application_id in
+                (select id from applications where name like 'Test app%')"""
           ).execute()
-
-          SQL(
-            """delete from applications where name={name}"""
-          ).on(
-            'name -> "Test app 1"
-          ).execute()
+          SQL("""delete from applications where name like 'Test app%'""").execute()
         }
         browser.goTo("http://localhost:3333/applications/new")
         browser.fill("#username").`with`("jsmith_integration_test")
@@ -84,6 +78,15 @@ class IntegrationTest extends Specification {
         browser.submit("#login_form")
         browser.title must equalTo("Create a New Application - Breakpoint")
         browser.fill("#name").`with`("Test app 1")
+        browser.fill("#description").`with`("Made by the Frontend test suite.")
+        browser.click("#allow_anonymous_auth_true")
+        browser.submit("#new_application_form")
+        browser.url must beMatching(""".*applications/\d+""")
+        browser.title must contain("Viewing Application")
+
+        browser.goTo("http://localhost:3333/applications/new")
+        browser.title must equalTo("Create a New Application - Breakpoint")
+        browser.fill("#name").`with`("Test app 2")
         browser.fill("#description").`with`("Made by the Frontend test suite.")
         browser.click("#allow_anonymous_auth_true")
         browser.submit("#new_application_form")
@@ -137,6 +140,20 @@ class IntegrationTest extends Specification {
         browser.submit("#user_form")
         browser.url must equalTo("http://localhost:3333/user/update_profile")
         browser.findFirst("#name").getValue must equalTo("John Smith")
+      }
+    }
+
+    "Allow a user to delete their own applications" in {
+      running(TestServer(3333), HTMLUNIT) { browser =>
+        browser.goTo("http://localhost:3333/applications/2")
+        browser.fill("#username").`with`("jsmith_integration_test")
+        browser.fill("#password").`with`("my1337Passw0rd!")
+        browser.submit("#login_form")
+        browser.submit("#delete_application_form")
+        browser.findFirst(".flash").getText must contain("successfully deleted")
+
+        browser.goTo("http://localhost:3333/applications")
+        browser.pageSource must not contain("Test app 2")
       }
     }
 

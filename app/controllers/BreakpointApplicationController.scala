@@ -135,4 +135,30 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
         "The application you attempted to view couldn't be found. Please check the URL and try your call again."))
     }
   }
+
+  /** Delete an application from the database.
+    *
+    * This controller is accessed via a POST to /applications/:id/delete.
+    * This is done to prevent users from accidentally hitting a /delete via GET
+    * in their browser or such.
+    *
+    * If the user doesn't have permission to delete the application, we bounce
+    * them off to a Forbidden error page.
+    *
+    * @param id The application's ID.
+    */
+  def deleteApplication(id: Long) = authorizedAction("user") { user => implicit request =>
+    val applications = user.applications
+    if (!applications.map(_.id.get).contains(id)) {
+      Forbidden(views.html.error(
+        "The application! You can't delete it!",
+        "You don't appear to be an owner of that application, sorry."
+      ))
+    } else {
+      BreakpointApplication.delete(id)
+      Redirect(routes.BreakpointApplicationController.myApplications).flashing(
+        "success" -> "The application was successfully deleted."
+      )
+    }
+  }
 }

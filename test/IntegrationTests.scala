@@ -149,6 +149,8 @@ class IntegrationTest extends Specification {
         browser.fill("#username").`with`("jsmith_integration_test")
         browser.fill("#password").`with`("my1337Passw0rd!")
         browser.submit("#login_form")
+
+        browser.goTo("http://localhost:3333/applications/2")
         browser.submit("#delete_application_form")
         browser.pageSource must contain("successfully deleted")
 

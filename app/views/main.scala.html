@@ -14,8 +14,10 @@
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.min.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/prettify.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+    <script type="text/javascript" src="@controllers.routes.Assets.at("javascripts/require.js")"></script>
     <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
     <script src="@routes.Assets.at("javascripts/prettify.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/global.min.js")" type="text/javascript"></script>
   </head>
   <body onload="prettyPrint()">
     <div id="content">
@@ -40,9 +42,22 @@
           </ul>
         </div>
       </div>
-      <div class="flash error">
-        <p class="constraint">This is a test flash. Ignore it.</p>
-      </div>
+      @flash.get("error").map { message =>
+        <div class="flash error">
+          <div class="constraint">
+            @message
+            <span class="right"><a href="#" id="close_flash_early" style="color: white;">[close]</a></span>
+          </div>
+        </div>
+      }
+      @flash.get("success").map { message =>
+        <div class="flash success">
+          <div class="constraint">
+            @message
+            <span class="right"><a href="#" id="close_flash_early" style="color: white;">[close]</a></span>
+          </div>
+        </div>
+      }
 
       @if(showSubHeader) {
       <div class="headercontent padbottom padtop sub-@subHeaderColor">

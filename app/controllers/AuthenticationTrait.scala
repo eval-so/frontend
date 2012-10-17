@@ -36,18 +36,25 @@ trait AuthConfigImpl extends AuthConfig {
     val uri = request.session.get("redirect_after_auth").getOrElse(
       routes.Application.index.url.toString)
     request.session - "redirect_after_auth"
-    Redirect(uri)
+    Redirect(uri).flashing(
+      "success" -> "Welcome back!"
+    )
   }
 
   def logoutSucceeded(request: RequestHeader): PlainResult =
-    Redirect(routes.Application.index)
+    Redirect(routes.Application.index).flashing(
+      "success" -> "You have been signed out."
+    )
 
   def authenticationFailed(request: RequestHeader): PlainResult =
     Redirect(routes.UserController.login).withSession(
-      "redirect_after_auth" -> request.uri)
+      "redirect_after_auth" -> request.uri
+    ).flashing(
+      "error" -> "Oops, invalid username/password."
+    )
 
   def authorizationFailed(request: RequestHeader): PlainResult =
-    Forbidden("Invalid Username/Password")
+    Forbidden("Invalid permissions.")
 
   /** Handle authorization based on the kind of [[User]].
     *

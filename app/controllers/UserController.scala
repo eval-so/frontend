@@ -236,7 +236,9 @@ object UserController extends Controller with Auth with LoginLogout with AuthCon
   /** Actually attempt authentication. */
   def authenticate = Action { implicit request =>
     loginForm.bindFromRequest.fold(
-      formWithErrors => BadRequest(views.html.user.login(loginForm)),
+      formWithErrors => BadRequest(views.html.user.login(formWithErrors)).flashing(
+        "error" -> "Oops, that username/password didn't work. Please try again."
+      ),
       user => gotoLoginSucceeded(user.get.id.get)
     )
   }

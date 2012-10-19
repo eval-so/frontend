@@ -7,7 +7,7 @@
 <div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">
     <h1 id="name" class="nomargin left">@application.name</h1>
-    <a href="@routes.BreakpointApplicationController.editApplication(application.id.get)">
+    <a href="@routes.BreakpointApplicationController.edit(application.id.get)">
       <button class="submit_button pad right" style="width: 250px;">@Messages("applications.application.edit_application")</button>
     </a>
   </div>
@@ -16,10 +16,10 @@
 <div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
   <div class="constraint">
     @helper.form(
-      action = routes.BreakpointApplicationController.deleteApplication(application.id.get),
+      action = routes.BreakpointApplicationController.delete(application.id.get),
       'id -> "delete_application_form"
     ) {
-      <a class="right" href="@routes.BreakpointApplicationController.deleteApplication(application.id.get)" onClick="return confirm('Are you sure you want to delete the application called: @escapeEcmaScript(application.name)?')">
+      <a class="right" href="@routes.BreakpointApplicationController.delete(application.id.get)" onClick="return confirm('Are you sure you want to delete the application called: @escapeEcmaScript(application.name)?')">
         <button class="danger_button pad right" style="width: 250px;">@Messages("applications.application.delete_application")</button>
       </a>
     }

@@ -53,7 +53,7 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
     }
   )
 
-  def editApplication(id: Long) = authorizedAction("user") { user => implicit request =>
+  def edit(id: Long) = authorizedAction("user") { user => implicit request =>
     val applications = user.applications
     if (!applications.map(_.id.get).contains(id)) {
       Forbidden(views.html.error(
@@ -69,7 +69,7 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
     }
   }
 
-  def processEditApplication(id: Long) = authorizedAction("user") { user => implicit request =>
+  def update(id: Long) = authorizedAction("user") { user => implicit request =>
     val applications = user.applications
     if (!applications.map(_.id.get).contains(id)) {
       Forbidden(views.html.error(
@@ -97,7 +97,7 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
     Ok(views.html.applications.newApplication(user, applicationForm))
   }
 
-  def processNewApplication = authorizedAction("user") { user =>
+  def create = authorizedAction("user") { user =>
     implicit request =>
       applicationForm.bindFromRequest.fold(
         formWithErrors => BadRequest(views.html.applications.newApplication(user, formWithErrors)),
@@ -147,7 +147,7 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
     *
     * @param id The application's ID.
     */
-  def deleteApplication(id: Long) = authorizedAction("user") { user => implicit request =>
+  def delete(id: Long) = authorizedAction("user") { user => implicit request =>
     val applications = user.applications
     if (!applications.map(_.id.get).contains(id)) {
       Forbidden(views.html.error(

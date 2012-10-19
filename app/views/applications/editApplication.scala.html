@@ -13,7 +13,7 @@
   <div class="constraint">
     <div style="width: 75%; margin: 0 auto;">
       @helper.form(
-        action = routes.BreakpointApplicationController.processEditApplication(id),
+        action = routes.BreakpointApplicationController.update(id),
         'id -> "edit_application_form") {
         <h2>Basic Information</h2>
         @helper.inputText(

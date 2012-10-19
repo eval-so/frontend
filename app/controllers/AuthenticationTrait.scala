@@ -50,7 +50,7 @@ trait AuthConfigImpl extends AuthConfig {
     Redirect(routes.UserController.login).withSession(
       "redirect_after_auth" -> request.uri
     ).flashing(
-      "error" -> "Oops, invalid username/password."
+      "error" -> "Please log in to view that resource."
     )
 
   def authorizationFailed(request: RequestHeader): PlainResult =

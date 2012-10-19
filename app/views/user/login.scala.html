@@ -2,7 +2,7 @@
 @import helper._
 @implicitField = @{ FieldConstructor(views.html.helpers.f) }
 
-@main("Sign In", flash = flash) {
+@main("Log In", flash = flash) {
 <script>
   $(document).ready(function(){
     if (!$("#username").val() && !$("#password").val()) {
@@ -13,7 +13,7 @@
 
 <div class="lightbg padtop padbottom shadow" style="z-index: 9;">
   <div class="constraint">
-    <h1 class="nomargin">Sign In</h1>
+    <h1 class="nomargin">Log In</h1>
   </div>
 </div>
 
@@ -31,7 +31,7 @@
         '_label -> "Password",
         '_help -> "")
       <div class="center">
-        <button type="submit" class="submit_button pad topmargin" style="width: 250px; clear: both;" tabindex="5">Sign In</button>
+        <button type="submit" class="submit_button pad topmargin" style="width: 250px; clear: both;" tabindex="5">Log In</button>
       </div>
     }
   </div>

@@ -43,7 +43,7 @@ trait AuthConfigImpl extends AuthConfig {
 
   def logoutSucceeded(request: RequestHeader): PlainResult =
     Redirect(routes.Application.index).flashing(
-      "success" -> "You have been signed out."
+      "success" -> "You have been logged out."
     )
 
   def authenticationFailed(request: RequestHeader): PlainResult =

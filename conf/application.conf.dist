@@ -48,3 +48,4 @@ logger.application=DEBUG
 smtp.host=localhost
 
 breakpoint.frontend.authentication.send_welcome_email=true
+breakpoint.frontend.webfonts=true

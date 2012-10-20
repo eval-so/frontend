@@ -11,6 +11,9 @@
 <html>
   <head>
     <title>@title - Breakpoint</title>
+    @if(play.api.Play.current.configuration.getBoolean("breakpoint.frontend.webfonts").getOrElse(true)) {
+      <link rel="stylesheet" media="screen" href="//fonts.googleapis.com/css?family=Droid+Sans|Exo|Capriola">
+    }
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.min.css")">
     <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/prettify.css")">
     <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">

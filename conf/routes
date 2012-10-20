@@ -24,6 +24,7 @@ POST    /applications/:id/edit      controllers.BreakpointApplicationController.
 POST    /applications/:id/delete    controllers.BreakpointApplicationController.delete(id: Long)
 
 # APIv1
+GET     /doc/v1/*method              controllers.APIv1Controller.document(method)
 #POST    /api/v1/evaluate            controllers.APIv1Controller.evaluate
 
 # Map static resources from the /public folder to the /assets URL path

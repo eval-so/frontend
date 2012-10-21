@@ -9,7 +9,7 @@ application.secret="l?ccq8K9KUlKJ<8gQ?q3:sn6ONEq_0sLy[YjYTR`:^dUp4DMy1rO6_nGc>ye
 
 # The application languages
 # ~~~~~
-application.langs="en,cy,jbo"
+application.langs="en,cy"
 
 # Global object class
 # ~~~~~

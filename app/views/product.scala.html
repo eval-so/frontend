@@ -1,84 +1,156 @@
 @(user: Option[User])(implicit flash: Flash, l: Lang)
 
 @main(Messages("product.title"), user = user, flash = flash) {
-<div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
+
+<!--<div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">
+  </div>
+</div>-->
+
+<div class="whitebg padtop padbottom" style="z-index: 9;">
+  <div class="constraint clearfix">
     <h1 class="nomargin left">@Messages("product.tagline")</h1>
+    <p class="left nomargin padtop">@Messages("product.it_even_works")</p>
   </div>
 </div>
 
-<div class="whitebg padtop padbottom raiseshadow shadow" style="z-index: 9;">
-  <div class="constraint">
-    <h1 class="nomargin">Welcome!</h1>
-    <p>
-      Breakpoint is a new, open source <i>code evaluation</i> platform.
-      This means that you can run code against our infrastructure in
-      various ways in order to demonstrate how code works in a large number of
-      languages.
-    </p>
+<div class="lightbg padtop padbottom" style="z-index: 9;">
+  <div class="constraint clearfix">
+    <div class="halfwidth left">
+      <h3>Easy-To-Use API</h3>
+      <p class="small">
+        Our JSON API lets you easily send code evaluation requests
+        to our servers, which sometimes work, and get get you the
+        result eventually.
+      </p>
+      <ul>
+        <li>Lets you evaluate code.</li>
+        <li>Via an API.</li>
+        <li>Works sometimes.</li>
+      </ul>
+    </div>
 
-    <p>
-      We provide a simple-to-use JSON interface, which allows you to throw code
-      at our servers and get a result almost instantly. Our platform is
-      distributed, meaning that we can easily add servers to always keep
-      Breakpoint as fast as possible.
-    </p>
+    
+    <div class="halfwidth right">
+      <h3>Equally Easy-To-Use CLI Application</h3>
+      <p class="small">
+        Use Breakpoint right from your own computer with our
+        amazing command-line interface to the platform.
+      </p>
+      <ul>
+        <li>Also lets you evaluate code.</li>
+        <li>You type things at a prompt and get a result.</li>
+        <li>The return code of the CLI Application is that of your code.</li>
+      </ul>
+    </div>
+  </div>
 
-    <h1 class="nomargin">How it works</h1>
-    <p>
-      <!-- BUZZWORDS! -->
-      We use a unique set of technologies to provide a stable, scalable platform
-      that is always ready when you are.
-    </p>
-    <p>
-      At the top of our platform is our officially supported API clients. We
-      offer officially supported clients in Clojure, Scala, Ruby, Python,
-      JavaScript and PHP. But don't fear, making clients for other languages is
-      easy!
-    </p>
-    <p>
-      The next level of the platform is what the API client connects to: Our
-      web tier. The web stack is a simple <a href="http://playframework.org/">
-      Play! 2.0</a> application, written in Scala. When a JSON request hits the
-      web application, it does some validity checking to ensure that you're a
-      valid user and that the request is sane. Afterwards, it transforms the
-      request into a Scala object, and sends it off to our
-      <a href="http://akka.io/">Akka</a> environment.
-    </p>
-    <p>
-      After the request hits Akka, it gets forwarded to the
-      <a href="https://github.com/breakpoint-eval/bcs">Breakpoint Compilation
-      System</a>, or "BCS." BCS creates an <a href="http://selinuxproject.org/">
-      SELinux</a> Sandbox, which is unique to the evaluation being done. BCS
-      tells the sandbox how to process the request, and waits for its response.
-      If it receives a response within the preset time limit, it sends another
-      Scala object, (an <code>EvaluationResponse()</code> object), as a message
-      back up to Akka, which forwards it to the web tier, and finally back to
-      the client. If, however, no response is received, we kill the sandbox and
-      send a <code>EvaluationTimeout()</code> message back to Akka. The web tier
-      handles this as an error condition and informs the user of the timeout.
-    </p>
+  <div class="constraint clearfix">
+    <div class="halfwidth left">
+      <h3>Documentation From Real Users</h3>
+      <p class="small">
+        The API is documented a little bit maybe. And if it's not
+        and you figure out how to use it, you can even contribute
+        documentation and help other people out who aren't as smart
+        as you.
+      </p>
+      <ul>
+        <li>Lets you write things down.</li>
+        <li>Is a wiki.</li>
+        <li>Lets you write things down on a wiki.</li>
+        <li>
+          Is part of the
+          <a href="https://github.com/breakpoint-eval/frontend">Github project</a>
+          because we're too cheap to host it ourselves.
+        </li>        
+        <li>Is sometimes useful.</li>
+      </ul>
+    </div>
 
-    <h1 class="nomargin">How we're different</h1>
-    <p>Well, for one, we exist. ;)</p>
-    <p>
-      There's not a whole lot of code evaluation platforms out there, and
-      certainly no open source ones. But the technology exists to make a really
-      nice platform, and we've decided to harness the power of it to create
-      something we're proud of.
-    </p>
-    <p>
-      Breakpoint sets out to be a very community-centric, fast-paced project.
-      With this comes challenges. We need to work out the best technology to
-      use, get volunteers to help with upkeep, and be able to trust said
-      volunteers.
-    </p>
-    <p>
-      We provide a fast, unique service for free. We allow anyone to contribute
-      to it, fork it for themselves, and in general, make it better. We allow
-      you to choose which architecture your code runs on, while providing unique
-      ways to access the result (see the list of official API clients above).
-    </p>
+    <div class="halfwidth right">
+      <h3>Runs On Fedora and SELinux</h3>
+      <p class="small">
+        Breakpoint's evaluations all take place on
+        <a href="https://fedoraproject.org/">Fedora</a> boxes
+        all over the world. So it's guaranteed to always work,
+        unless it triggers an AVC denial or doesn't feel like
+        it.
+      </p>
+      <ul>
+        <li>Runs on Fedora.</li>
+        <li>Uses SELinux for maximum security.</li>
+        <li>Only kernel panics sometimes.</li>
+        <li>Only AVC-denies things that are guaranteed to have been safe.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="constraint clearfix">
+    <div class="halfwidth left">
+      <h3>Open Source From The Ground Up</h3>
+      <p class="small">
+        All of Breakpoint is open source, including the frontend,
+        our server configurations, the backend code evaluation
+        daemon, and everything in between.
+      </p>
+      <ul>
+        <li>Is source code.</li>
+        <li>Lets you contribute fixes when we fail and get it wrong.</li>
+        <li>Sometimes compiles.</li>
+        <li>But only on February 28<sup>th</sup> of leap years.</li>
+      </ul>
+    </div>
+
+    <div class="halfwidth right">
+      <h3>Runs On Fedora and SELinux</h3>
+      <p class="small">
+        Breakpoint's evaluations all take place on
+        <a href="https://fedoraproject.org/">Fedora</a> boxes
+        all over the world. So it's guaranteed to always work,
+        unless it triggers an AVC denial or doesn't feel like
+        it.
+      </p>
+      <ul>
+        <li>Runs on Fedora.</li>
+        <li>Uses SELinux for maximum security.</li>
+        <li>Only kernel panics sometimes.</li>
+        <li>Only AVC-denies things that are guaranteed to have been safe.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="constraint clearfix">
+    <div class="halfwidth left">
+      <h3>Community Supported</h3>
+      <p class="small">
+        Breakpoint is supported by a thriving and active community who
+        ensures that it never breaks, ever. And if it does break, it's
+        still not broken, shut up.
+      <ul>
+        <li>
+          You can sometimes get help in #breakpoint-eval on
+          irc.freenode.net maybe.
+        </li>
+        <li>You can submit patches when we break things.</li>
+        <li>Or you can submit issues instead and make us do the work.</li>
+        <li>But that's moot because Breakpoint has no bugs, ever.</li>
+      </ul>
+    </div>
+
+    <div class="halfwidth right">
+      <h3>It's Free, So It Must Be Good</h3>
+      <p class="small">
+        Breakpoint is free to use. At some point we might offer a
+        paid tier which increases some limits and lets you do
+        more awesome things than ever before. When it works.
+      </p>
+      <ul>
+        <li>Is free.</li>
+        <li>Doesn't cost you any money.</li>
+        <li>Although we'll take your money if you feel like giving it to us.</li>
+      </ul>
+    </div>
+
   </div>
 </div>
 }

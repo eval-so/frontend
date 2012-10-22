@@ -14,7 +14,8 @@ index.cli_heading = Command-Line App
 index.cli_content = Use the Command-Line Interface (CLI) to evaluate code right from your own computer.
 
 product.title = About Breakpoint
-product.tagline = The first open-source code evaluation platform.
+product.tagline = Breakpoint is a new code evaluation API.
+product.it_even_works = It even works sometimes.
 
 common.full_name = Full Name
 common.username = Username

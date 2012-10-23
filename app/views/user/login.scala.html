@@ -20,6 +20,9 @@
 <div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
   <div class="constraint" style="width: 400px">
     @helper.form(action = routes.UserController.authenticate, 'id -> "login_form") {
+      @loginForm.globalError.map { error =>
+        <div class="fielderror errors">@error.message</div>
+      }
       @helper.inputText(
         loginForm("username"),
         'tabindex -> "1",

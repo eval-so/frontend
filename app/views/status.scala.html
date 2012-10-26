@@ -4,7 +4,7 @@
 <div class="whitebg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">
     <div class="left halfwidth">
-      <h1 class="nomargin">Node Statuses</h1>
+      <h1 class="nomargin"><i class="icon-bar-chart"></i> Node Statuses</h1>
       <p>TODO: Make this ajaxy and nice.</p>
       @servers.groupBy(_.arch).map { arch =>
         <h3 class="nomargin">@arch._1</h3>
@@ -42,14 +42,14 @@
               chart.draw(data, options);
             }
           </script>
-          <span class="@if(server.enabled) { enabled}  else { disabled }">@server.hostname</span>
+          <span class="@if(server.enabled) { enabled }  else { disabled }">@server.hostname</span>
           <span class="right"><div id="evals_@server.hostname" style="width: 90px; height: 27px;"></div></span>
           <hr />
         }
       }
     </div>
     <div class="right halfwidth">
-      <h1 class="nomargin">Breakpoint at a Glance</h1>
+      <h1 class="nomargin"><i class="icon-eye-open"></i> At a Glance</h1>
       Insert fancy graphs about API traffic and things here.
     </div>
   </div>

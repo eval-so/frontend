@@ -16,7 +16,7 @@
 <div class="whitebg padtop padbottom raiseshadow clearfix" style="z-index: 10;">
   <div class="constraint">
     <div class="left halfwidth">
-      <h1 class="nomargin">@Messages("index.try_heading")</h1>
+      <h1 class="nomargin"><i class="icon-pencil"></i> @Messages("index.try_heading")</h1>
       <p>
         @Messages("index.try_content")
       </p>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="right halfwidth">
-      <h1 class="nomargin">@Messages("index.signup")</h1>
+      <h1 class="nomargin"><i class="icon-plus-sign"></i> @Messages("index.signup")</h1>
       @flash.get("signup.success").map { success =>
         <p class="success">@success</p>
       }.getOrElse {
@@ -54,7 +54,7 @@
 <div class="lightbg padtop padbottom shadow clearfix" style="z-index: 9;">
   <div class="constraint">
     <div class="left halfwidth">
-      <h1 class="nomargin">@Messages("index.api_header")</h1>
+      <h1 class="nomargin"><i class="icon-bolt"></i> @Messages("index.api_header")</h1>
       <p>@Messages("index.api_send_explanation")</p>
       <pre class="prettyprint">{
   "username": "myusername",
@@ -80,7 +80,7 @@
     </div>
 
     <div class="right halfwidth">
-      <h1 class="nomargin">@Messages("index.cli_heading")</h1>
+      <h1 class="nomargin"><i class="icon-chevron-right"></i> @Messages("index.cli_heading")</h1>
       <p>
         @Messages("index.cli_content")
       </p>

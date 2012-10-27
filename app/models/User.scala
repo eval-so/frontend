@@ -288,7 +288,9 @@ object User {
             """
             SELECT * FROM users WHERE
             username={username} AND
-            password={password} LIMIT 1
+            password={password} AND
+            confirmed_at IS NOT NULL
+            LIMIT 1
             """
           ).on(
             'username -> username,

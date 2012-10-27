@@ -31,7 +31,7 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
   val applicationForm: Form[BreakpointApplication] = Form(
     mapping(
       "name" -> nonEmptyText,
-      "allow_anonymous_auth" -> checked("allow_anonymous_auth"),
+      "allow_anonymous_auth" -> boolean,
       "description" -> nonEmptyText
     )
     {
@@ -94,7 +94,10 @@ object BreakpointApplicationController extends Controller with Auth with AuthCon
   }
 
   def newApplication = authorizedAction("user") { user => implicit request =>
-    Ok(views.html.applications.newApplication(user, applicationForm))
+    val form = applicationForm.fill(
+      BreakpointApplication(None, "", "", None, false, "")
+    )
+    Ok(views.html.applications.newApplication(user, form))
   }
 
   def create = authorizedAction("user") { user =>

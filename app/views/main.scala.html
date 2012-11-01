@@ -30,7 +30,7 @@
     <div id="header">
       <div class="navbar">
         <div class="constraint">
-          <h1 class="name nomargin exo"><a href="/"><i class="icon-chevron-left"></i> Breakpoint <i class="icon-chevron-right"></i></a></h1>
+          <h1 class="name nomargin exo absolute"><a href="/"><i class="icon-chevron-left"></i> Breakpoint <i class="icon-chevron-right"></i></a></h1>
           <ul>
             @user match {
               case Some(user) => {
@@ -51,7 +51,7 @@
       @flash.get("error").map { message =>
         <div class="flash error">
           <div class="constraint">
-            @message
+            <p class="nomargin nopadding">@message</p>
             <span class="right"><a href="#" id="close_flash_early" style="color: white;">[close]</a></span>
           </div>
         </div>
@@ -59,7 +59,7 @@
       @flash.get("success").map { message =>
         <div class="flash success">
           <div class="constraint">
-            @message
+            <p class="nomargin nopadding">@message</p>
             <span class="right"><a href="#" id="close_flash_early" style="color: white;">[close]</a></span>
           </div>
         </div>

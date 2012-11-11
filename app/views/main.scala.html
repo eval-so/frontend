@@ -51,7 +51,7 @@
       @flash.get("error").map { message =>
         <div class="flash error">
           <div class="constraint">
-            <p class="nomargin nopadding">@message</p>
+            <span class="nomargin nopadding">@message</span>
             <span class="right"><a href="#" id="close_flash_early" style="color: white;">[close]</a></span>
           </div>
         </div>
@@ -59,7 +59,7 @@
       @flash.get("success").map { message =>
         <div class="flash success">
           <div class="constraint">
-            <p class="nomargin nopadding">@message</p>
+            <span class="nomargin nopadding">@message</span>
             <span class="right"><a href="#" id="close_flash_early" style="color: white;">[close]</a></span>
           </div>
         </div>

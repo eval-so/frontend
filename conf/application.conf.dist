@@ -18,7 +18,7 @@ application.langs="en,cy"
 # global=Global
 
 # Database configuration
-# ~~~~~ 
+# ~~~~~
 # You can declare as many datasources as you want.
 # By convention, the default datasource is named `default`
 db.default.driver=org.postgresql.Driver
@@ -49,3 +49,8 @@ smtp.host=localhost
 
 breakpoint.frontend.authentication.send_welcome_email=true
 breakpoint.frontend.webfonts=true
+
+# Google Analytics
+breakpoint.frontend.google_analytics.enable=false
+breakpoint.frontend.google_analytics.account="UA-XXXXXXXX-1"
+breakpoint.frontend.google_analytics.domain="the-domain.org"

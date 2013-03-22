@@ -1,31 +1,9 @@
-# Information pages
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
 GET     /                           controllers.Application.index
-GET     /product                    controllers.Application.product
-GET     /status                     controllers.Application.status
-
-# Authentication and Registration
-POST    /                           controllers.UserController.register
-GET     /user/login                 controllers.UserController.login
-POST    /user/login                 controllers.UserController.authenticate
-GET     /user/logout                controllers.UserController.logout
-GET     /user/logintest             controllers.UserController.isLoggedIn
-GET     /confirm/:userID/:confirmationToken controllers.UserController.confirmRegistration(userID: Long, confirmationToken: String)
-POST    /user/reset_secret_key      controllers.UserController.changeSecretKey
-GET     /user/update_profile        controllers.UserController.editProfile
-POST    /user/update_profile        controllers.UserController.updateProfile
-
-# Applications
-GET     /applications               controllers.BreakpointApplicationController.myApplications
-GET     /applications/new           controllers.BreakpointApplicationController.newApplication
-POST    /applications/new           controllers.BreakpointApplicationController.create
-GET     /applications/:id           controllers.BreakpointApplicationController.application(id: Long)
-GET     /applications/:id/edit      controllers.BreakpointApplicationController.edit(id: Long)
-POST    /applications/:id/edit      controllers.BreakpointApplicationController.update(id: Long)
-POST    /applications/:id/delete    controllers.BreakpointApplicationController.delete(id: Long)
-
-# APIv1
-GET     /doc/v1/*method              controllers.APIv1Controller.document(method)
-#POST    /api/v1/evaluate            controllers.APIv1Controller.evaluate
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

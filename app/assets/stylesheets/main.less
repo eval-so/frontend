@@ -1,0 +1,33 @@
+@footerheight: 30px;
+
+@media (max-width: 767px) {
+    .bp-footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+html, body { height: 100%; }
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -(@footerheight + 10);
+
+    > .container {
+      padding-top: 60px;
+    }
+}
+
+#push, #footer { height: @footerheight; }
+
+
+.bp-footer {
+    background-color: #333333;
+    color: #bbbbbb;
+    padding-top: 10px;
+    clear: both;
+}

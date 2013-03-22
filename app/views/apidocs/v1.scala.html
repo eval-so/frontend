@@ -1,0 +1,76 @@
+@main("eval.gd version 1") {
+<div class="hero-unit">
+  <h1>eval.gd API Version 1.</h1>
+  <p>
+    Want to develop applications around eval.gd? Check out our simple API. It's
+    so simple, it's almost impossible to get wrong.
+  </p>
+</div>
+
+<div class="row">
+
+  <div class="span12">
+    <h2>Evaluate Code</h2>
+    <pre><code>POST /evaluate</code></pre>
+  </div>
+  <div class="span6">
+    <h4><i class="icon-upload-alt"></i> Request</h4>
+    <pre><code>{
+  "api_version": 1,
+  "language": "ruby",
+  "code": "puts 2+2"
+}</code></pre>
+  </div>
+
+  <div class="span6">
+    <h4><i class="icon-download-alt"></i> Response</h4>
+    <pre><code>{
+  "stdout": "4",
+  "stderr": "",
+  "wall_time": "0.020"
+}</code></pre>
+  </div>
+
+  <div class="span12">
+    <h2>List available languages</h2>
+    <pre><code>GET /languages</code></pre>
+  </div>
+  <div class="span6 pull-right">
+    <h4><i class="icon-download-alt"></i> Response</h4>
+    <pre><code>{
+  "languages": [
+    "apricot",
+    "bash",
+    "befunge",
+    "brainfuck",
+    "c",
+    "c#",
+    "c++",
+    ...
+    "smalltalk",
+    "sml",
+    "sqlite",
+    "zsh"
+  ]
+}</code></pre>
+  </div>
+
+  <div class="span12">
+    <h2>Get information about a language</h2>
+    <pre><code>GET /language/:language</code></pre>
+  </div>
+  <div class="span6 pull-right">
+    <h4><i class="icon-download-alt"></i> Response</h4>
+    <pre><code>{
+  "name": "Ruby",
+  "aliases": [
+    "ruby",
+    "mri"
+  ],
+  "version": "ruby-1.9.3.392-29.fc18.x86_64",
+  "notes": "MRI 1.9.3p392"
+}</code></pre>
+  </div>
+
+</div>
+}

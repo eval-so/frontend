@@ -1,7 +1,39 @@
-@(message: String)
+@main("Welcome to eval.gd") {
+<div class="hero-unit">
+  <h1>Code evaluation in the cloud.</h1>
+  <p>
+    eval.gd provides an open source platform based on SELinux sandboxes, for
+    evaluating code in the cloud.
+  </p>
 
-@main("Welcome to Play 2.1") {
-    
-    @play20.welcome(message)
-    
+  <p class="pull-right">
+    <a href="@routes.Application.apiDocs(1)"><i class="icon-book"></i> APIv1 Documentation</a>
+  </p>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <h2>Simple JSON API</h2>
+    <pre><code>POST /evaluate</code></pre>
+  </div>
+  <div class="span6">
+    <h4><i class="icon-upload-alt"></i> Request</h4>
+    <pre><code>{
+  "api_version": 1,
+  "api_key": "35159d04-64f4-4948-b5c4-2a1f513e0cd9",
+  "language": "ruby",
+  "code": "puts 2+2"
+}</code></pre>
+  </div>
+
+  <div class="span6">
+    <h4><i class="icon-download-alt"></i> Response</h4>
+    <pre><code>{
+  "stdout": "4",
+  "stderr": "",
+  "wall_time": "0.020",
+  "remaining_evaluations": 56
+}</code></pre>
+  </div>
+</div>
 }

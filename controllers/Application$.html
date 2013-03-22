@@ -18,7 +18,11 @@
          if(top === self) {
             var url = '../index.html';
             var hash = 'controllers.Application$';
-            window.location.href = url + '#' + hash;
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
          }
    	  </script>
     
@@ -36,15 +40,13 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">Application</span><span class="result"> extends <span class="extype" name="play.api.mvc.Controller">Controller</span> with <a href="../jp/t2v/lab/play20/auth/Auth.html" class="extype" name="jp.t2v.lab.play20.auth.Auth">Auth</a> with <a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a></span>
+        <span class="name">Application</span><span class="result"> extends <span class="extype" name="play.api.mvc.Controller">Controller</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>General purpose controllers and methods.</p><p>Controllers such as index() (the controller which renders /)
-live here.
-</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a>, <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a>, <a href="../jp/t2v/lab/play20/auth/Auth.html" class="extype" name="jp.t2v.lab.play20.auth.Auth">Auth</a>, <span class="extype" name="play.api.mvc.Controller">Controller</span>, <span class="extype" name="play.api.mvc.RequestExtractors">RequestExtractors</span>, <span class="extype" name="play.api.mvc.AcceptExtractors">AcceptExtractors</span>, <span class="extype" name="play.api.http.ContentTypes">ContentTypes</span>, <span class="extype" name="play.api.http.HeaderNames">HeaderNames</span>, <span class="extype" name="play.api.http.Status">play.api.http.Status</span>, <span class="extype" name="play.api.mvc.BodyParsers">BodyParsers</span>, <span class="extype" name="play.api.mvc.Results">Results</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="play.api.mvc.Controller">Controller</span>, <span class="extype" name="play.api.mvc.Rendering">Rendering</span>, <span class="extype" name="play.api.mvc.RequestExtractors">RequestExtractors</span>, <span class="extype" name="play.api.mvc.AcceptExtractors">AcceptExtractors</span>, <span class="extype" name="play.api.http.ContentTypes">ContentTypes</span>, <span class="extype" name="play.api.http.HeaderNames">HeaderNames</span>, <span class="extype" name="play.api.http.Status">play.api.http.Status</span>, <span class="extype" name="play.api.mvc.BodyParsers">BodyParsers</span>, <span class="extype" name="play.api.mvc.Results">Results</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -62,7 +64,7 @@ live here.
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="controllers.Application"><span>Application</span></li><li class="in" name="controllers.AuthConfigImpl"><span>AuthConfigImpl</span></li><li class="in" name="jp.t2v.lab.play20.auth.AuthConfig"><span>AuthConfig</span></li><li class="in" name="jp.t2v.lab.play20.auth.Auth"><span>Auth</span></li><li class="in" name="play.api.mvc.Controller"><span>Controller</span></li><li class="in" name="play.api.mvc.RequestExtractors"><span>RequestExtractors</span></li><li class="in" name="play.api.mvc.AcceptExtractors"><span>AcceptExtractors</span></li><li class="in" name="play.api.http.ContentTypes"><span>ContentTypes</span></li><li class="in" name="play.api.http.HeaderNames"><span>HeaderNames</span></li><li class="in" name="play.api.http.Status"><span>Status</span></li><li class="in" name="play.api.mvc.BodyParsers"><span>BodyParsers</span></li><li class="in" name="play.api.mvc.Results"><span>Results</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="controllers.Application"><span>Application</span></li><li class="in" name="play.api.mvc.Controller"><span>Controller</span></li><li class="in" name="play.api.mvc.Rendering"><span>Rendering</span></li><li class="in" name="play.api.mvc.RequestExtractors"><span>RequestExtractors</span></li><li class="in" name="play.api.mvc.AcceptExtractors"><span>AcceptExtractors</span></li><li class="in" name="play.api.http.ContentTypes"><span>ContentTypes</span></li><li class="in" name="play.api.http.HeaderNames"><span>HeaderNames</span></li><li class="in" name="play.api.http.Status"><span>Status</span></li><li class="in" name="play.api.mvc.BodyParsers"><span>BodyParsers</span></li><li class="in" name="play.api.mvc.Results"><span>Results</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -84,31 +86,8 @@ live here.
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="controllers.AuthConfigImpl.Authority" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="Authority:Authority"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">Authority</span><span class="result"> = <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a> → <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></dd></dl></div>
-    </li><li name="controllers.AuthConfigImpl.Id" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="Id:Id"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">Id</span><span class="result"> = <span class="extype" name="scala.Long">Long</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a> → <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></dd></dl></div>
-    </li><li name="play.api.mvc.Results.Status" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+              <ol><li name="play.api.mvc.Results.Status" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]"></a>
       <a id="Status:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -120,18 +99,6 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="controllers.AuthConfigImpl.User" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="User:User"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">User</span><span class="result"> = <a href="../models/User.html" class="extype" name="models.User">models.User</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a> → <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></dd></dl></div>
     </li></ol>
             </div>
 
@@ -139,7 +106,8 @@ live here.
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -151,7 +119,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -163,7 +132,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
       <a id="##():Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -175,7 +145,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:AnyRef):Boolean"></a>
       <a id="==(AnyRef):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -187,7 +158,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -199,7 +171,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCEPT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCEPT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCEPT:String"></a>
       <a id="ACCEPT:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -211,7 +184,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#ACCEPTED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#ACCEPTED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCEPTED:Int"></a>
       <a id="ACCEPTED:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -223,7 +197,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCEPT_CHARSET" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCEPT_CHARSET" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCEPT_CHARSET:String"></a>
       <a id="ACCEPT_CHARSET:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -235,7 +210,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCEPT_ENCODING" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCEPT_ENCODING" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCEPT_ENCODING:String"></a>
       <a id="ACCEPT_ENCODING:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -247,7 +223,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCEPT_LANGUAGE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCEPT_LANGUAGE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCEPT_LANGUAGE:String"></a>
       <a id="ACCEPT_LANGUAGE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -259,7 +236,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCEPT_RANGES" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCEPT_RANGES" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCEPT_RANGES:String"></a>
       <a id="ACCEPT_RANGES:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -271,7 +249,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_ALLOW_CREDENTIALS" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_ALLOW_CREDENTIALS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCESS_CONTROL_ALLOW_CREDENTIALS:String"></a>
       <a id="ACCESS_CONTROL_ALLOW_CREDENTIALS:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -283,7 +262,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_ALLOW_HEADERS" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_ALLOW_HEADERS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCESS_CONTROL_ALLOW_HEADERS:String"></a>
       <a id="ACCESS_CONTROL_ALLOW_HEADERS:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -295,7 +275,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_ALLOW_METHODS" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_ALLOW_METHODS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCESS_CONTROL_ALLOW_METHODS:String"></a>
       <a id="ACCESS_CONTROL_ALLOW_METHODS:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -307,7 +288,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_ALLOW_ORIGIN" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_ALLOW_ORIGIN" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCESS_CONTROL_ALLOW_ORIGIN:String"></a>
       <a id="ACCESS_CONTROL_ALLOW_ORIGIN:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -319,7 +301,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_EXPOSE_HEADERS" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_EXPOSE_HEADERS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCESS_CONTROL_EXPOSE_HEADERS:String"></a>
       <a id="ACCESS_CONTROL_EXPOSE_HEADERS:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -331,7 +314,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_MAX_AGE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_MAX_AGE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCESS_CONTROL_MAX_AGE:String"></a>
       <a id="ACCESS_CONTROL_MAX_AGE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -343,7 +327,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_REQUEST_HEADERS" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_REQUEST_HEADERS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCESS_CONTROL_REQUEST_HEADERS:String"></a>
       <a id="ACCESS_CONTROL_REQUEST_HEADERS:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -355,7 +340,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_REQUEST_METHOD" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ACCESS_CONTROL_REQUEST_METHOD" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ACCESS_CONTROL_REQUEST_METHOD:String"></a>
       <a id="ACCESS_CONTROL_REQUEST_METHOD:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -367,7 +353,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#AGE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#AGE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="AGE:String"></a>
       <a id="AGE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -379,7 +366,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ALLOW" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ALLOW" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ALLOW:String"></a>
       <a id="ALLOW:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -391,7 +379,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#AUTHORIZATION" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#AUTHORIZATION" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="AUTHORIZATION:String"></a>
       <a id="AUTHORIZATION:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -403,7 +392,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Accepted" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#Accepted" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Accepted:Results.this.Status"></a>
       <a id="Accepted:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -411,11 +401,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Accepted</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">Accepted</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Async" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#Async" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Async(promise:&lt;?&gt;):play.api.mvc.AsyncResult"></a>
       <a id="Async(Future[Result]):AsyncResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -427,7 +418,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.Status#BAD_GATEWAY" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#BAD_GATEWAY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BAD_GATEWAY:Int"></a>
       <a id="BAD_GATEWAY:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -439,7 +431,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#BAD_REQUEST" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#BAD_REQUEST" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BAD_REQUEST:Int"></a>
       <a id="BAD_REQUEST:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -451,7 +444,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.ContentTypes#BINARY" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.ContentTypes#BINARY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BINARY:String"></a>
       <a id="BINARY:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -463,7 +457,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ContentTypes</dd></dl></div>
-    </li><li name="play.api.mvc.Results#BadGateway" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#BadGateway" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BadGateway:Results.this.Status"></a>
       <a id="BadGateway:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -471,11 +466,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">BadGateway</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">BadGateway</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#BadRequest" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#BadRequest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BadRequest:Results.this.Status"></a>
       <a id="BadRequest:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -483,11 +479,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">BadRequest</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">BadRequest</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#CACHE_CONTROL" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#CACHE_CONTROL" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CACHE_CONTROL:String"></a>
       <a id="CACHE_CONTROL:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -499,7 +496,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#CONFLICT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#CONFLICT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CONFLICT:Int"></a>
       <a id="CONFLICT:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -511,7 +509,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#CONNECTION" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#CONNECTION" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CONNECTION:String"></a>
       <a id="CONNECTION:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -523,7 +522,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#CONTENT_DISPOSITION" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#CONTENT_DISPOSITION" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CONTENT_DISPOSITION:String"></a>
       <a id="CONTENT_DISPOSITION:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -535,7 +535,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#CONTENT_ENCODING" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#CONTENT_ENCODING" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CONTENT_ENCODING:String"></a>
       <a id="CONTENT_ENCODING:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -547,7 +548,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#CONTENT_LANGUAGE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#CONTENT_LANGUAGE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CONTENT_LANGUAGE:String"></a>
       <a id="CONTENT_LANGUAGE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -559,7 +561,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#CONTENT_LENGTH" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#CONTENT_LENGTH" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CONTENT_LENGTH:String"></a>
       <a id="CONTENT_LENGTH:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -571,7 +574,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#CONTENT_LOCATION" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#CONTENT_LOCATION" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CONTENT_LOCATION:String"></a>
       <a id="CONTENT_LOCATION:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -583,7 +587,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#CONTENT_MD5" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#CONTENT_MD5" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CONTENT_MD5:String"></a>
       <a id="CONTENT_MD5:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -595,7 +600,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#CONTENT_RANGE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#CONTENT_RANGE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CONTENT_RANGE:String"></a>
       <a id="CONTENT_RANGE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -607,7 +613,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#CONTENT_TRANSFER_ENCODING" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#CONTENT_TRANSFER_ENCODING" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CONTENT_TRANSFER_ENCODING:String"></a>
       <a id="CONTENT_TRANSFER_ENCODING:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -619,7 +626,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#CONTENT_TYPE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#CONTENT_TYPE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CONTENT_TYPE:String"></a>
       <a id="CONTENT_TYPE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -631,7 +639,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#CONTINUE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#CONTINUE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CONTINUE:Int"></a>
       <a id="CONTINUE:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -643,7 +652,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#COOKIE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#COOKIE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="COOKIE:String"></a>
       <a id="COOKIE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -655,7 +665,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#CREATED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#CREATED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CREATED:Int"></a>
       <a id="CREATED:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -667,7 +678,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.ContentTypes#CSS" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.ContentTypes#CSS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CSS(implicitcodec:&lt;?&gt;):String"></a>
       <a id="CSS(Codec):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -675,11 +687,12 @@ live here.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">CSS</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">CSS</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ContentTypes</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Conflict" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#Conflict" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Conflict:Results.this.Status"></a>
       <a id="Conflict:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -687,11 +700,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Conflict</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">Conflict</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Created" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#Created" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Created:Results.this.Status"></a>
       <a id="Created:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -699,11 +713,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Created</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">Created</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#DATE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#DATE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DATE:String"></a>
       <a id="DATE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -715,7 +730,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ETAG" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ETAG" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ETAG:String"></a>
       <a id="ETAG:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -727,7 +743,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.ContentTypes#EVENT_STREAM" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.ContentTypes#EVENT_STREAM" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="EVENT_STREAM(implicitcodec:&lt;?&gt;):String"></a>
       <a id="EVENT_STREAM(Codec):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -735,11 +752,12 @@ live here.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">EVENT_STREAM</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">EVENT_STREAM</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ContentTypes</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#EXPECT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#EXPECT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="EXPECT:String"></a>
       <a id="EXPECT:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -751,7 +769,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#EXPECTATION_FAILED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#EXPECTATION_FAILED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="EXPECTATION_FAILED:Int"></a>
       <a id="EXPECTATION_FAILED:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -763,7 +782,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#EXPIRES" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#EXPIRES" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="EXPIRES:String"></a>
       <a id="EXPIRES:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -775,7 +795,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.mvc.Results#EntityTooLarge" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#EntityTooLarge" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="EntityTooLarge:Results.this.Status"></a>
       <a id="EntityTooLarge:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -783,11 +804,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">EntityTooLarge</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">EntityTooLarge</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#ExpectationFailed" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#ExpectationFailed" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ExpectationFailed:Results.this.Status"></a>
       <a id="ExpectationFailed:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -795,11 +817,25 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">ExpectationFailed</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">ExpectationFailed</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.Status#FORBIDDEN" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#FAILED_DEPENDENCY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FAILED_DEPENDENCY:Int"></a>
+      <a id="FAILED_DEPENDENCY:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">FAILED_DEPENDENCY</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
+    </li><li name="play.api.http.Status#FORBIDDEN" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FORBIDDEN:Int"></a>
       <a id="FORBIDDEN:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -811,7 +847,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.ContentTypes#FORM" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.ContentTypes#FORM" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FORM(implicitcodec:&lt;?&gt;):String"></a>
       <a id="FORM(Codec):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -819,11 +856,12 @@ live here.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">FORM</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">FORM</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ContentTypes</dd></dl></div>
-    </li><li name="play.api.http.Status#FOUND" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#FOUND" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FOUND:Int"></a>
       <a id="FOUND:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -835,7 +873,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#FROM" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#FROM" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FROM:String"></a>
       <a id="FROM:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -847,7 +886,21 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Forbidden" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#FailedDependency" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FailedDependency:Results.this.Status"></a>
+      <a id="FailedDependency:Status"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">FailedDependency</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
+    </li><li name="play.api.mvc.Results#Forbidden" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Forbidden:Results.this.Status"></a>
       <a id="Forbidden:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -855,11 +908,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Forbidden</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">Forbidden</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Found" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#Found" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Found(url:&lt;?&gt;):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
       <a id="Found(String):SimpleResult[EmptyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -871,7 +925,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.Status#GATEWAY_TIMEOUT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#GATEWAY_TIMEOUT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="GATEWAY_TIMEOUT:Int"></a>
       <a id="GATEWAY_TIMEOUT:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -883,7 +938,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#GONE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#GONE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="GONE:Int"></a>
       <a id="GONE:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -895,7 +951,21 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Gone" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#GatewayTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="GatewayTimeout:Results.this.Status"></a>
+      <a id="GatewayTimeout:Status"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">GatewayTimeout</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
+    </li><li name="play.api.mvc.Results#Gone" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Gone:Results.this.Status"></a>
       <a id="Gone:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -903,11 +973,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Gone</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">Gone</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#HOST" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#HOST" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HOST:String"></a>
       <a id="HOST:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -919,7 +990,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.ContentTypes#HTML" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.ContentTypes#HTML" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HTML(implicitcodec:&lt;?&gt;):String"></a>
       <a id="HTML(Codec):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -927,11 +999,12 @@ live here.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">HTML</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">HTML</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ContentTypes</dd></dl></div>
-    </li><li name="play.api.http.Status#HTTP_VERSION_NOT_SUPPORTED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#HTTP_VERSION_NOT_SUPPORTED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HTTP_VERSION_NOT_SUPPORTED:Int"></a>
       <a id="HTTP_VERSION_NOT_SUPPORTED:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -943,7 +1016,21 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#IF_MATCH" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#HttpVersionNotSupported" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HttpVersionNotSupported:Results.this.Status"></a>
+      <a id="HttpVersionNotSupported:Status"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">HttpVersionNotSupported</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
+    </li><li name="play.api.http.HeaderNames#IF_MATCH" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="IF_MATCH:String"></a>
       <a id="IF_MATCH:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -955,7 +1042,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#IF_MODIFIED_SINCE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#IF_MODIFIED_SINCE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="IF_MODIFIED_SINCE:String"></a>
       <a id="IF_MODIFIED_SINCE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -967,7 +1055,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#IF_NONE_MATCH" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#IF_NONE_MATCH" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="IF_NONE_MATCH:String"></a>
       <a id="IF_NONE_MATCH:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -979,7 +1068,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#IF_RANGE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#IF_RANGE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="IF_RANGE:String"></a>
       <a id="IF_RANGE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -991,7 +1081,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#IF_UNMODIFIED_SINCE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#IF_UNMODIFIED_SINCE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="IF_UNMODIFIED_SINCE:String"></a>
       <a id="IF_UNMODIFIED_SINCE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1003,7 +1094,21 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#INTERNAL_SERVER_ERROR" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#INSUFFICIENT_STORAGE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="INSUFFICIENT_STORAGE:Int"></a>
+      <a id="INSUFFICIENT_STORAGE:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">INSUFFICIENT_STORAGE</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
+    </li><li name="play.api.http.Status#INTERNAL_SERVER_ERROR" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="INTERNAL_SERVER_ERROR:Int"></a>
       <a id="INTERNAL_SERVER_ERROR:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1015,7 +1120,21 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.mvc.Results#InternalServerError" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#InsufficientStorage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="InsufficientStorage:Results.this.Status"></a>
+      <a id="InsufficientStorage:Status"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">InsufficientStorage</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
+    </li><li name="play.api.mvc.Results#InternalServerError" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="InternalServerError:Results.this.Status"></a>
       <a id="InternalServerError:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1023,11 +1142,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">InternalServerError</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">InternalServerError</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.ContentTypes#JAVASCRIPT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.ContentTypes#JAVASCRIPT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="JAVASCRIPT(implicitcodec:&lt;?&gt;):String"></a>
       <a id="JAVASCRIPT(Codec):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1035,11 +1155,12 @@ live here.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">JAVASCRIPT</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">JAVASCRIPT</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ContentTypes</dd></dl></div>
-    </li><li name="play.api.http.ContentTypes#JSON" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.ContentTypes#JSON" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="JSON(implicitcodec:&lt;?&gt;):String"></a>
       <a id="JSON(Codec):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1047,11 +1168,12 @@ live here.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">JSON</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">JSON</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ContentTypes</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#LAST_MODIFIED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#LAST_MODIFIED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="LAST_MODIFIED:String"></a>
       <a id="LAST_MODIFIED:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1063,7 +1185,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#LENGTH_REQUIRED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#LENGTH_REQUIRED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="LENGTH_REQUIRED:Int"></a>
       <a id="LENGTH_REQUIRED:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1075,7 +1198,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#LOCATION" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#LOCATION" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="LOCATION:String"></a>
       <a id="LOCATION:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1087,7 +1211,34 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#MAX_FORWARDS" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#LOCKED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="LOCKED:Int"></a>
+      <a id="LOCKED:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">LOCKED</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
+    </li><li name="play.api.mvc.Results#Locked" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Locked:Results.this.Status"></a>
+      <a id="Locked:Status"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Locked</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
+    </li><li name="play.api.http.HeaderNames#MAX_FORWARDS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MAX_FORWARDS:String"></a>
       <a id="MAX_FORWARDS:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1099,7 +1250,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#METHOD_NOT_ALLOWED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#METHOD_NOT_ALLOWED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="METHOD_NOT_ALLOWED:Int"></a>
       <a id="METHOD_NOT_ALLOWED:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1111,7 +1263,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#MOVED_PERMANENTLY" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#MOVED_PERMANENTLY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MOVED_PERMANENTLY:Int"></a>
       <a id="MOVED_PERMANENTLY:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1123,7 +1276,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#MULTIPLE_CHOICES" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#MULTIPLE_CHOICES" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MULTIPLE_CHOICES:Int"></a>
       <a id="MULTIPLE_CHOICES:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1135,7 +1289,21 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.mvc.Results#MethodNotAllowed" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#MULTI_STATUS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MULTI_STATUS:Int"></a>
+      <a id="MULTI_STATUS:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">MULTI_STATUS</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
+    </li><li name="play.api.mvc.Results#MethodNotAllowed" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MethodNotAllowed:Results.this.Status"></a>
       <a id="MethodNotAllowed:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1143,11 +1311,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">MethodNotAllowed</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">MethodNotAllowed</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#MovedPermanently" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#MovedPermanently" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MovedPermanently(url:&lt;?&gt;):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
       <a id="MovedPermanently(String):SimpleResult[EmptyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1159,7 +1328,21 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.Status#NON_AUTHORITATIVE_INFORMATION" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#MultiStatus" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MultiStatus:Results.this.Status"></a>
+      <a id="MultiStatus:Status"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">MultiStatus</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
+    </li><li name="play.api.http.Status#NON_AUTHORITATIVE_INFORMATION" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NON_AUTHORITATIVE_INFORMATION:Int"></a>
       <a id="NON_AUTHORITATIVE_INFORMATION:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1171,7 +1354,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#NOT_ACCEPTABLE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#NOT_ACCEPTABLE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NOT_ACCEPTABLE:Int"></a>
       <a id="NOT_ACCEPTABLE:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1183,7 +1367,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#NOT_FOUND" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#NOT_FOUND" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NOT_FOUND:Int"></a>
       <a id="NOT_FOUND:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1195,7 +1380,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#NOT_IMPLEMENTED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#NOT_IMPLEMENTED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NOT_IMPLEMENTED:Int"></a>
       <a id="NOT_IMPLEMENTED:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1207,7 +1393,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#NOT_MODIFIED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#NOT_MODIFIED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NOT_MODIFIED:Int"></a>
       <a id="NOT_MODIFIED:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1219,7 +1406,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#NO_CONTENT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#NO_CONTENT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NO_CONTENT:Int"></a>
       <a id="NO_CONTENT:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1231,7 +1419,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.mvc.Results#NoContent" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#NoContent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NoContent:play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
       <a id="NoContent:SimpleResult[EmptyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1243,7 +1432,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#NonAuthoritativeInformation" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#NonAuthoritativeInformation" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NonAuthoritativeInformation:Results.this.Status"></a>
       <a id="NonAuthoritativeInformation:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1251,11 +1441,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">NonAuthoritativeInformation</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">NonAuthoritativeInformation</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#NotAcceptable" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#NotAcceptable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NotAcceptable:Results.this.Status"></a>
       <a id="NotAcceptable:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1263,11 +1454,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">NotAcceptable</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">NotAcceptable</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#NotFound" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#NotFound" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NotFound:Results.this.Status"></a>
       <a id="NotFound:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1275,11 +1467,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">NotFound</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">NotFound</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#NotImplemented" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#NotImplemented" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NotImplemented:Results.this.Status"></a>
       <a id="NotImplemented:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1287,11 +1480,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">NotImplemented</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">NotImplemented</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#NotModified" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#NotModified" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="NotModified:play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
       <a id="NotModified:SimpleResult[EmptyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1303,7 +1497,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.Status#OK" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#OK" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="OK:Int"></a>
       <a id="OK:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1315,7 +1510,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#ORIGIN" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#ORIGIN" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ORIGIN:String"></a>
       <a id="ORIGIN:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1327,7 +1523,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Ok" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#Ok" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Ok:Results.this.Status"></a>
       <a id="Ok:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1335,11 +1532,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Ok</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">Ok</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.Status#PARTIAL_CONTENT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#PARTIAL_CONTENT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PARTIAL_CONTENT:Int"></a>
       <a id="PARTIAL_CONTENT:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1351,7 +1549,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#PAYMENT_REQUIRED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#PAYMENT_REQUIRED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PAYMENT_REQUIRED:Int"></a>
       <a id="PAYMENT_REQUIRED:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1363,7 +1562,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#PRAGMA" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#PRAGMA" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PRAGMA:String"></a>
       <a id="PRAGMA:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1375,7 +1575,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#PRECONDITION_FAILED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#PRECONDITION_FAILED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PRECONDITION_FAILED:Int"></a>
       <a id="PRECONDITION_FAILED:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1387,7 +1588,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#PROXY_AUTHENTICATE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#PROXY_AUTHENTICATE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PROXY_AUTHENTICATE:String"></a>
       <a id="PROXY_AUTHENTICATE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1399,7 +1601,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#PROXY_AUTHENTICATION_REQUIRED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#PROXY_AUTHENTICATION_REQUIRED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PROXY_AUTHENTICATION_REQUIRED:Int"></a>
       <a id="PROXY_AUTHENTICATION_REQUIRED:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1411,7 +1614,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#PROXY_AUTHORIZATION" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#PROXY_AUTHORIZATION" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PROXY_AUTHORIZATION:String"></a>
       <a id="PROXY_AUTHORIZATION:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1423,7 +1627,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.mvc.Results#PartialContent" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#PartialContent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PartialContent:Results.this.Status"></a>
       <a id="PartialContent:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1431,11 +1636,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">PartialContent</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">PartialContent</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#PreconditionFailed" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#PreconditionFailed" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PreconditionFailed:Results.this.Status"></a>
       <a id="PreconditionFailed:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1443,11 +1649,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">PreconditionFailed</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">PreconditionFailed</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#RANGE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#RANGE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="RANGE:String"></a>
       <a id="RANGE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1459,7 +1666,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#REFERER" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#REFERER" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="REFERER:String"></a>
       <a id="REFERER:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1471,7 +1679,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#REQUESTED_RANGE_NOT_SATISFIABLE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#REQUESTED_RANGE_NOT_SATISFIABLE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="REQUESTED_RANGE_NOT_SATISFIABLE:Int"></a>
       <a id="REQUESTED_RANGE_NOT_SATISFIABLE:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1483,7 +1692,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#REQUEST_ENTITY_TOO_LARGE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#REQUEST_ENTITY_TOO_LARGE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="REQUEST_ENTITY_TOO_LARGE:Int"></a>
       <a id="REQUEST_ENTITY_TOO_LARGE:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1495,7 +1705,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#REQUEST_TIMEOUT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#REQUEST_TIMEOUT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="REQUEST_TIMEOUT:Int"></a>
       <a id="REQUEST_TIMEOUT:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1507,7 +1718,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#REQUEST_URI_TOO_LONG" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#REQUEST_URI_TOO_LONG" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="REQUEST_URI_TOO_LONG:Int"></a>
       <a id="REQUEST_URI_TOO_LONG:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1519,7 +1731,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#RESET_CONTENT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#RESET_CONTENT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="RESET_CONTENT:Int"></a>
       <a id="RESET_CONTENT:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1531,7 +1744,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#RETRY_AFTER" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#RETRY_AFTER" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="RETRY_AFTER:String"></a>
       <a id="RETRY_AFTER:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1543,7 +1757,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Redirect" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#Redirect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Redirect(call:&lt;?&gt;):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
       <a id="Redirect(Call):SimpleResult[EmptyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1555,7 +1770,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Redirect" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#Redirect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Redirect(url:&lt;?&gt;,queryString:&lt;?&gt;,status:&lt;?&gt;):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
       <a id="Redirect(String,Map[String,Seq[String]],Int):SimpleResult[EmptyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1567,7 +1783,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Redirect" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#Redirect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Redirect(url:&lt;?&gt;,status:&lt;?&gt;):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
       <a id="Redirect(String,Int):SimpleResult[EmptyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1579,7 +1796,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#RequestTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#RequestTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="RequestTimeout:Results.this.Status"></a>
       <a id="RequestTimeout:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1587,11 +1805,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">RequestTimeout</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">RequestTimeout</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#ResetContent" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#ResetContent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ResetContent:play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
       <a id="ResetContent:SimpleResult[EmptyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1603,7 +1822,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.Status#SEE_OTHER" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#SEE_OTHER" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SEE_OTHER:Int"></a>
       <a id="SEE_OTHER:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1615,7 +1835,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#SERVER" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#SERVER" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SERVER:String"></a>
       <a id="SERVER:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1627,7 +1848,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#SERVICE_UNAVAILABLE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#SERVICE_UNAVAILABLE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SERVICE_UNAVAILABLE:Int"></a>
       <a id="SERVICE_UNAVAILABLE:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1639,7 +1861,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#SET_COOKIE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#SET_COOKIE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SET_COOKIE:String"></a>
       <a id="SET_COOKIE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1651,7 +1874,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#SET_COOKIE2" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#SET_COOKIE2" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SET_COOKIE2:String"></a>
       <a id="SET_COOKIE2:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1663,7 +1887,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#SWITCHING_PROTOCOLS" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#SWITCHING_PROTOCOLS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SWITCHING_PROTOCOLS:Int"></a>
       <a id="SWITCHING_PROTOCOLS:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1675,7 +1900,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.mvc.Results#SeeOther" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#SeeOther" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SeeOther(url:&lt;?&gt;):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
       <a id="SeeOther(String):SimpleResult[EmptyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1687,7 +1913,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#ServiceUnavailable" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#ServiceUnavailable" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ServiceUnavailable:Results.this.Status"></a>
       <a id="ServiceUnavailable:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1695,11 +1922,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">ServiceUnavailable</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">ServiceUnavailable</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Status" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#Status" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Status(code:&lt;?&gt;):Results.this.Status"></a>
       <a id="Status(Int):Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1707,11 +1935,12 @@ live here.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">Status</span><span class="params">(<span name="code">code: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">Status</span><span class="params">(<span name="code">code: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#TE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#TE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TE:String"></a>
       <a id="TE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1723,7 +1952,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#TEMPORARY_REDIRECT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#TEMPORARY_REDIRECT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TEMPORARY_REDIRECT:Int"></a>
       <a id="TEMPORARY_REDIRECT:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1735,7 +1965,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.ContentTypes#TEXT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.ContentTypes#TEXT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TEXT(implicitcodec:&lt;?&gt;):String"></a>
       <a id="TEXT(Codec):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1743,11 +1974,12 @@ live here.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">TEXT</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">TEXT</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ContentTypes</dd></dl></div>
-    </li><li name="play.api.mvc.Controller#TODO" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Controller#TODO" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TODO:play.api.mvc.Action[play.api.mvc.AnyContent]"></a>
       <a id="TODO:Action[AnyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1759,7 +1991,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Controller</dd></dl></div>
-    </li><li name="play.api.http.Status#TOO_MANY_REQUEST" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#TOO_MANY_REQUEST" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TOO_MANY_REQUEST:Int"></a>
       <a id="TOO_MANY_REQUEST:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1771,7 +2004,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#TRAILER" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#TRAILER" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TRAILER:String"></a>
       <a id="TRAILER:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1783,7 +2017,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#TRANSFER_ENCODING" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#TRANSFER_ENCODING" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TRANSFER_ENCODING:String"></a>
       <a id="TRANSFER_ENCODING:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1795,7 +2030,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.mvc.Results#TemporaryRedirect" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#TemporaryRedirect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TemporaryRedirect(url:&lt;?&gt;):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
       <a id="TemporaryRedirect(String):SimpleResult[EmptyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1807,7 +2043,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#TooManyRequest" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#TooManyRequest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TooManyRequest:Results.this.Status"></a>
       <a id="TooManyRequest:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1815,11 +2052,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">TooManyRequest</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">TooManyRequest</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.Status#UNAUTHORIZED" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#UNAUTHORIZED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="UNAUTHORIZED:Int"></a>
       <a id="UNAUTHORIZED:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1831,7 +2069,21 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.Status#UNSUPPORTED_MEDIA_TYPE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#UNPROCESSABLE_ENTITY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="UNPROCESSABLE_ENTITY:Int"></a>
+      <a id="UNPROCESSABLE_ENTITY:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">UNPROCESSABLE_ENTITY</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
+    </li><li name="play.api.http.Status#UNSUPPORTED_MEDIA_TYPE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="UNSUPPORTED_MEDIA_TYPE:Int"></a>
       <a id="UNSUPPORTED_MEDIA_TYPE:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1843,7 +2095,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#UPGRADE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#UPGRADE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="UPGRADE:String"></a>
       <a id="UPGRADE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1855,7 +2108,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#USER_AGENT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#USER_AGENT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="USER_AGENT:String"></a>
       <a id="USER_AGENT:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1867,7 +2121,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.Status#USE_PROXY" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.Status#USE_PROXY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="USE_PROXY:Int"></a>
       <a id="USE_PROXY:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1879,7 +2134,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Status</dd></dl></div>
-    </li><li name="play.api.mvc.Results#Unauthorized" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#Unauthorized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Unauthorized:Results.this.Status"></a>
       <a id="Unauthorized:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1887,11 +2143,25 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Unauthorized</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">Unauthorized</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#UnsupportedMediaType" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#UnprocessableEntity" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="UnprocessableEntity:Results.this.Status"></a>
+      <a id="UnprocessableEntity:Status"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">UnprocessableEntity</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
+    </li><li name="play.api.mvc.Results#UnsupportedMediaType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="UnsupportedMediaType:Results.this.Status"></a>
       <a id="UnsupportedMediaType:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1899,11 +2169,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">UnsupportedMediaType</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">UnsupportedMediaType</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.mvc.Results#UriTooLong" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Results#UriTooLong" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="UriTooLong:Results.this.Status"></a>
       <a id="UriTooLong:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1911,11 +2182,12 @@ live here.
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">UriTooLong</span><span class="result">: <a href="#Status:Status" class="extmbr" name="controllers.Application.Status">Status</a></span>
+        <span class="name">UriTooLong</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="controllers.Application.Status">Status</a></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Results</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#VARY" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#VARY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="VARY:String"></a>
       <a id="VARY:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1927,7 +2199,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#VIA" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#VIA" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="VIA:String"></a>
       <a id="VIA:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1939,7 +2212,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#WARNING" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#WARNING" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="WARNING:String"></a>
       <a id="WARNING:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1951,7 +2225,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#WWW_AUTHENTICATE" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#WWW_AUTHENTICATE" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="WWW_AUTHENTICATE:String"></a>
       <a id="WWW_AUTHENTICATE:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1963,7 +2238,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.ContentTypes#XML" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.ContentTypes#XML" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="XML(implicitcodec:&lt;?&gt;):String"></a>
       <a id="XML(Codec):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1971,11 +2247,12 @@ live here.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">XML</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">XML</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ContentTypes</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#X_FORWARDED_FOR" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#X_FORWARDED_FOR" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="X_FORWARDED_FOR:String"></a>
       <a id="X_FORWARDED_FOR:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1987,7 +2264,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#X_FORWARDED_HOST" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#X_FORWARDED_HOST" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="X_FORWARDED_HOST:String"></a>
       <a id="X_FORWARDED_HOST:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1999,7 +2277,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#X_FORWARDED_PORT" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#X_FORWARDED_PORT" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="X_FORWARDED_PORT:String"></a>
       <a id="X_FORWARDED_PORT:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2011,7 +2290,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="play.api.http.HeaderNames#X_FORWARDED_PROTO" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.http.HeaderNames#X_FORWARDED_PROTO" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="X_FORWARDED_PROTO:String"></a>
       <a id="X_FORWARDED_PROTO:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2023,7 +2303,21 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HeaderNames</dd></dl></div>
-    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="controllers.Application#apiDocs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="apiDocs(version:Int):play.api.mvc.Action[play.api.mvc.AnyContent]"></a>
+      <a id="apiDocs(Int):Action[AnyContent]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apiDocs</span><span class="params">(<span name="version">version: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="play.api.mvc.Action">Action</span>[<span class="extype" name="play.api.mvc.AnyContent">AnyContent</span>]</span>
+      </span>
+      </h4>
+      
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2035,81 +2329,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="controllers.AuthConfigImpl#authenticationFailed" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="authenticationFailed(RequestHeader):PlainResult"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">authenticationFailed</span><span class="params">(<span name="request">request: <span class="extype" name="play.api.mvc.RequestHeader">RequestHeader</span></span>)</span><span class="result">: <span class="extype" name="play.api.mvc.PlainResult">PlainResult</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a> → <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></dd></dl></div>
-    </li><li name="controllers.AuthConfigImpl#authorizationFailed" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="authorizationFailed(RequestHeader):PlainResult"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">authorizationFailed</span><span class="params">(<span name="request">request: <span class="extype" name="play.api.mvc.RequestHeader">RequestHeader</span></span>)</span><span class="result">: <span class="extype" name="play.api.mvc.PlainResult">PlainResult</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a> → <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></dd></dl></div>
-    </li><li name="controllers.AuthConfigImpl#authorize" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="authorize(User,Authority):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">authorize</span><span class="params">(<span name="user">user: <a href="#User:User" class="extmbr" name="controllers.Application.User">User</a></span>, <span name="authority">authority: <a href="#Authority:Authority" class="extmbr" name="controllers.Application.Authority">Authority</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Handle authorization based on the kind of <a href="#User:User" class="extmbr" name="controllers.Application.User">User</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Handle authorization based on the kind of <a href="#User:User" class="extmbr" name="controllers.Application.User">User</a>.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a> → <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></dd><dt>To do</dt><dd><span class="cmt"><p>Implement this.
-</p></span></dd></dl></div>
-    </li><li name="jp.t2v.lab.play20.auth.Auth#authorized" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="authorized(Authority)(RequestHeader):Either[PlainResult,User]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">authorized</span><span class="params">(<span name="authority">authority: <a href="#Authority:Authority" class="extmbr" name="controllers.Application.Authority">Authority</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="request">request: <span class="extype" name="play.api.mvc.RequestHeader">RequestHeader</span></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="play.api.mvc.PlainResult">PlainResult</span>, <a href="#User:User" class="extmbr" name="controllers.Application.User">User</a>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../jp/t2v/lab/play20/auth/Auth.html" class="extype" name="jp.t2v.lab.play20.auth.Auth">Auth</a></dd></dl></div>
-    </li><li name="jp.t2v.lab.play20.auth.Auth#authorizedAction" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="authorizedAction[A](BodyParser[A],Authority)((User)⇒(Request[A])⇒Result):Action[A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">authorizedAction</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="p">p: <span class="extype" name="play.api.mvc.BodyParser">BodyParser</span>[<span class="extype" name="jp.t2v.lab.play20.auth.Auth.authorizedAction.A">A</span>]</span>, <span name="authority">authority: <a href="#Authority:Authority" class="extmbr" name="controllers.Application.Authority">Authority</a></span>)</span><span class="params">(<span name="f">f: (<a href="#User:User" class="extmbr" name="controllers.Application.User">User</a>) ⇒ (<span class="extype" name="play.api.mvc.Request">Request</span>[<span class="extype" name="jp.t2v.lab.play20.auth.Auth.authorizedAction.A">A</span>]) ⇒ <span class="extype" name="play.api.mvc.Result">Result</span></span>)</span><span class="result">: <span class="extype" name="play.api.mvc.Action">Action</span>[<span class="extype" name="jp.t2v.lab.play20.auth.Auth.authorizedAction.A">A</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../jp/t2v/lab/play20/auth/Auth.html" class="extype" name="jp.t2v.lab.play20.auth.Auth">Auth</a></dd></dl></div>
-    </li><li name="jp.t2v.lab.play20.auth.Auth#authorizedAction" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="authorizedAction(Authority)((User)⇒(Request[AnyContent])⇒Result):Action[AnyContent]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">authorizedAction</span><span class="params">(<span name="authority">authority: <a href="#Authority:Authority" class="extmbr" name="controllers.Application.Authority">Authority</a></span>)</span><span class="params">(<span name="f">f: (<a href="#User:User" class="extmbr" name="controllers.Application.User">User</a>) ⇒ (<span class="extype" name="play.api.mvc.Request">Request</span>[<span class="extype" name="play.api.mvc.AnyContent">AnyContent</span>]) ⇒ <span class="extype" name="play.api.mvc.Result">Result</span></span>)</span><span class="result">: <span class="extype" name="play.api.mvc.Action">Action</span>[<span class="extype" name="play.api.mvc.AnyContent">AnyContent</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../jp/t2v/lab/play20/auth/Auth.html" class="extype" name="jp.t2v.lab.play20.auth.Auth">Auth</a></dd></dl></div>
-    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2124,7 +2345,8 @@ live here.
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2136,7 +2358,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
       <a id="equals(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2148,7 +2371,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2163,7 +2387,8 @@ live here.
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.api.mvc.Controller#flash" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Controller#flash" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="flash(implicitrequest:play.api.mvc.RequestHeader):play.api.mvc.Flash"></a>
       <a id="flash(RequestHeader):Flash"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2175,7 +2400,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Controller</dd></dl></div>
-    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2187,7 +2413,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2199,19 +2426,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="controllers.AuthConfigImpl#idManifest" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="idManifest:ClassManifest[Id]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">idManifest</span><span class="result">: <span class="extype" name="scala.Predef.ClassManifest">ClassManifest</span>[<a href="#Id:Id" class="extmbr" name="controllers.Application.Id">Id</a>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a> → <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></dd></dl></div>
-    </li><li name="controllers.Application#index" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="controllers.Application#index" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="index:play.api.mvc.Action[play.api.mvc.AnyContent]"></a>
       <a id="index:Action[AnyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2222,9 +2438,9 @@ live here.
         <span class="name">index</span><span class="result">: <span class="extype" name="play.api.mvc.Action">Action</span>[<span class="extype" name="play.api.mvc.AnyContent">AnyContent</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">The index controller.</p><div class="fullcomment"><div class="comment cmt"><p>The index controller.</p><p>Renders / (the front page) of Frontend.
-</p></div></div>
-    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+      
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2236,7 +2452,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.mvc.Controller#lang" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.api.mvc.Controller#lang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="lang(implicitrequest:play.api.mvc.RequestHeader):play.api.i18n.Lang"></a>
       <a id="lang(RequestHeader):Lang"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2248,45 +2465,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Controller</dd></dl></div>
-    </li><li name="controllers.AuthConfigImpl#loginSucceeded" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="loginSucceeded(RequestHeader):PlainResult"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">loginSucceeded</span><span class="params">(<span name="request">request: <span class="extype" name="play.api.mvc.RequestHeader">RequestHeader</span></span>)</span><span class="result">: <span class="extype" name="play.api.mvc.PlainResult">PlainResult</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a> → <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></dd></dl></div>
-    </li><li name="controllers.AuthConfigImpl#logoutSucceeded" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="logoutSucceeded(RequestHeader):PlainResult"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">logoutSucceeded</span><span class="params">(<span name="request">request: <span class="extype" name="play.api.mvc.RequestHeader">RequestHeader</span></span>)</span><span class="result">: <span class="extype" name="play.api.mvc.PlainResult">PlainResult</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a> → <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></dd></dl></div>
-    </li><li name="controllers.Application#md5" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="md5(String):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">md5</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Generate an md5sum hash from a given string.</p><div class="fullcomment"><div class="comment cmt"><p>Generate an md5sum hash from a given string.
-</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>the String to hash.</p></dd><dt>returns</dt><dd class="cmt"><p>a String which is the sha256sum result.
-</p></dd></dl><dl class="attributes block"> <dt>To do</dt><dd><span class="cmt"><p>combine this with sha256 above and rename to something generalized.</p></span></dd></dl></div>
-    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2298,7 +2478,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2310,7 +2491,8 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
       <a id="notifyAll():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2322,81 +2504,21 @@ live here.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="jp.t2v.lab.play20.auth.Auth#optionalUserAction" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="optionalUserAction[A](BodyParser[A])((Option[User])⇒(Request[A])⇒Result):Action[A]"></a>
+    </li><li name="play.api.mvc.Rendering#render" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="render(f:&lt;?&gt;)(implicitrequest:&lt;?&gt;):play.api.mvc.Result"></a>
+      <a id="render(PartialFunction[MediaRange,Result])(RequestHeader):Result"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">optionalUserAction</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="p">p: <span class="extype" name="play.api.mvc.BodyParser">BodyParser</span>[<span class="extype" name="jp.t2v.lab.play20.auth.Auth.optionalUserAction.A">A</span>]</span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Option">Option</span>[<a href="#User:User" class="extmbr" name="controllers.Application.User">User</a>]) ⇒ (<span class="extype" name="play.api.mvc.Request">Request</span>[<span class="extype" name="jp.t2v.lab.play20.auth.Auth.optionalUserAction.A">A</span>]) ⇒ <span class="extype" name="play.api.mvc.Result">Result</span></span>)</span><span class="result">: <span class="extype" name="play.api.mvc.Action">Action</span>[<span class="extype" name="jp.t2v.lab.play20.auth.Auth.optionalUserAction.A">A</span>]</span>
+        <span class="name">render</span><span class="params">(<span name="f">f: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="play.api.http.MediaRange">MediaRange</span>, <span class="extype" name="play.api.mvc.Result">Result</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="request">request: <span class="extype" name="play.api.mvc.RequestHeader">RequestHeader</span></span>)</span><span class="result">: <span class="extype" name="play.api.mvc.Result">Result</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../jp/t2v/lab/play20/auth/Auth.html" class="extype" name="jp.t2v.lab.play20.auth.Auth">Auth</a></dd></dl></div>
-    </li><li name="jp.t2v.lab.play20.auth.Auth#optionalUserAction" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="optionalUserAction((Option[User])⇒(Request[AnyContent])⇒Result):Action[AnyContent]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">optionalUserAction</span><span class="params">(<span name="f">f: (<span class="extype" name="scala.Option">Option</span>[<a href="#User:User" class="extmbr" name="controllers.Application.User">User</a>]) ⇒ (<span class="extype" name="play.api.mvc.Request">Request</span>[<span class="extype" name="play.api.mvc.AnyContent">AnyContent</span>]) ⇒ <span class="extype" name="play.api.mvc.Result">Result</span></span>)</span><span class="result">: <span class="extype" name="play.api.mvc.Action">Action</span>[<span class="extype" name="play.api.mvc.AnyContent">AnyContent</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../jp/t2v/lab/play20/auth/Auth.html" class="extype" name="jp.t2v.lab.play20.auth.Auth">Auth</a></dd></dl></div>
-    </li><li name="play.api.mvc.BodyParsers.parse" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="parse:parse"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <span class="name">parse</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>BodyParsers</dd></dl></div>
-    </li><li name="controllers.Application#product" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="product:Action[AnyContent]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">product</span><span class="result">: <span class="extype" name="play.api.mvc.Action">Action</span>[<span class="extype" name="play.api.mvc.AnyContent">AnyContent</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">The product controller.</p><div class="fullcomment"><div class="comment cmt"><p>The product controller.</p><p>Tell people about what we do, why we're awesome, and why they should use
-our product over our OH SO MANY competitors.
-</p></div></div>
-    </li><li name="controllers.AuthConfigImpl#resolveUser" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="resolveUser(Long):Option[User]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">resolveUser</span><span class="params">(<span name="id">id: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="#User:User" class="extmbr" name="controllers.Application.User">User</a>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a> → <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></dd></dl></div>
-    </li><li name="jp.t2v.lab.play20.auth.AuthConfig#resolver" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="resolver(RequestHeader):RelationResolver[Id]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">resolver</span><span class="params">(<span class="implicit">implicit </span><span name="request">request: <span class="extype" name="play.api.mvc.RequestHeader">RequestHeader</span></span>)</span><span class="result">: <a href="../jp/t2v/lab/play20/auth/RelationResolver.html" class="extype" name="jp.t2v.lab.play20.auth.RelationResolver">RelationResolver</a>[<a href="#Id:Id" class="extmbr" name="controllers.Application.Id">Id</a>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></dd></dl></div>
-    </li><li name="play.api.mvc.Controller#session" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Rendering</dd></dl></div>
+    </li><li name="play.api.mvc.Controller#session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="session(implicitrequest:play.api.mvc.RequestHeader):play.api.mvc.Session"></a>
       <a id="session(RequestHeader):Session"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2408,47 +2530,8 @@ our product over our OH SO MANY competitors.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Controller</dd></dl></div>
-    </li><li name="controllers.AuthConfigImpl#sessionTimeoutInSeconds" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="sessionTimeoutInSeconds:Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sessionTimeoutInSeconds</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a> → <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></dd></dl></div>
-    </li><li name="controllers.Application#sha256" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="sha256(String):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sha256</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Generate a sha256 hash from a given string.</p><div class="fullcomment"><div class="comment cmt"><p>Generate a sha256 hash from a given string.
-</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>the String to hash.</p></dd><dt>returns</dt><dd class="cmt"><p>a String which is the sha256sum result.
-</p></dd></dl></div>
-    </li><li name="controllers.Application#status" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="status:Action[AnyContent]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">status</span><span class="result">: <span class="extype" name="play.api.mvc.Action">Action</span>[<span class="extype" name="play.api.mvc.AnyContent">AnyContent</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">The status controller.</p><div class="fullcomment"><div class="comment cmt"><p>The status controller.</p><p>Give a quick overview about the status of our servers.
-Mostly, things like:</p><ul><li>Current load</li><li>Number of enabled vs. disabled servers
-</li></ul></div></div>
-    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2460,7 +2543,8 @@ Mostly, things like:</p><ul><li>Current load</li><li>Number of enabled vs. disab
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
       <a id="toString():String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2472,7 +2556,8 @@ Mostly, things like:</p><ul><li>Current load</li><li>Number of enabled vs. disab
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2487,7 +2572,8 @@ Mostly, things like:</p><ul><li>Current load</li><li>Number of enabled vs. disab
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
       <a id="wait(Long,Int):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2502,7 +2588,8 @@ Mostly, things like:</p><ul><li>Current load</li><li>Number of enabled vs. disab
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
       <a id="wait(Long):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -2517,6 +2604,19 @@ Mostly, things like:</p><ul><li>Current load</li><li>Number of enabled vs. disab
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="play.api.http.ContentTypes#withCharset" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="withCharset(mimeType:&lt;?&gt;)(implicitcodec:&lt;?&gt;):String"></a>
+      <a id="withCharset(String)(Codec):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withCharset</span><span class="params">(<span name="mimeType">mimeType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <span class="extype" name="play.api.mvc.Codec">Codec</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ContentTypes</dd></dl></div>
     </li></ol>
             </div>
 
@@ -2526,14 +2626,10 @@ Mostly, things like:</p><ul><li>Current load</li><li>Number of enabled vs. disab
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="controllers.AuthConfigImpl">
-              <h3>Inherited from <a href="AuthConfigImpl.html" class="extype" name="controllers.AuthConfigImpl">AuthConfigImpl</a></h3>
-            </div><div class="parent" name="jp.t2v.lab.play20.auth.AuthConfig">
-              <h3>Inherited from <a href="../jp/t2v/lab/play20/auth/AuthConfig.html" class="extype" name="jp.t2v.lab.play20.auth.AuthConfig">AuthConfig</a></h3>
-            </div><div class="parent" name="jp.t2v.lab.play20.auth.Auth">
-              <h3>Inherited from <a href="../jp/t2v/lab/play20/auth/Auth.html" class="extype" name="jp.t2v.lab.play20.auth.Auth">Auth</a></h3>
-            </div><div class="parent" name="play.api.mvc.Controller">
+        <div class="parent" name="play.api.mvc.Controller">
               <h3>Inherited from <span class="extype" name="play.api.mvc.Controller">Controller</span></h3>
+            </div><div class="parent" name="play.api.mvc.Rendering">
+              <h3>Inherited from <span class="extype" name="play.api.mvc.Rendering">Rendering</span></h3>
             </div><div class="parent" name="play.api.mvc.RequestExtractors">
               <h3>Inherited from <span class="extype" name="play.api.mvc.RequestExtractors">RequestExtractors</span></h3>
             </div><div class="parent" name="play.api.mvc.AcceptExtractors">
@@ -2557,8 +2653,8 @@ Mostly, things like:</p><ul><li>Current load</li><li>Number of enabled vs. disab
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="No Group">
-              <h3>No Group</h3>
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
               
             </div>
         </div>

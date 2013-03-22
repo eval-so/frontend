@@ -18,7 +18,11 @@
          if(top === self) {
             var url = '../../index.html';
             var hash = 'views.html.package';
-            window.location.href = url + '#' + hash;
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
          }
    	  </script>
     
@@ -86,43 +90,21 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="views.html.applications" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="applications:applications"></a>
+              <ol><li name="views.html.apidocs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="apidocs"></a>
+      <a id="apidocs:apidocs"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a href="applications/package.html"><span class="name">applications</span></a>
+        <a href="apidocs/package.html"><span class="name">apidocs</span></a>
       </span>
       </h4>
       
-    </li><li name="views.html.error" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="error:error"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="error$.html"><span class="name">error</span></a><span class="result"> extends <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]] with <span class="extype" name="play.api.templates.Template4">Template4</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="play.api.mvc.Flash">Flash</span>, <span class="extype" name="play.api.i18n.Lang">Lang</span>, <span class="extype" name="play.api.templates.Html">Html</span>]</span>
-      </span>
-      </h4>
-      <p class="comment cmt"></p>
-    </li><li name="views.html.helpers" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="helpers:helpers"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="helpers$.html"><span class="name">helpers</span></a><span class="result"> extends <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]] with <span class="extype" name="play.api.templates.Template1">Template1</span>[<span class="extype" name="views.html.helper.FieldElements">FieldElements</span>, <span class="extype" name="play.api.templates.Html">Html</span>]</span>
-      </span>
-      </h4>
-      <p class="comment cmt"></p>
-    </li><li name="views.html.index" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
+    </li><li name="views.html.index" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="index"></a>
       <a id="index:index"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -130,11 +112,12 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="index$.html"><span class="name">index</span></a><span class="result"> extends <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]] with <span class="extype" name="play.api.templates.Template4">Template4</span>[<span class="extype" name="scala.Option">Option</span>[<a href="../../models/User.html" class="extype" name="models.User">User</a>], <span class="extype" name="play.api.data.Form">Form</span>[<a href="../../models/User.html" class="extype" name="models.User">User</a>], <span class="extype" name="play.api.mvc.Flash">Flash</span>, <span class="extype" name="play.api.i18n.Lang">Lang</span>, <span class="extype" name="play.api.templates.Html">Html</span>]</span>
+        <a href="index$.html"><span class="name">index</span></a><span class="result"> extends <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]] with <span class="extype" name="play.api.templates.Template0">Template0</span>[<span class="extype" name="play.api.templates.Html">Html</span>]</span>
       </span>
       </h4>
       <p class="comment cmt"></p>
-    </li><li name="views.html.main" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
+    </li><li name="views.html.main" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="main"></a>
       <a id="main:main"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -142,46 +125,10 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="main$.html"><span class="name">main</span></a><span class="result"> extends <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]] with <span class="extype" name="play.api.templates.Template6">Template6</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Boolean">Boolean</span>, <span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Option">Option</span>[<a href="../../models/User.html" class="extype" name="models.User">User</a>], <span class="extype" name="play.api.mvc.Flash">Flash</span>, <span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.api.templates.Html">Html</span>]</span>
+        <a href="main$.html"><span class="name">main</span></a><span class="result"> extends <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]] with <span class="extype" name="play.api.templates.Template2">Template2</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.api.templates.Html">Html</span>]</span>
       </span>
       </h4>
       <p class="comment cmt"></p>
-    </li><li name="views.html.product" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="product:product"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="product$.html"><span class="name">product</span></a><span class="result"> extends <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]] with <span class="extype" name="play.api.templates.Template3">Template3</span>[<span class="extype" name="scala.Option">Option</span>[<a href="../../models/User.html" class="extype" name="models.User">User</a>], <span class="extype" name="play.api.mvc.Flash">Flash</span>, <span class="extype" name="play.api.i18n.Lang">Lang</span>, <span class="extype" name="play.api.templates.Html">Html</span>]</span>
-      </span>
-      </h4>
-      <p class="comment cmt"></p>
-    </li><li name="views.html.status" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="status:status"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="status$.html"><span class="name">status</span></a><span class="result"> extends <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]] with <span class="extype" name="play.api.templates.Template4">Template4</span>[<span class="extype" name="scala.Option">Option</span>[<a href="../../models/User.html" class="extype" name="models.User">User</a>], <span class="extype" name="scala.List">List</span>[<a href="../../models/Server.html" class="extype" name="models.Server">Server</a>], <span class="extype" name="play.api.mvc.Flash">Flash</span>, <span class="extype" name="play.api.i18n.Lang">Lang</span>, <span class="extype" name="play.api.templates.Html">Html</span>]</span>
-      </span>
-      </h4>
-      <p class="comment cmt"></p>
-    </li><li name="views.html.user" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="user:user"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a href="user/package.html"><span class="name">user</span></a>
-      </span>
-      </h4>
-      
     </li></ol>
             </div>
 
@@ -200,8 +147,8 @@
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="No Group">
-              <h3>No Group</h3>
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
               
             </div>
         </div>

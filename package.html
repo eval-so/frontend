@@ -18,7 +18,11 @@
          if(top === self) {
             var url = 'index.html';
             var hash = 'package';
-            window.location.href = url + '#' + hash;
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
          }
    	  </script>
     
@@ -63,7 +67,8 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="_root_.Routes" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
+              <ol><li name="_root_.Routes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Routes"></a>
       <a id="Routes:Routes"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -75,19 +80,8 @@
       </span>
       </h4>
       
-    </li><li name="_root_.breakpoint" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="breakpoint:breakpoint"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a href="breakpoint/package.html"><span class="name">breakpoint</span></a>
-      </span>
-      </h4>
-      
-    </li><li name="_root_.controllers" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
+    </li><li name="_root_.controllers" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="controllers"></a>
       <a id="controllers:controllers"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -99,31 +93,8 @@
       </span>
       </h4>
       
-    </li><li name="_root_.jp" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="jp:jp"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a href="jp/package.html"><span class="name">jp</span></a>
-      </span>
-      </h4>
-      
-    </li><li name="_root_.models" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="models:models"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a href="models/package.html"><span class="name">models</span></a>
-      </span>
-      </h4>
-      
-    </li><li name="_root_.views" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
+    </li><li name="_root_.views" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="views"></a>
       <a id="views:views"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -149,8 +120,8 @@
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="No Group">
-              <h3>No Group</h3>
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
               
             </div>
         </div>

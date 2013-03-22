@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>myApplications - views.html.applications.myApplications</title>
-          <meta name="description" content="myApplications - views.html.applications.myApplications" />
-          <meta name="keywords" content="myApplications views.html.applications.myApplications" />
+          <title>v1 - views.html.apidocs.v1</title>
+          <meta name="description" content="v1 - views.html.apidocs.v1" />
+          <meta name="keywords" content="v1 views.html.apidocs.v1" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -17,8 +17,12 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
-            var hash = 'views.html.applications.myApplications$';
-            window.location.href = url + '#' + hash;
+            var hash = 'views.html.apidocs.v1$';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
          }
    	  </script>
     
@@ -26,8 +30,8 @@
         <body class="value">
       <div id="definition">
         <img src="../../../lib/object_big.png" />
-        <p id="owner"><a href="../../package.html" class="extype" name="views">views</a>.<a href="../package.html" class="extype" name="views.html">html</a>.<a href="package.html" class="extype" name="views.html.applications">applications</a></p>
-        <h1>myApplications</h1>
+        <p id="owner"><a href="../../package.html" class="extype" name="views">views</a>.<a href="../package.html" class="extype" name="views.html">html</a>.<a href="package.html" class="extype" name="views.html.apidocs">apidocs</a></p>
+        <h1>v1</h1>
       </div>
 
       <h4 id="signature" class="signature">
@@ -36,13 +40,13 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">myApplications</span><span class="result"> extends <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]] with <span class="extype" name="play.api.templates.Template4">Template4</span>[<a href="../../../models/User.html" class="extype" name="models.User">User</a>, <span class="extype" name="scala.List">List</span>[<a href="../../../models/BreakpointApplication.html" class="extype" name="models.BreakpointApplication">BreakpointApplication</a>], <span class="extype" name="play.api.mvc.Flash">Flash</span>, <span class="extype" name="play.api.i18n.Lang">Lang</span>, <span class="extype" name="play.api.templates.Html">Html</span>]</span>
+        <span class="name">v1</span><span class="result"> extends <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]] with <span class="extype" name="play.api.templates.Template0">Template0</span>[<span class="extype" name="play.api.templates.Html">Html</span>]</span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="play.api.templates.Template4">Template4</span>[<a href="../../../models/User.html" class="extype" name="models.User">User</a>, <span class="extype" name="scala.List">List</span>[<a href="../../../models/BreakpointApplication.html" class="extype" name="models.BreakpointApplication">BreakpointApplication</a>], <span class="extype" name="play.api.mvc.Flash">Flash</span>, <span class="extype" name="play.api.i18n.Lang">Lang</span>, <span class="extype" name="play.api.templates.Html">Html</span>], <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="play.api.templates.Template0">Template0</span>[<span class="extype" name="play.api.templates.Html">Html</span>], <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -60,7 +64,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="views.html.applications.myApplications"><span>myApplications</span></li><li class="in" name="play.api.templates.Template4"><span>Template4</span></li><li class="in" name="play.templates.BaseScalaTemplate"><span>BaseScalaTemplate</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="views.html.apidocs.v1"><span>v1</span></li><li class="in" name="play.api.templates.Template0"><span>Template0</span></li><li class="in" name="play.templates.BaseScalaTemplate"><span>BaseScalaTemplate</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -86,7 +90,8 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -98,7 +103,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -110,7 +116,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
       <a id="##():Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -122,7 +129,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:AnyRef):Boolean"></a>
       <a id="==(AnyRef):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -134,7 +142,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -146,31 +155,34 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.templates.BaseScalaTemplate#_display_" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="_display_(Any)(Manifest[Html]):Html"></a>
+    </li><li name="play.templates.BaseScalaTemplate#_display_" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="_display_(o:Any)(implicitct:scala.reflect.ClassTag[T]):T"></a>
+      <a id="_display_(Any)(ClassTag[Html]):Html"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">_display_</span><span class="params">(<span name="o">o: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="m">m: <span class="extype" name="scala.Predef.Manifest">Manifest</span>[<span class="extype" name="play.api.templates.Html">Html</span>]</span>)</span><span class="result">: <span class="extype" name="play.api.templates.Html">Html</span></span>
+        <span class="name">_display_</span><span class="params">(<span name="o">o: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ct">ct: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="play.api.templates.Html">Html</span>]</span>)</span><span class="result">: <span class="extype" name="play.api.templates.Html">Html</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>BaseScalaTemplate</dd></dl></div>
-    </li><li name="views.html.applications.myApplications#apply" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="apply(User,List[BreakpointApplication])(Flash,Lang):Html"></a>
+    </li><li name="views.html.apidocs.v1#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="apply():play.api.templates.Html"></a>
+      <a id="apply():Html"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="user">user: <a href="../../../models/User.html" class="extype" name="models.User">User</a></span>, <span name="applications">applications: <span class="extype" name="scala.List">List</span>[<a href="../../../models/BreakpointApplication.html" class="extype" name="models.BreakpointApplication">BreakpointApplication</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="flash">flash: <span class="extype" name="play.api.mvc.Flash">Flash</span></span>, <span name="l">l: <span class="extype" name="play.api.i18n.Lang">Lang</span></span>)</span><span class="result">: <span class="extype" name="play.api.templates.Html">Html</span></span>
+        <span class="name">apply</span><span class="params">()</span><span class="result">: <span class="extype" name="play.api.templates.Html">Html</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p>
-    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -182,7 +194,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -197,7 +210,8 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -209,19 +223,21 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="views.html.applications.myApplications#f" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="f:(User,List[BreakpointApplication])⇒(Flash,Lang)⇒Html"></a>
+    </li><li name="views.html.apidocs.v1#f" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="f:()=&gt;play.api.templates.Html"></a>
+      <a id="f:()⇒Html"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">f</span><span class="result">: (<a href="../../../models/User.html" class="extype" name="models.User">User</a>, <span class="extype" name="scala.List">List</span>[<a href="../../../models/BreakpointApplication.html" class="extype" name="models.BreakpointApplication">BreakpointApplication</a>]) ⇒ (<span class="extype" name="play.api.mvc.Flash">Flash</span>, <span class="extype" name="play.api.i18n.Lang">Lang</span>) ⇒ <span class="extype" name="play.api.templates.Html">Html</span></span>
+        <span class="name">f</span><span class="result">: () ⇒ <span class="extype" name="play.api.templates.Html">Html</span></span>
       </span>
       </h4>
       
-    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -236,7 +252,8 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.templates.BaseScalaTemplate#format" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="play.templates.BaseScalaTemplate#format" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="format:F"></a>
       <a id="format:Format[Html]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -248,7 +265,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>BaseScalaTemplate</dd></dl></div>
-    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -260,7 +278,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -272,7 +291,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -284,7 +304,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -296,7 +317,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
       <a id="notifyAll():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -308,31 +330,34 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="views.html.applications.myApplications#ref" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="ref:myApplications.this.type"></a>
+    </li><li name="views.html.apidocs.v1#ref" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ref:views.html.apidocs.v1.type"></a>
+      <a id="ref:v1.this.type"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ref</span><span class="result">: <a href="" class="extype" name="views.html.applications.myApplications">myApplications</a>.this.type</span>
+        <span class="name">ref</span><span class="result">: <a href="" class="extype" name="views.html.apidocs.v1">v1</a>.this.type</span>
       </span>
       </h4>
       
-    </li><li name="views.html.applications.myApplications#render" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
-      <a id="render(User,List[BreakpointApplication],Flash,Lang):Html"></a>
+    </li><li name="views.html.apidocs.v1#render" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="render():play.api.templates.Html"></a>
+      <a id="render():Html"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">render</span><span class="params">(<span name="user">user: <a href="../../../models/User.html" class="extype" name="models.User">User</a></span>, <span name="applications">applications: <span class="extype" name="scala.List">List</span>[<a href="../../../models/BreakpointApplication.html" class="extype" name="models.BreakpointApplication">BreakpointApplication</a>]</span>, <span name="flash">flash: <span class="extype" name="play.api.mvc.Flash">Flash</span></span>, <span name="l">l: <span class="extype" name="play.api.i18n.Lang">Lang</span></span>)</span><span class="result">: <span class="extype" name="play.api.templates.Html">Html</span></span>
+        <span class="name">render</span><span class="params">()</span><span class="result">: <span class="extype" name="play.api.templates.Html">Html</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="views.html.applications.myApplications">myApplications</a> → Template4</dd></dl></div>
-    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="views.html.apidocs.v1">v1</a> → Template0</dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -344,7 +369,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -359,7 +385,8 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
       <a id="wait(Long,Int):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -374,7 +401,8 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="No Group">
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
       <a id="wait(Long):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -398,8 +426,8 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="play.api.templates.Template4">
-              <h3>Inherited from <span class="extype" name="play.api.templates.Template4">Template4</span>[<a href="../../../models/User.html" class="extype" name="models.User">User</a>, <span class="extype" name="scala.List">List</span>[<a href="../../../models/BreakpointApplication.html" class="extype" name="models.BreakpointApplication">BreakpointApplication</a>], <span class="extype" name="play.api.mvc.Flash">Flash</span>, <span class="extype" name="play.api.i18n.Lang">Lang</span>, <span class="extype" name="play.api.templates.Html">Html</span>]</h3>
+        <div class="parent" name="play.api.templates.Template0">
+              <h3>Inherited from <span class="extype" name="play.api.templates.Template0">Template0</span>[<span class="extype" name="play.api.templates.Html">Html</span>]</h3>
             </div><div class="parent" name="play.templates.BaseScalaTemplate">
               <h3>Inherited from <span class="extype" name="play.templates.BaseScalaTemplate">BaseScalaTemplate</span>[<span class="extype" name="play.api.templates.Html">Html</span>, <span class="extype" name="play.templates.Format">Format</span>[<span class="extype" name="play.api.templates.Html">Html</span>]]</h3>
             </div><div class="parent" name="scala.Serializable">
@@ -419,8 +447,8 @@
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="No Group">
-              <h3>No Group</h3>
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
               
             </div>
         </div>

@@ -18,7 +18,11 @@
          if(top === self) {
             var url = '../../index.html';
             var hash = 'controllers.javascript.package';
-            window.location.href = url + '#' + hash;
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
          }
    	  </script>
     
@@ -59,19 +63,8 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="controllers.javascript.ReverseAPIv1Controller" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="ReverseAPIv1Controller:ReverseAPIv1Controller"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="ReverseAPIv1Controller.html"><span class="name">ReverseAPIv1Controller</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="controllers.javascript.ReverseApplication" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
+              <ol><li name="controllers.javascript.ReverseApplication" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ReverseApplicationextendsObject"></a>
       <a id="ReverseApplication:ReverseApplication"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -83,7 +76,8 @@
       </span>
       </h4>
       
-    </li><li name="controllers.javascript.ReverseAssets" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
+    </li><li name="controllers.javascript.ReverseAssets" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ReverseAssetsextendsObject"></a>
       <a id="ReverseAssets:ReverseAssets"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -95,27 +89,16 @@
       </span>
       </h4>
       
-    </li><li name="controllers.javascript.ReverseBreakpointApplicationController" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="ReverseBreakpointApplicationController:ReverseBreakpointApplicationController"></a>
+    </li><li name="controllers.javascript.ReverseWebJarAssets" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ReverseWebJarAssetsextendsObject"></a>
+      <a id="ReverseWebJarAssets:ReverseWebJarAssets"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ReverseBreakpointApplicationController.html"><span class="name">ReverseBreakpointApplicationController</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="controllers.javascript.ReverseUserController" visbl="pub" data-isabs="false" fullComment="no" group="No Group">
-      <a id="ReverseUserController:ReverseUserController"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="ReverseUserController.html"><span class="name">ReverseUserController</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="ReverseWebJarAssets.html"><span class="name">ReverseWebJarAssets</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
@@ -137,8 +120,8 @@
         </div>
 
         <div id="groupedMembers">
-        <div class="group" name="No Group">
-              <h3>No Group</h3>
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
               
             </div>
         </div>

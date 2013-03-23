@@ -15,7 +15,7 @@ html, body { height: 100%; }
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -(@footerheight + 10);
+    margin: 0 auto -(@footerheight + 10); /* 10px for bp-footer's padding-top */
 
     > .container {
       padding-top: 60px;
@@ -23,7 +23,6 @@ html, body { height: 100%; }
 }
 
 #push, #footer { height: @footerheight; }
-
 
 .bp-footer {
     background-color: #333333;

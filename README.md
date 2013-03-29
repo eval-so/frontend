@@ -1,8 +1,8 @@
-# Breakpoint Frontend
+# Eval.gd Frontend
 
-[![Build Status](https://secure.travis-ci.org/breakpoint-eval/frontend.png?branch=master)](http://travis-ci.org/breakpoint-eval/frontend)
+[![Build Status](https://secure.travis-ci.org/eval-gd/frontend.png?branch=master)](http://travis-ci.org/eval-gd/frontend)
 
-This is the Frontend to the Breakpoint Eval system.
+This is the Frontend to the Eval.gd sandboxed code evaluation system.
 
 This means:
 * Users register, log in, create apps, etc, via this frontend.

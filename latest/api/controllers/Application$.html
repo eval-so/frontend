@@ -86,7 +86,20 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.api.mvc.Results.Status" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+              <ol><li name="controllers.Application.Evaluation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EvaluationextendsProductwithSerializable"></a>
+      <a id="Evaluation:Evaluation"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Application$$Evaluation.html"><span class="name">Evaluation</span></a><span class="params">(<span name="language">language: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="code">code: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="play.api.mvc.Results.Status" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]"></a>
       <a id="Status:Status"></a>
       <h4 class="signature">
@@ -2371,6 +2384,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="controllers.Application#evaluationWrites" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="evaluationWrites:play.api.libs.json.Writes[gd.eval.SandboxedLanguage.Result]"></a>
+      <a id="evaluationWrites:Writes[Result]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">evaluationWrites</span><span class="result">: <span class="extype" name="play.api.libs.json.Writes">Writes</span>[<span class="extype" name="gd.eval.SandboxedLanguage.Result">Result</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -2504,6 +2530,32 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.mvc.BodyParsers.parse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="parse"></a>
+      <a id="parse:parse"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parse</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>BodyParsers</dd></dl></div>
+    </li><li name="controllers.Application#rds" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="rds:play.api.libs.json.Reads[(String,String)]"></a>
+      <a id="rds:Reads[(String,String)]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">rds</span><span class="result">: <span class="extype" name="play.api.libs.json.Reads">Reads</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
+      </span>
+      </h4>
+      
     </li><li name="play.api.mvc.Rendering#render" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="render(f:&lt;?&gt;)(implicitrequest:&lt;?&gt;):play.api.mvc.Result"></a>
       <a id="render(PartialFunction[MediaRange,Result])(RequestHeader):Result"></a>
@@ -2517,6 +2569,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Rendering</dd></dl></div>
+    </li><li name="controllers.Application#sayHello" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="sayHello:play.api.mvc.Action[play.api.libs.json.JsValue]"></a>
+      <a id="sayHello:Action[JsValue]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sayHello</span><span class="result">: <span class="extype" name="play.api.mvc.Action">Action</span>[<span class="extype" name="play.api.libs.json.JsValue">JsValue</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="play.api.mvc.Controller#session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="session(implicitrequest:play.api.mvc.RequestHeader):play.api.mvc.Session"></a>
       <a id="session(RequestHeader):Session"></a>

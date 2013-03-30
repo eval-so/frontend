@@ -1,0 +1,19 @@
+@main("Try eval.gd") {
+<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery.autosize.js")"></script>
+<script type="text/javascript" src="@routes.Assets.at("javascripts/tryEvalGD.min.js")"></script>
+
+<div class="row">
+  <div class="span6">
+    <textarea class="stupidly-plain" placeholder="Type Ruby code here and press control-enter when you are done."></textarea>
+  </div>
+  <div class="span6">
+    <pre id="result" class="stupidly-plain">JSON output will display here.</pre>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $('textarea').autosize();
+  });
+</script>
+}

@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index
+GET     /try                        controllers.Application.tryEvalGD
 GET     /api/v/:version             controllers.Application.apiDocs(version: Int)
 POST    /jsontest                   controllers.Application.sayHello
 

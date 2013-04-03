@@ -18,6 +18,8 @@ object Application extends Controller {
 
   def tryEvalGD = Action { Ok(views.html.tryEvalGD()) }
 
+  def languages = Action { Ok(Json.obj("languages" -> gd.eval.Router.languages.keys)) }
+
   case class Evaluation(language: String, code: String)
 
   implicit val rds = (

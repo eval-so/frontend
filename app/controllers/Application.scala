@@ -14,13 +14,9 @@ object Application extends Controller {
     Ok(views.html.index())
   }
 
-  def apiDocs(version: Int) = Action {
-    Ok(views.html.apidocs.v1())
-  }
+  def apiDocs(version: Int) = Action { Ok(views.html.apidocs.v1()) }
 
-  def tryEvalGD = Action {
-    Ok(views.html.tryEvalGD())
-  }
+  def tryEvalGD = Action { Ok(views.html.tryEvalGD()) }
 
   case class Evaluation(language: String, code: String)
 

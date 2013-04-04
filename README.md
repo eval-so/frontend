@@ -1,8 +1,8 @@
-# Eval.gd Frontend
+# Eval.so Frontend
 
-[![Build Status](https://secure.travis-ci.org/eval-gd/frontend.png?branch=master)](http://travis-ci.org/eval-gd/frontend)
+[![Build Status](https://secure.travis-ci.org/eval-so/frontend.png?branch=master)](http://travis-ci.org/eval-so/frontend)
 
-This is the Frontend to the Eval.gd sandboxed code evaluation system.
+This is the Frontend to the Eval.so sandboxed code evaluation system.
 
 This means:
 * Users register, log in, create apps, etc, via this frontend.

@@ -13,4 +13,6 @@ $ ->
         "contentType": "application/json; charset=utf-8",
         "success": (data) =>
           $('#result').text(JSON.stringify(data, null, 4))
+        "error": (jqXHR, textStatus, errorThrown) =>
+          $('#result').text("[" + textStatus + "] " + errorThrown)
       }

@@ -1,7 +1,7 @@
 package controllers
 
-import gd.eval.Router
-import gd.eval.SandboxedLanguage.Result
+import so.eval.Router
+import so.eval.SandboxedLanguage.Result
 
 import play.api._
 import play.api.mvc._
@@ -16,9 +16,9 @@ object Application extends Controller {
 
   def apiDocs(version: Int) = Action { Ok(views.html.apidocs.v1()) }
 
-  def tryEvalGD = Action { Ok(views.html.tryEvalGD()) }
+  def tryEvalSO = Action { Ok(views.html.tryEvalSO()) }
 
-  def languages = Action { Ok(Json.obj("languages" -> gd.eval.Router.languages.keys)) }
+  def languages = Action { Ok(Json.obj("languages" -> so.eval.Router.languages.keys)) }
 
   case class Evaluation(language: String, code: String)
 

@@ -30,11 +30,14 @@ html, body { height: 100%; }
 
 #push, #footer { height: @footerheight; }
 
+.bp-content {
+    padding-bottom: 10px;
+}
+
 .bp-footer {
     background-color: #333333;
     color: #bbbbbb;
     padding-top: 10px;
-    clear: both;
 }
 
 textarea.stupidly-plain {
@@ -46,7 +49,7 @@ textarea.stupidly-plain {
     box-shadow: none;
     font-family: monospace;
     border-radius: 0;
-    
+
     &:focus {
         outline: none;
         border: none;

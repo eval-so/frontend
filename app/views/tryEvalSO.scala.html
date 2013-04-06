@@ -5,7 +5,7 @@
 <div class="row">
   <div class="span6">
     <div class="pull-left">
-      <select id="eval-language">
+      <select id="eval-language" class="chzn-select">
         @so.eval.Router.languages.keys.map { language =>
           <option value="@language" @if(language == "ruby") { selected="selected" }>@language</option>
         }

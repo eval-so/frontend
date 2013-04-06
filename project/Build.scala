@@ -16,12 +16,14 @@ object ApplicationBuild extends Build {
     "org.webjars" % "highlightjs" % "7.3",
     "org.webjars" % "font-awesome" % "3.0.2",
     "org.webjars" % "bootstrap" % "2.3.1",
+    "org.webjars" % "chosen" % "0.9.12",
     jdbc,
     anorm
   )
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
     resolvers += Resolver.url("sbt-plugin-snapshots", new URL("http://repo.scala-sbt.org/scalasbt/sbt-plugin-snapshots/"))(Resolver.ivyStylePatterns),
-    resolvers += Resolver.url("github repo for play-slick", url("http://loicdescotte.github.com/releases/"))(Resolver.ivyStylePatterns)
+    resolvers += Resolver.url("github repo for play-slick", url("http://loicdescotte.github.com/releases/"))(Resolver.ivyStylePatterns),
+    resolvers += "github repo for Chosen 0.9.12" at "http://codeblock.github.io/chosen/"
   ).dependsOn(uri("git://github.com/eval-so/minibcs"))
 }

@@ -29,7 +29,7 @@ object Application extends Controller {
 
   implicit val evaluationWrites = Json.writes[Result]
 
-    def sayHello = Action(parse.json) { request =>
+    def evaluate(version: Int) = Action(parse.json) { request =>
       request.body.validate[(String, String)].map {
         case (language, code) => {
           val evaluation = Router.route(language, code)

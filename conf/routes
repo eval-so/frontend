@@ -1,14 +1,15 @@
-# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
-
-# Home page
+# Documentation endpoints
 GET     /                           controllers.Application.index
 GET     /try                        controllers.Application.tryEvalSO
-GET     /api/v/:version             controllers.Application.apiDocs(version: Int)
-POST    /jsontest                   controllers.Application.sayHello
+GET     /api/:version               controllers.Application.apiDocs(version: Int)
+
+# Evaluate endpoint
+POST    /api/:version/evaluate      controllers.Application.evaluate(version: Int)
+POST    /api/evaluate               controllers.Application.evaluate(version: Int = 1)
+
+# Languages endpoint
 GET     /languages                  controllers.Application.languages
 
-# Map static resources from the /public folder to the /assets URL path
+# Static resources
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 GET     /webjars/*file              controllers.WebJarAssets.at(file)

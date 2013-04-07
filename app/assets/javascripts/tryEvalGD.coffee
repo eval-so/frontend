@@ -1,7 +1,7 @@
 runEvaluation = ->
   $('#result').text("Loading...")
   $.ajax {
-    "url": "/jsontest",
+    "url": "/api/evaluate",
     "type": "POST",
     "data": JSON.stringify({
       "language": $('#eval-language').val(),

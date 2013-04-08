@@ -8,6 +8,6 @@ resolvers ++= Seq(
 )
 
 // Use the Play sbt plugin for Play projects
-addSbtPlugin("play" % "sbt-plugin" % "2.1.0")
+addSbtPlugin("play" % "sbt-plugin" % "2.1.1")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-ghpages" % "0.5.0")

@@ -7,6 +7,7 @@ import play.api._
 import play.api.mvc._
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
+import play.modules.statsd.api.Statsd
 
 object Application extends Controller {
 
@@ -35,8 +36,16 @@ object Application extends Controller {
           val evaluation = Router.route(language, code)
           evaluation match {
             case Some(sandbox) => sandbox.evaluate.fold(
-              left => BadRequest(Json.obj("error" -> "An error has occurred and evaluation has halted.")),
-              right => Ok(Json.toJson(right)))
+              left => {
+                Statsd.increment(s"evaluation.${language}.error", value = 1)
+                BadRequest(Json.obj("error" -> "An error has occurred and evaluation has halted."))
+              },
+              right => {
+                Statsd.increment(s"evaluation.${language}.ok", value = 1)
+                Statsd.timing(s"evaluation.${language}.walltime", right.wallTime)
+                Ok(Json.toJson(right))
+              }
+            )
             case None => BadRequest(Json.obj("error" -> "No such language."))
           }
         }

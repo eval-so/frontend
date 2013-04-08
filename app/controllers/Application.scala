@@ -42,7 +42,11 @@ object Application extends Controller {
               },
               right => {
                 Statsd.increment(s"evaluation.${language}.ok", value = 1)
-                Statsd.timing(s"evaluation.${language}.walltime", right.wallTime)
+                right.compilationResult match {
+                  case Some(result) => Statsd.timing(s"evaluation.${language}.compilation.walltime", result.wallTime)
+                  case _ =>
+                }
+                Statsd.timing(s"evaluation.${language}.execution.walltime", right.wallTime)
                 Ok(Json.toJson(right))
               }
             )

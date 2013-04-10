@@ -4,14 +4,13 @@
 <html lang="en">
   <head>
     <title>@title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))"></script>
     <link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))">
     <link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("css/font-awesome.min.css"))">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap-responsive.min.css"))">
     <script type="text/javascript" src="@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))"></script>
     <link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.min.css")">
-    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/railscasts.css")">
     <script type="text/javascript" src="@routes.WebJarAssets.at(WebJarAssets.locate("highlight.min.js"))"></script>
     <link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("chosen.css"))">
     <script type="text/javascript" src="@routes.WebJarAssets.at(WebJarAssets.locate("chosen.jquery.min.js"))"></script>
@@ -43,6 +42,7 @@
             <div class="nav-collapse">
               <ul class="nav pull-right">
                 <li><a href="/"><i class="icon-home"></i> Home</a></li>
+                <li><a href="@routes.Application.apiDocs(1)"><i class="icon-book"></i> API Documentation</a></li>
                 <li><a href="@routes.Application.tryEvalSO"><i class="icon-magic"></i> Try it</a></li>
               </ul>
             </div>

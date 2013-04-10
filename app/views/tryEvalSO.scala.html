@@ -2,27 +2,29 @@
 <script type="text/javascript" src="@routes.Assets.at("javascripts/jquery.autosize.js")"></script>
 <script type="text/javascript" src="@routes.Assets.at("javascripts/tryEvalGD.min.js")"></script>
 
-<div class="row">
-  <div class="span6">
-    <div class="pull-left">
-      <select id="eval-language" class="chzn-select">
-        @so.eval.Router.languages.keys.map { language =>
-          <option value="@language" @if(language == "ruby") { selected="selected" }>@language</option>
-        }
-      </select>
+<div class="container bp-push-60">
+  <div class="row">
+    <div class="span6">
+      <div class="pull-left">
+        <select id="eval-language" class="chzn-select">
+          @so.eval.Router.languages.keys.map { language =>
+            <option value="@language" @if(language == "ruby") { selected="selected" }>@language</option>
+          }
+        </select>
+      </div>
+      <div class="pull-right">
+        <button id="eval-submit" type="submit">Evaluate</button>
+      </div>
+      <textarea
+         id="eval"
+         class="stupidly-plain"
+         tabindex="1"
+         spellcheck="false"
+         placeholder="Type Ruby code here and press control-enter (or click the Evaluate button above) when you are done."></textarea>
     </div>
-    <div class="pull-right">
-      <button id="eval-submit" type="submit" />Evaluate</button>
+    <div class="span6">
+      <pre id="result" class="stupidly-plain">JSON output will display here.</pre>
     </div>
-    <textarea
-       id="eval"
-       class="stupidly-plain"
-       tabindex="1"
-       spellcheck="false"
-       placeholder="Type Ruby code here and press control-enter (or click the Evaluate button above) when you are done."></textarea>
-  </div>
-  <div class="span6">
-    <pre id="result" class="stupidly-plain">JSON output will display here.</pre>
   </div>
 </div>
 

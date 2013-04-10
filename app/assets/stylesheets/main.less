@@ -1,14 +1,11 @@
 @import url('http://fonts.googleapis.com/css?family=Lato');
 @import url('_railscasts.less');
-
-@footerheight: 30px;
+@import url('_footerhacks.less');
 
 @media (max-width: 767px) {
-    .bp-footer {
-        margin-left: -20px;
-        margin-right: -20px;
-        padding-left: 20px;
-        padding-right: 20px;
+    .bp-front-hero {
+        text-align: left !important;
+        padding: 0 !important;
     }
 }
 
@@ -18,33 +15,20 @@ html, body { height: 100%; }
     font-family: 'Lato';
 }
 
-#wrap {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -(@footerheight + 10); /* 10px for bp-footer's padding-top */
-
-    > .container {
-      padding-top: 60px;
-    }
-}
-
-#push, #footer { height: @footerheight; }
-
-.bp-content {
-    padding-bottom: 10px;
-}
-
-.bp-footer {
-    background-color: #333333;
-    color: #bbbbbb;
-    padding-top: 10px;
+.bp-navbar {
+    background: #ffffff !important;
+    border-bottom: 1px solid #dddddd;
+    box-shadow: none !important;
 }
 
 .bp-front-hero {
-    background-color: transparent !important;
+    background-color: #fafafa !important;
     text-align: center;
+    border-bottom: 1px solid #dddddd !important;
+    padding-top: 100px; /* Immediately below the header. */
 }
+
+.bp-push-60 { padding-top: 60px;}
 
 textarea.stupidly-plain {
     border: none;

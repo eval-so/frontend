@@ -1,61 +1,65 @@
 @main("Welcome to eval.so") {
 <div class="hero-unit bp-front-hero">
-  <h1>Code evaluation in the cloud.</h1>
-  <p>
-    Eval.so provides an open source platform based on SELinux sandboxes, for
-    evaluating code in the cloud.
-  </p>
+  <div class="container">
+    <h1>Code evaluation in the cloud.</h1>
+    <p>
+      Eval.so provides an open source platform based on SELinux sandboxes, for
+      evaluating code in the cloud.
+    </p>
+  </div>
 </div>
 
-<div class="row">
-  <div class="span12">
-    <h2>Simple JSON API</h2>
-    <pre><code>POST /evaluate</code></pre>
-  </div>
-  <div class="span6">
-    <h4><i class="icon-upload-alt"></i> Request</h4>
-    <pre><code>{
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <h2>Simple JSON API</h2>
+      <pre><code>POST /evaluate</code></pre>
+    </div>
+    <div class="span6">
+      <h4><i class="icon-upload-alt"></i> Request</h4>
+      <pre><code>{
   "api_version": 1,
   "api_key": "35159d04-64f4-4948-b5c4-2a1f513e0cd9",
   "language": "ruby",
   "code": "puts 2+2"
 }</code></pre>
-  </div>
+    </div>
 
-  <div class="span6">
-    <h4><i class="icon-download-alt"></i> Response</h4>
-    <pre><code>{
+    <div class="span6">
+      <h4><i class="icon-download-alt"></i> Response</h4>
+      <pre><code>{
   "stdout": "4",
   "stderr": "",
   "wall_time": "0.020",
   "remaining_evaluations": 56
 }</code></pre>
+    </div>
   </div>
-</div>
 
-<hr />
+  <hr />
 
-<div class="row">
-  <h2>Official Command-line Utility</h2>
-  <div class="span6">
-    <p>
-      Eval.so's official command-line app allows you to trigger code
-      evaluations and allows Eval.so administrators to control various
-      aspects of the infrastructure, right from the terminal.
-    </p>
-    <p>
-      It's written in <a href="http://golang.org/">Go</a> and open source,
-      like all of Eval.so. It will soon be available as a package for most
-      Linux distributions.
-    </p>
-  </div>
-  <div class="span6">
-    <pre><code>$ cat hello-world-and-exit-with-123.rb | evalso --language=ruby
+  <div class="row">
+    <h2>Official Command-line Utility</h2>
+    <div class="span6">
+      <p>
+        Eval.so's official command-line app allows you to trigger code
+        evaluations and allows Eval.so administrators to control various
+        aspects of the infrastructure, right from the terminal.
+      </p>
+      <p>
+        It's written in <a href="http://golang.org/">Go</a> and open source,
+        like all of Eval.so. It will soon be available as a package for most
+        Linux distributions.
+      </p>
+    </div>
+    <div class="span6">
+      <pre><code>$ cat hello-world-and-exit-with-123.rb | evalso --language=ruby
 Hello, world!
 
 $ echo $?
 123
 </code></pre>
+    </div>
   </div>
 </div>
 }

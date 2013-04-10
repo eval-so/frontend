@@ -4,18 +4,10 @@
 <html lang="en">
   <head>
     <title>@title</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))"></script>
-    <link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))">
-    <link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("css/font-awesome.min.css"))">
-    <link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap-responsive.min.css"))">
-    <script type="text/javascript" src="@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))"></script>
-    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.min.css")">
-    <script type="text/javascript" src="@routes.WebJarAssets.at(WebJarAssets.locate("highlight.min.js"))"></script>
-    <link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("chosen.css"))">
-    <script type="text/javascript" src="@routes.WebJarAssets.at(WebJarAssets.locate("chosen.jquery.min.js"))"></script>
-    <script type="text/javascript" src="@routes.Assets.at("javascripts/main.min.js")"></script>
-    <script type="text/javascript">
+
+    <script>
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-31038896-1']);
       _gaq.push(['_setDomainName', 'eval.so']);
@@ -27,8 +19,19 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+
+    <!-- Critical Path assets -->
+    <link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))">
+    <link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("css/font-awesome.min.css"))">
+    <link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap-responsive.min.css"))">
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/main.min.css")">
+
+    <script async src="@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))"></script>
+    <script defer src="@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))"></script>
+    <script defer src="@routes.WebJarAssets.at(WebJarAssets.locate("highlight.min.js"))"></script>
+    <script defer src="@routes.Assets.at("javascripts/main.min.js")"></script>
   </head>
-  <body onload="hljs.initHighlighting();">
+  <body>
     <div id="wrap">
       <div class="navbar navbar-fixed-top">
         <div class="navbar-inner bp-navbar">

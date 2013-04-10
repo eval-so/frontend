@@ -16,6 +16,7 @@ runEvaluation = ->
   }
 
 $ ->
+  $(".chzn-select").chosen()
   $('textarea').keydown (event) =>
     if (event.keyCode == 10 or event.keyCode == 13) and event.ctrlKey
       runEvaluation()

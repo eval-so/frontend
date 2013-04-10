@@ -1,2 +1,2 @@
 $ ->
-  $(".chzn-select").chosen()
+  hljs.initHighlighting()

@@ -1,6 +1,8 @@
 @main("Try eval.so") {
-<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery.autosize.js")"></script>
-<script type="text/javascript" src="@routes.Assets.at("javascripts/tryEvalGD.min.js")"></script>
+<link rel="stylesheet" href="@routes.WebJarAssets.at(WebJarAssets.locate("chosen.css"))">
+<script defer src="@routes.Assets.at("javascripts/jquery.autosize.js")"></script>
+<script defer src="@routes.Assets.at("javascripts/tryEvalGD.min.js")"></script>
+<script defer src="@routes.WebJarAssets.at(WebJarAssets.locate("chosen.jquery.min.js"))"></script>
 
 <div class="container bp-push-60">
   <div class="row">

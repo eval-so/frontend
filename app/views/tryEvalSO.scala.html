@@ -9,7 +9,7 @@
     <div class="span6">
       <div class="pull-left">
         <select id="eval-language" class="chzn-select">
-          @so.eval.Router.languages.keys.map { language =>
+          @so.eval.Router.languages.keys.toList.toList.sortWith(_ < _).map { language =>
             <option value="@language" @if(language == "ruby") { selected="selected" }>@language</option>
           }
         </select>
@@ -22,7 +22,7 @@
          class="stupidly-plain"
          tabindex="1"
          spellcheck="false"
-         placeholder="Type Ruby code here and press control-enter (or click the Evaluate button above) when you are done."></textarea>
+         placeholder="Type code here and press control-enter (or click the Evaluate button above) when you are done."></textarea>
     </div>
     <div class="span6">
       <pre id="result" class="stupidly-plain">JSON output will display here.</pre>

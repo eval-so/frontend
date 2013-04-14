@@ -34,36 +34,36 @@ object Application extends Controller {
 
   implicit val evaluationWrites = Json.writes[Result]
 
-    def evaluate(version: Int) = Action(parse.json) { request =>
-      request.body.validate[(String, String)].map {
-        case (language, code) => {
-          val evaluation = Router.route(language, code)
-          evaluation match {
-            case Some(sandbox) => {
-              val evalPromise = Akka.future { sandbox.evaluate }
-              Async {
-                evalPromise.map(_.fold(
-                  left => {
-                    Statsd.increment(s"evaluation.${language}.error", value = 1)
-                    BadRequest(Json.obj("error" -> "An error has occurred and evaluation has halted."))
-                  },
-                  right => {
-                    Statsd.increment(s"evaluation.${language}.ok", value = 1)
-                    right.compilationResult match {
-                      case Some(result) => Statsd.timing(s"evaluation.${language}.compilation.walltime", result.wallTime)
-                      case _ =>
-                      }
-                      Statsd.timing(s"evaluation.${language}.execution.walltime", right.wallTime)
-                      Ok(Json.toJson(right))
+  def evaluate(version: Int) = Action(parse.json) { request =>
+    request.body.validate[(String, String)].map {
+      case (language, code) => {
+        val evaluation = Router.route(language, code)
+        evaluation match {
+          case Some(sandbox) => {
+            val evalPromise = Akka.future { sandbox.evaluate }
+            Async {
+              evalPromise.map(_.fold(
+                left => {
+                  Statsd.increment(s"evaluation.${language}.error", value = 1)
+                  BadRequest(Json.obj("error" -> "An error has occurred and evaluation has halted."))
+                },
+                right => {
+                  Statsd.increment(s"evaluation.${language}.ok", value = 1)
+                  right.compilationResult match {
+                    case Some(result) => Statsd.timing(s"evaluation.${language}.compilation.walltime", result.wallTime)
+                    case _ =>
                     }
-                  ))
-              }
+                    Statsd.timing(s"evaluation.${language}.execution.walltime", right.wallTime)
+                    Ok(Json.toJson(right))
+                  }
+                ))
             }
-            case None => BadRequest(Json.obj("error" -> "No such language."))
           }
+          case None => BadRequest(Json.obj("error" -> "No such language."))
         }
-      }.recoverTotal{
-        e => BadRequest(Json.obj("error" -> JsError.toFlatJson(e)))
       }
+    }.recoverTotal{
+      e => BadRequest(Json.obj("error" -> JsError.toFlatJson(e)))
     }
+  }
 }

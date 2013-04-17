@@ -42,21 +42,19 @@ object Application extends Controller {
           case Some(sandbox) => {
             val evalPromise = Akka.future { sandbox.evaluate }
             Async {
-              evalPromise.map(_.fold(
-                left => {
-                  Statsd.increment(s"evaluation.${language}.error", value = 1)
-                  BadRequest(Json.obj("error" -> "An error has occurred and evaluation has halted."))
-                },
-                right => {
-                  Statsd.increment(s"evaluation.${language}.ok", value = 1)
-                  right.compilationResult match {
+              evalPromise.map {
+                _.map { resultTry =>
+                  resultTry.compilationResult match {
                     case Some(result) => Statsd.timing(s"evaluation.${language}.compilation.walltime", result.wallTime)
                     case _ =>
-                    }
-                    Statsd.timing(s"evaluation.${language}.execution.walltime", right.wallTime)
-                    Ok(Json.toJson(right))
                   }
-                ))
+                  Statsd.timing(s"evaluation.${language}.execution.walltime", resultTry.wallTime)
+                  Ok(Json.toJson(resultTry))
+                }.getOrElse {
+                  Statsd.increment(s"evaluation.${language}.error", value = 1)
+                  BadRequest(Json.obj("error" -> "An error has occurred and evaluation has halted."))
+                }
+              }
             }
           }
           case None => BadRequest(Json.obj("error" -> "No such language."))

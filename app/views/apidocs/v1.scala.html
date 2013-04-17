@@ -1,7 +1,7 @@
 @main("eval.so version 1") {
 <div class="hero-unit bp-front-hero">
   <div class="container">
-    <h1>eval.so API Version 1.</h1>
+    <h1>Eval.so API Version 1.</h1>
     <p>
       Want to develop applications around eval.so? Check out our API.
       It's so simple, it's almost impossible to get wrong.
@@ -12,13 +12,24 @@
 <div class="container">
   <div class="row">
     <div class="span12">
+      <h4>A quick note</h4>
+      <p>
+        First and foremost, it's worth noting that there are two endpoints for
+        the API. If you access <code>/api/[endpoint]</code> you will always hit
+        the latest version of the API. If you want to access a specific version
+        of the API, you should use <code>/api/[version]/[endpoint]</code>
+        instead.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12">
       <h2>Evaluate Code</h2>
       <pre><code>POST /evaluate</code></pre>
     </div>
     <div class="span6">
       <h4><i class="icon-upload-alt"></i> Request</h4>
       <pre><code>{
-  "api_version": 1,
   "language": "ruby",
   "code": "puts 2+2"
 }</code></pre>
@@ -59,6 +70,7 @@
 
     <div class="span12">
       <h2>Get information about a language</h2>
+      <div class="alert alert-warning"><strong>Watch out!</strong> This is not yet implemented.</div>
       <pre><code>GET /language/:language</code></pre>
     </div>
     <div class="span6 pull-right">

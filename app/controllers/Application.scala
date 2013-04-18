@@ -1,6 +1,6 @@
 package controllers
 
-import so.eval.Router
+import so.eval.{EvaluationRequest, Router}
 import so.eval.SandboxedLanguage.Result
 
 import play.api._
@@ -29,15 +29,17 @@ object Application extends Controller {
 
   implicit val rds = (
     (__ \ 'language).read[String] and
-    (__ \ 'code).read[String]
+    (__ \ 'code).read[String] and
+    (__ \ 'files).readOpt[Map[String, String]]
   ) tupled
 
   implicit val evaluationWrites = Json.writes[Result]
 
   def evaluate(version: Int) = Action(parse.json) { request =>
-    request.body.validate[(String, String)].map {
-      case (language, code) => {
-        val evaluation = Router.route(language, code)
+    request.body.validate[(String, String, Option[Map[String, String]])].map {
+      case (language, code, files) => {
+        val evaluationRequest = EvaluationRequest(code, files)
+        val evaluation = Router.route(language, evaluationRequest)
         evaluation match {
           case Some(sandbox) => {
             val evalPromise = Akka.future { sandbox.evaluate }

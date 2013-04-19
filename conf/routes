@@ -1,6 +1,9 @@
 # Documentation endpoints
 GET     /                           controllers.Application.index
 GET     /try                        controllers.Application.tryEvalSO
+
+OPTIONS /api/*path                  controllers.Application.CORSPreflight(path)
+
 GET     /api/:version               controllers.Application.apiDocs(version: Int)
 
 # Evaluate endpoint

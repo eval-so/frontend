@@ -15,6 +15,27 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 object Application extends Controller {
 
+  /** Return an Action with CORS headers set. */
+  private def CORSAction[A](bp: BodyParser[A])(f: Request[A] => play.api.mvc.Result) =
+    Action(bp) { request =>
+      f(request).withHeaders("Access-Control-Allow-Origin" -> "*")
+    }
+
+  /** Return an Action with CORS headers set. */
+  private def CORSAction(f: Request[AnyContent] => play.api.mvc.Result) =
+    Action { request =>
+      f(request).withHeaders("Access-Control-Allow-Origin" -> "*")
+    }
+
+  def CORSPreflight(path: String) = Action {
+    Ok.withHeaders(
+      "Access-Control-Allow-Origin" -> "*",
+      "Access-Control-Allow-Methods" -> "POST",
+      "Access-Control-Max-Age" -> "300",
+      "Access-Control-Allow-Headers" -> "Origin, X-Requested-With, Content-Type, Accept"
+    )
+  }
+
   def index = Action {
     Ok(views.html.index())
   }
@@ -23,7 +44,9 @@ object Application extends Controller {
 
   def tryEvalSO = Action { Ok(views.html.tryEvalSO()) }
 
-  def languages = Action { Ok(Json.obj("languages" -> so.eval.Router.languages.keys)) }
+  def languages = CORSAction { request =>
+    Ok(Json.obj("languages" -> so.eval.Router.languages.keys))
+  }
 
   case class Evaluation(language: String, code: String)
 
@@ -35,7 +58,7 @@ object Application extends Controller {
 
   implicit val evaluationWrites = Json.writes[Result]
 
-  def evaluate(version: Int) = Action(parse.json) { request =>
+  def evaluate(version: Int) = CORSAction(parse.json) { request =>
     request.body.validate[(String, String, Option[Map[String, String]])].map {
       case (language, code, files) => {
         val evaluationRequest = EvaluationRequest(code, files)

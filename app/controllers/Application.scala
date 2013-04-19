@@ -63,6 +63,14 @@ object Application extends Controller {
       case (language, code, files) => {
         val evaluationRequest = EvaluationRequest(code, files)
         val evaluation = Router.route(language, evaluationRequest)
+
+        // Graphite doesn't seem to be handling names with "+" in it.
+        // If we have to do more of these replacements, we should move them out
+        // to somewhere more global (like minibcs).
+        // But for now, only Frontend provides language metrics, and we can
+        // handle the one-off case here.
+        val sanitizedLanguage = language.replaceAll("\\+", "plus")
+
         evaluation match {
           case Some(sandbox) => {
             val evalPromise = Akka.future { sandbox.evaluate }
@@ -70,13 +78,13 @@ object Application extends Controller {
               evalPromise.map {
                 _.map { resultTry =>
                   resultTry.compilationResult match {
-                    case Some(result) => Statsd.timing(s"evaluation.${language}.compilation.walltime", result.wallTime)
+                    case Some(result) => Statsd.timing(s"evaluation.${sanitizedLanguage}.compilation.walltime", result.wallTime)
                     case _ =>
                   }
-                  Statsd.timing(s"evaluation.${language}.execution.walltime", resultTry.wallTime)
+                  Statsd.timing(s"evaluation.${sanitizedLanguage}.execution.walltime", resultTry.wallTime)
                   Ok(Json.toJson(resultTry))
                 }.getOrElse {
-                  Statsd.increment(s"evaluation.${language}.error", value = 1)
+                  Statsd.increment(s"evaluation.${sanitizedLanguage}.error", value = 1)
                   BadRequest(Json.obj("error" -> "An error has occurred and evaluation has halted."))
                 }
               }

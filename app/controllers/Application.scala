@@ -44,7 +44,7 @@ object Application extends Controller {
 
   def tryEvalSO = Action { Ok(views.html.tryEvalSO()) }
 
-  def languages = CORSAction { request =>
+  def languages(version: Int) = CORSAction { request =>
     Ok(Json.obj("languages" -> so.eval.Router.languages.keys))
   }
 

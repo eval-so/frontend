@@ -4,14 +4,16 @@ GET     /try                        controllers.Application.tryEvalSO
 
 OPTIONS /api/*path                  controllers.Application.CORSPreflight(path)
 
-GET     /api/:version               controllers.Application.apiDocs(version: Int)
-
 # Evaluate endpoint
 POST    /api/:version/evaluate      controllers.Application.evaluate(version: Int)
 POST    /api/evaluate               controllers.Application.evaluate(version: Int = 1)
 
 # Languages endpoint
-GET     /languages                  controllers.Application.languages
+GET     /api/:version/languages     controllers.Application.languages(version: Int)
+GET     /api/languages              controllers.Application.languages(version: Int = 1)
+
+# Keep this penultimate to static assets so we don't return early.
+GET     /api/:version               controllers.Application.apiDocs(version: Int)
 
 # Static resources
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

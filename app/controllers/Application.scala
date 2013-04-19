@@ -82,6 +82,7 @@ object Application extends Controller {
                     case _ =>
                   }
                   Statsd.timing(s"evaluation.${sanitizedLanguage}.execution.walltime", resultTry.wallTime)
+                  Statsd.increment(s"evaluation.${sanitizedLanguage}.ok", value = 1)
                   Ok(Json.toJson(resultTry))
                 }.getOrElse {
                   Statsd.increment(s"evaluation.${sanitizedLanguage}.error", value = 1)

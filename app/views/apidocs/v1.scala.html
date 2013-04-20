@@ -114,12 +114,24 @@
             <td>The exit code of the evaluation.</td>
           </tr>
           <tr>
+            <td>outputFiles</td>
+            <td><code>{ "output.txt": "aGVsbG8=" }</code></td>
+            <td>
+              An object containing files that are placed in the evaluation's
+              <code>~/output/</code> directory, which is created automatically.
+              The filename is the <strong>key</strong> and the contents of the
+              file is <strong>base64 encoded</strong> and is the
+              <strong>value</strong>.
+            </td>
+          </tr>
+          <tr>
             <td>compilationResult</td>
             <td></td>
             <td>
               The result of compiling the code, for languages that require
               compilation. Everything that appears in the JSON root can possibly
-              appear in <code>compilationResult</code>.
+              appear in <code>compilationResult</code>, except
+              <code>outputFiles</code>.
             </td>
           </tr>
         </table>

@@ -53,15 +53,19 @@ object Application extends Controller {
   implicit val rds = (
     (__ \ 'language).read[String] and
     (__ \ 'code).read[String] and
-    (__ \ 'files).readOpt[Map[String, String]]
+    (__ \ 'files).readOpt[Map[String, String]] and
+    (__ \ 'compilationOnly).readOpt[Boolean]
   ) tupled
 
   implicit val evaluationWrites = Json.writes[Result]
 
   def evaluate(version: Int) = CORSAction(parse.json) { request =>
-    request.body.validate[(String, String, Option[Map[String, String]])].map {
-      case (language, code, files) => {
-        val evaluationRequest = EvaluationRequest(code, files)
+    request.body.validate[(String, String, Option[Map[String, String]], Option[Boolean])].map {
+      case (language, code, files, compilationOnly) => {
+        val evaluationRequest = EvaluationRequest(
+          code,
+          files = files,
+          compilationOnly = compilationOnly.getOrElse(false))
         val evaluation = Router.route(language, evaluationRequest)
 
         // Graphite doesn't seem to be handling names with "+" in it.

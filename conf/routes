@@ -13,6 +13,7 @@ GET     /api/:version/languages     controllers.Application.languages(version: I
 GET     /api/languages              controllers.Application.languages(version: Int = 1)
 
 # Keep this penultimate to static assets so we don't return early.
+GET     /api                        controllers.Application.apiDocs(version: Int = 1)
 GET     /api/:version               controllers.Application.apiDocs(version: Int)
 
 # Static resources

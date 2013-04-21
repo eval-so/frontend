@@ -29,6 +29,7 @@ object ApplicationBuild extends Build {
     resolvers += Resolver.url("github repo for play-slick", url("http://loicdescotte.github.com/releases/"))(Resolver.ivyStylePatterns),
     resolvers += "github repo for Chosen 0.9.12" at "http://codeblock.github.io/chosen/"
   ).dependsOn(uri("git://github.com/eval-so/minibcs")).settings(
-    testOptions in Test := Nil
+    testOptions in Test := Nil,
+    testOptions in Test += Tests.Argument("-oDS")
   )
 }

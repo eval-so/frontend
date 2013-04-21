@@ -53,7 +53,7 @@ object Application extends Controller {
   implicit val rds = (
     (__ \ 'language).read[String] and
     (__ \ 'code).read[String] and
-    (__ \ 'files).readOpt[Map[String, String]] and
+    (__ \ 'inputFiles).readOpt[Map[String, String]] and
     (__ \ 'compilationOnly).readOpt[Boolean]
   ) tupled
 
@@ -61,10 +61,10 @@ object Application extends Controller {
 
   def evaluate(version: Int) = CORSAction(parse.json) { request =>
     request.body.validate[(String, String, Option[Map[String, String]], Option[Boolean])].map {
-      case (language, code, files, compilationOnly) => {
+      case (language, code, inputFiles, compilationOnly) => {
         val evaluationRequest = EvaluationRequest(
           code,
-          files = files,
+          files = inputFiles,
           compilationOnly = compilationOnly.getOrElse(false))
         val evaluation = Router.route(language, evaluationRequest)
 

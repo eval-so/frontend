@@ -19,12 +19,16 @@ object ApplicationBuild extends Build {
     "org.webjars" % "bootstrap" % "2.3.1",
     "org.webjars" % "chosen" % "0.9.12",
     jdbc,
-    anorm
+    anorm,
+
+    "org.scalatest" % "scalatest_2.10" % "1.9.1" % "test"
   )
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
     resolvers += Resolver.url("sbt-plugin-snapshots", new URL("http://repo.scala-sbt.org/scalasbt/sbt-plugin-snapshots/"))(Resolver.ivyStylePatterns),
     resolvers += Resolver.url("github repo for play-slick", url("http://loicdescotte.github.com/releases/"))(Resolver.ivyStylePatterns),
     resolvers += "github repo for Chosen 0.9.12" at "http://codeblock.github.io/chosen/"
-  ).dependsOn(uri("git://github.com/eval-so/minibcs"))
+  ).dependsOn(uri("git://github.com/eval-so/minibcs")).settings(
+    testOptions in Test := Nil
+  )
 }

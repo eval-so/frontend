@@ -1,32 +1,32 @@
 package test
 
-import org.specs2.mutable._
+import org.scalatest.{BeforeAndAfter, FunSpec, Inside, ParallelTestExecution}
+import org.scalatest.matchers.ShouldMatchers
 
 import play.api.test._
 import play.api.test.Helpers._
 
-/**
- * Add your spec here.
- * You can mock out a whole application including requests, plugins etc.
- * For more information, consult the wiki.
- */
-class ApplicationSpec extends Specification {
-  
-  "Application" should {
-    
-    "send 404 on a bad request" in {
+class ApplicationSpec
+  extends FunSpec
+  with ShouldMatchers
+  with Inside
+  with BeforeAndAfter
+  with ParallelTestExecution {
+
+  describe("The Application controller") {
+    it("should send 404 on a bad request") {
       running(FakeApplication()) {
-        route(FakeRequest(GET, "/boum")) must beNone        
+        route(FakeRequest(GET, "/boum")) should be (None)
       }
     }
-    
-    "render the index page" in {
+
+    it("should render the index page") {
       running(FakeApplication()) {
         val home = route(FakeRequest(GET, "/")).get
-        
-        status(home) must equalTo(OK)
-        contentType(home) must beSome.which(_ == "text/html")
-        contentAsString(home) must contain ("Your new application is ready.")
+
+        status(home) should be (OK)
+        contentType(home) should be (Some("text/html"))
+        contentAsString(home) should include ("Welcome to eval.so")
       }
     }
   }

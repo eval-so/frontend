@@ -53,9 +53,9 @@ object Application extends Controller {
   implicit val rds = (
     (__ \ 'language).read[String] and
     (__ \ 'code).read[String] and
-    (__ \ 'inputFiles).readOpt[Map[String, String]] and
-    (__ \ 'compilationOnly).readOpt[Boolean] and
-    (__ \ 'stdin).readOpt[String]
+    (__ \ 'inputFiles).readNullable[Map[String, String]] and
+    (__ \ 'compilationOnly).readNullable[Boolean] and
+    (__ \ 'stdin).readNullable[String]
   ) tupled
 
   implicit val evaluationWrites = Json.writes[Result]

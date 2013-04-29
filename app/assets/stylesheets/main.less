@@ -2,13 +2,6 @@
 @import url('_railscasts.less');
 @import url('_footerhacks.less');
 
-@media (max-width: 767px) {
-    .bp-front-hero {
-        text-align: left !important;
-        padding: 0 !important;
-    }
-}
-
 html, body {
     height: 100%;
     font-family: 'Proxima Nova', 'PT Sans', sans-serif !important;
@@ -16,6 +9,10 @@ html, body {
 
 .brand, .lato {
     font-family: 'Lato';
+}
+
+h2, h3 {
+    font-weight: 100;
 }
 
 .bp-navbar {
@@ -28,10 +25,14 @@ html, body {
 
 .bp-front-hero {
     background-color: #fafafa !important;
-    text-align: center;
     border-bottom: 1px solid #dddddd !important;
     padding-top: 100px; /* 40px for header, 60px padding on .hero-unit. */
+    margin-bottom: 0 !important;
     border-radius: 0 !important;
+
+    h1 {
+        text-shadow: 2px 2px 2px #999;
+    }
 }
 
 .bp-push-60 { padding-top: 60px;}
@@ -55,4 +56,17 @@ pre.stupidly-plain {
     border: none;
     box-shadow: none;
     background-color: transparent;
+}
+
+@media (min-width: 767px) {
+    #bp-index-hero {
+    }
+
+    #content {
+        .container { padding: 50px 0 50px 0; }
+    }
+
+    .bp-dark-container {
+        background-color: #e5e9ec;
+    }
 }

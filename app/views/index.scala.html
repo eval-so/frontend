@@ -1,62 +1,73 @@
 @main("Welcome to eval.so") {
-<div class="hero-unit bp-front-hero">
+<div id="bp-index-hero" class="hero-unit bp-front-hero">
   <div class="container">
-    <h1>Sandboxed code evaluation API.</h1>
+    <h1>Sandboxed code evaluation platform.</h1>
     <p>
-      Eval.so provides an open source platform based on SELinux sandboxes, for
-      evaluating code on the web.
+      Use Eval.so's API to compile and/or evaluate code safely and easily.
     </p>
   </div>
 </div>
 
-<div class="container">
+<div class="container pad">
   <div class="row">
-    <div class="span12">
-      <h2>Simple JSON API</h2>
-      <pre><code>POST /evaluate</code></pre>
+    <div class="span6">
+      <h2>Why Eval.so?</h2>
+      <p>
+        Eval.so provides a free and open source web platform for you to evaluate
+        code in many situations. Whether you want to make sure your code works
+        on another computer, or you found some code online that you don't trust,
+        simply run it on Eval.so, and have your answer in no time.
+      </p>
     </div>
     <div class="span6">
-      <h4><i class="icon-upload-alt"></i> Request</h4>
-      <pre><code>{
-  "language": "ruby",
-  "code": "puts 2+2"
-}</code></pre>
-    </div>
-
-    <div class="span6">
-      <h4><i class="icon-download-alt"></i> Response</h4>
-      <pre><code>{
-  "stdout": "4",
-  "stderr": "",
-  "wallTime": "394",
-  "exitCode": 0
-}</code></pre>
+      <h2>Where should I use it?</h2>
+      <p>
+        We'll leave that up to you! Eval.so prvodes an very simple JSON API.
+        You can develop programs and websites that interact with the API, or
+        take advantage of already-written programs that do. We also have an
+        official command-line app that you can try out, which was written so
+        that we have an application to use the API against, as we develop it.
+      </p>
     </div>
   </div>
+</div>
 
-  <hr />
+<div class="bp-dark-container">
+  <div class="container">
+    <div class="row">
+      <div class="span6">
+        <h2>How do I use it?</h2>
+        <p>
+          If you want to <strong>use a program</strong> that integrates with
+          the API, simply download the program and use it. As of right now,
+          the API doesn't require any form of authentication, so programs
+          should "just work."
+        </p>
+        <p>
+          If you want to <strong>develop a program</strong> on the API, be sure
+          to check out our
+          <a href="@routes.Application.apiDocs(1)">API Documentation</a>. The
+        </p>
+      </div>
+      <div class="span6">
+        <h2>You should add [something]!</h2>
+        <p>
+          Eval.so is a community-driven open source project. If there's
+          something you'd like to see added, file an issue on the appropriate
+          GitHub project, and discuss it amongst the community. We also gladly
+          accept most patches, so feel free to hack on the codebase.
+        </p>
 
-  <div class="row">
-    <h2>Official Command-line Utility</h2>
-    <div class="span6">
-      <p>
-        Eval.so's official command-line app allows you to trigger code
-        evaluations and allows Eval.so administrators to control various
-        aspects of the infrastructure, right from the terminal.
-      </p>
-      <p>
-        It's written in <a href="http://golang.org/">Go</a> and, like all of
-        eval.so, it's open source. It will soon be available as a package for
-        most Linux distributions.
-      </p>
-    </div>
-    <div class="span6">
-      <pre><code>$ cat hello-world-and-exit-with-123.rb | evalso --language=ruby
-Hello, world!
-
-$ echo $?
-123
-</code></pre>
+        <p>
+          The two main parts of the project currently are the
+          <a href="https://github.com/eval-so/frontend">Frontend</a> and
+          <a href="https://github.com/eval-so/minibcs">minibcs</a>, the backend.
+          The <a href="https://github.com/eval-so/cli">command-line tool</a> is
+          also open source. Check out the
+          <a href="#">internals</a> page for an overview of how the system
+          works.
+        </p>
+      </div>
     </div>
   </div>
 </div>

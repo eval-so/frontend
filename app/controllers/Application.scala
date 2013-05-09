@@ -11,9 +11,18 @@ import play.api.libs.functional.syntax._
 import play.api.Play.current
 import play.modules.statsd.api.Statsd
 
+import akka.actor.Props
+import akka.pattern.ask
+import akka.util.Timeout
+
+import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.{ Failure, Try, Success }
 
 object Application extends Controller {
+
+  implicit val timeout: Timeout = Timeout(20.seconds)
+  val router = Akka.system.actorOf(Props[Router], name = "router")
 
   /** Return an Action with CORS headers set. */
   private def CORSAction[A](bp: BodyParser[A])(f: Request[A] => play.api.mvc.Result) =
@@ -85,25 +94,30 @@ object Application extends Controller {
               BadRequest(Json.obj("error" -> "No such language."))
             }
 
-            case Some(sandbox) => {
-              val evalPromise = Akka.future { sandbox.evaluate }
+            case Some(routed) => {
+              val future = router ? routed
               Async {
-                evalPromise.map {
-                  _.map { resultTry =>
-                    resultTry.compilationResult match {
-                      case Some(result) => Statsd.timing(s"evaluation.${sanitizedLanguage}.compilation.walltime", result.wallTime)
-                      case _ =>
+                future.map { tryResult =>
+                  tryResult.asInstanceOf[Try[so.eval.SandboxedLanguage.Result]] match {
+                    case Success(result) => {
+                      result.compilationResult match {
+                        case Some(result) =>
+                          Statsd.timing(s"evaluation.${sanitizedLanguage}.compilation.walltime", result.wallTime)
+                        case _ =>
                       }
-                      Statsd.timing(s"evaluation.${sanitizedLanguage}.execution.walltime", resultTry.wallTime)
+
+                      Statsd.timing(s"evaluation.${sanitizedLanguage}.execution.walltime", result.wallTime)
                       Statsd.increment(s"evaluation.${sanitizedLanguage}.ok", value = 1)
-                      Ok(Json.toJson(resultTry))
-                    }.getOrElse {
+                      Ok(Json.toJson(result))
+                    }
+                    case Failure(result) => { // TODO: Log result.getMessage.
                       Statsd.increment(s"evaluation.${sanitizedLanguage}.error", value = 1)
                       BadRequest(Json.obj("error" -> "An error has occurred and evaluation has halted."))
                     }
                   }
                 }
               }
+            }
           }
       }
     } recoverTotal {

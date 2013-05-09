@@ -45,7 +45,10 @@ object Application extends Controller {
   def tryEvalSO = Action { Ok(views.html.tryEvalSO()) }
 
   def languages(version: Int) = CORSAction { request =>
-    Ok(Json.obj("languages" -> so.eval.Router.languages.keys))
+    val languages = Router.languages.keys.map { shortname =>
+      (shortname -> Router.displayName(shortname).getOrElse(""))
+    }.toMap
+    Ok(Json.toJson(languages))
   }
 
   case class Evaluation(language: String, code: String)

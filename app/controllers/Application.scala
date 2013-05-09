@@ -71,40 +71,46 @@ object Application extends Controller {
           files = inputFiles,
           compilationOnly = compilationOnly.getOrElse(false),
           stdin = stdin)
-        val evaluation = Router.route(language, evaluationRequest)
 
-        // Graphite doesn't seem to be handling names with "+" in it.
-        // If we have to do more of these replacements, we should move them out
-        // to somewhere more global (like minibcs).
-        // But for now, only Frontend provides language metrics, and we can
-        // handle the one-off case here.
-        val sanitizedLanguage = language.replaceAll("\\+", "plus")
+          // Graphite doesn't seem to be handling names with "+" in it.
+          // If we have to do more of these replacements, we should move them out
+          // to somewhere more global (like minibcs).
+          // But for now, only Frontend provides language metrics, and we can
+          // handle the one-off case here.
+          val sanitizedLanguage = language.replaceAll("\\+", "plus")
 
-        evaluation match {
-          case Some(sandbox) => {
-            val evalPromise = Akka.future { sandbox.evaluate }
-            Async {
-              evalPromise.map {
-                _.map { resultTry =>
-                  resultTry.compilationResult match {
-                    case Some(result) => Statsd.timing(s"evaluation.${sanitizedLanguage}.compilation.walltime", result.wallTime)
-                    case _ =>
+          Router.route(language, evaluationRequest) match {
+            case None => {
+              Statsd.increment(s"evaluation.${sanitizedLanguage}.does-not-exist", value = 1)
+              BadRequest(Json.obj("error" -> "No such language."))
+            }
+
+            case Some(sandbox) => {
+              val evalPromise = Akka.future { sandbox.evaluate }
+              Async {
+                evalPromise.map {
+                  _.map { resultTry =>
+                    resultTry.compilationResult match {
+                      case Some(result) => Statsd.timing(s"evaluation.${sanitizedLanguage}.compilation.walltime", result.wallTime)
+                      case _ =>
+                      }
+                      Statsd.timing(s"evaluation.${sanitizedLanguage}.execution.walltime", resultTry.wallTime)
+                      Statsd.increment(s"evaluation.${sanitizedLanguage}.ok", value = 1)
+                      Ok(Json.toJson(resultTry))
+                    }.getOrElse {
+                      Statsd.increment(s"evaluation.${sanitizedLanguage}.error", value = 1)
+                      BadRequest(Json.obj("error" -> "An error has occurred and evaluation has halted."))
+                    }
                   }
-                  Statsd.timing(s"evaluation.${sanitizedLanguage}.execution.walltime", resultTry.wallTime)
-                  Statsd.increment(s"evaluation.${sanitizedLanguage}.ok", value = 1)
-                  Ok(Json.toJson(resultTry))
-                }.getOrElse {
-                  Statsd.increment(s"evaluation.${sanitizedLanguage}.error", value = 1)
-                  BadRequest(Json.obj("error" -> "An error has occurred and evaluation has halted."))
                 }
               }
-            }
           }
-          case None => BadRequest(Json.obj("error" -> "No such language."))
-        }
       }
-    }.recoverTotal{
-      e => BadRequest(Json.obj("error" -> JsError.toFlatJson(e)))
+    } recoverTotal {
+      e => {
+        Statsd.increment(s"json.error.validation", value = 1)
+        BadRequest(Json.obj("error" -> JsError.toFlatJson(e)))
+      }
     }
   }
 }

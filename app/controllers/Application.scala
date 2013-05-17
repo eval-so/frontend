@@ -54,9 +54,9 @@ object Application extends Controller {
   def tryEvalSO = Action { Ok(views.html.tryEvalSO()) }
 
   def languages(version: Int) = CORSAction { request =>
-    val languages = Router.languages.keys.map { shortname =>
-      (shortname -> Map(
-        "display_name" -> Router.displayName(shortname).getOrElse(""))
+    val languages = Router.languages.keys.map { shortName =>
+      (shortName -> Map(
+        "display_name" -> Router.displayName(shortName).getOrElse(""))
       )
     }.toMap
     Ok(Json.toJson(languages))

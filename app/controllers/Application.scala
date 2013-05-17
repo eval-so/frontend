@@ -55,7 +55,9 @@ object Application extends Controller {
 
   def languages(version: Int) = CORSAction { request =>
     val languages = Router.languages.keys.map { shortname =>
-      (shortname -> Router.displayName(shortname).getOrElse(""))
+      (shortname -> Map(
+        "display_name" -> Router.displayName(shortname).getOrElse(""))
+      )
     }.toMap
     Ok(Json.toJson(languages))
   }

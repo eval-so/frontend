@@ -10,7 +10,7 @@
       <div class="pull-left">
         <select id="eval-language" class="chzn-select">
           @so.eval.Router.languages.keys.toList.toList.sortWith(_ < _).map { language =>
-            <option value="@language" @if(language == "ruby") { selected="selected" }>
+            <option value="@language">
               @so.eval.Router.languageDisplayName.get(language).getOrElse(language.capitalize)
             </option>
           }

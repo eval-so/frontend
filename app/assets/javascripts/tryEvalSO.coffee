@@ -23,3 +23,8 @@ $ ->
 
   $('#eval-submit').click (event) =>
     runEvaluation()
+
+  if (window.location.hash == '')
+    $('#eval-language').val('ruby').trigger('liszt:updated')
+  else
+    $('#eval-language').val(window.location.hash.substring(1)).trigger('liszt:updated')

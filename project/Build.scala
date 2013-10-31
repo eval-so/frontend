@@ -10,7 +10,7 @@ object ApplicationBuild extends Build {
   val appDependencies = Seq(
     "com.typesafe" % "play-slick_2.10" % "0.3.0",
     "postgresql" % "postgresql" % "9.1-901.jdbc4",
-    "securesocial" %% "securesocial" % "master-SNAPSHOT",
+    //"securesocial" %% "securesocial" % "master-SNAPSHOT",
     "com.typesafe.play.plugins" %% "play-statsd" % "2.1.0",
     "org.webjars" % "webjars-play" % "2.1.0",
     "org.webjars" % "jquery" % "1.9.1",
